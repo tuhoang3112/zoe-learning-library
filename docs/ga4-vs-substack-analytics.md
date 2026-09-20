@@ -3,6 +3,7 @@
 Substack already reports a lot about the newsletter. Custom tracking has a cost (setup, maintenance, noise, a partial view), so it should only stay where it answers something the native reports cannot. This note states the test, compares the two, and gives the rule for keeping or dropping each piece.
 
 **Provisional verdict (to be reviewed after 4 weeks of data):**
+- **SEO and search (Search Console with GA4 landing pages): a clear increment.** Nothing in Substack shows which queries bring readers, at what ranking or click-through rate, and organic search is the largest web channel (about half of web sessions).
 - **Substack: a small, targeted increment.** Keep `sign_up` (it gives the coverage ratio) and the Subscribe placement funnel; treat scroll depth and read time as optional until they show they can change a decision.
 - **Learning Library: essential.** There is no native analytics for a site I host, so GA4 is the only source.
 
@@ -18,6 +19,7 @@ An event or report earns its place if it meets all three:
 
 - **Growth sources** has two tabs, *Unique visitors* and *New subscribers*, by source. Conversion per source (new subscribers ÷ unique visitors) can therefore be computed **without GA4**.
 - **Posts:** views, engagement rate and free subscribers per post; open rate.
+- **Search:** Substack shows Google as a traffic source and its own search as a growth source, but no queries, rankings, impressions or click-through rate.
 - **Access to the data:** read in the dashboard or take it out **by manual export**. No scheduled export, API, warehouse or BI connector was found, so history, joins and dashboards all depend on someone copying the numbers out.
 - **Traffic:** views, users and free subscribers by source, including email opens and app reading.
 - **Network effect, audience location, retention (free, since 2026-01-01), sharing.**
@@ -35,6 +37,9 @@ For "how many" and "from where", the native reports are more complete than GA4: 
 | Which Subscribe button or pop-up gets used | No | Click by placement, pop-up views and dismissals | **Yes**: the clearest gain |
 | Traffic by campaign and by individual link I publish | Coarse categories | UTM source, medium, campaign, content | **Yes**, for links I control |
 | Path from Learning Library to newsletter | Not visible | UTM plus `cta_substack_click` | **Yes** (no alternative) |
+| Which search queries bring readers, at what ranking and click-through rate | Source only (Google), no queries | Search Console (queries, impressions, position, CTR) plus GA4 organic sessions by landing page | **Yes**: the only source (needs Search Console, not GA4 alone) |
+| Organic search over time, per post | Source counts | GA4 organic sessions by landing page, and Search Console history; both can be exported to BigQuery | **Yes** |
+| Whether the content is cited by AI search | Not available | Not available either: checked by hand with a protocol ([`seo-geo-check.md`](seo-geo-check.md)) | **None**: neither tool measures it |
 | Getting the data out automatically (warehouse, BI tool, scheduled) | Manual export only; windows of 30–90 days | BigQuery daily export, Looker Studio connector, API | **Yes**: the data can be pulled without copying it by hand |
 | Raw events, SQL, joins, history beyond the interface windows | No | BigQuery export | **Yes** |
 | Behavior of visitors on the Learning Library | Not applicable | Everything | **Yes** (no alternative) |
@@ -50,6 +55,7 @@ Access has a limit worth stating: it applies to what GA4 measures. **Subscriber 
 | `sign_up` | How much of the growth does web analytics see (coverage)? | How much weight to give any GA4 conversion figure | Needs only a few weeks | Coverage is measured and reported |
 | `subscribe_click` by placement, pop-up view and dismissal | Which placement and which pop-up behavior produce Subscribe clicks | Keep, move or remove a placement or the pop-up | Uncertain: web-visible new subscribers are at most a few dozen a month, so clicks per placement may be only a handful to a couple of dozen; at the edge of the rule | Every placement reaches the volume rule after 4–6 weeks, or a clear zero shows which placements are dead |
 | `scroll_depth`, `read_time` | Do readers of posts that convert read further? | Post structure and length | Depends on views per post; recent posts have hundreds to about a thousand | The gap between converting and non-converting posts is larger than the noise |
+| Search Console (both sites) | Which queries and pages bring organic traffic, which rise or fall, which titles have impressions but few clicks | Titles and descriptions, topics to write about, keywords to target | Organic search is about half of web sessions, so impressions should be available; low cost (free, passive) | At least one title, description or topic decision is taken from it within the review window |
 | UTM on published links | Which link and post bring readers and subscribers | What to post where | Grows with posting | At least one comparison between channels reaches the volume rule |
 | BigQuery export | Joins, history and automatic access that the native reports (manual export only, 30–90 day windows) cannot give | Enables the funnel and coverage analyses and a live dashboard | Low cost | The SQL scripts and the dashboard are actually used |
 | Library events | What visitors search, click and skip; how many continue to the newsletter | What to add to or remove from the library | Small at first; grows with traffic | Descriptive results are stable; ranking only above the rule |
