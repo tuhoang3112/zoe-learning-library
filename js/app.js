@@ -27,13 +27,25 @@
     return n;
   }
 
+  function hostOf(url) {
+    try { return new URL(url).hostname; } catch (e) { return ""; }
+  }
+
+  var substackHost = hostOf(cfg.SUBSTACK_URL);
+
+  function onResourceOpen(r) {
+    trackResourceClick(r);
+    // Resources hosted on Zoe's Substack also count as a Substack CTA.
+    if (hostOf(r.url) === substackHost) trackSubstackCta("resource_card");
+  }
+
   function externalLink(a, r) {
     a.href = r.url;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     // New tab => page is not unloaded, so the synchronous dataLayer push is never lost.
-    a.addEventListener("click", function () { trackResourceClick(r); });
-    a.addEventListener("auxclick", function () { trackResourceClick(r); });
+    a.addEventListener("click", function () { onResourceOpen(r); });
+    a.addEventListener("auxclick", function () { onResourceOpen(r); });
   }
 
   /* ---------- rendering ---------- */

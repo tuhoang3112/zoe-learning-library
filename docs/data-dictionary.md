@@ -35,7 +35,7 @@ There is deliberately no `price` field — only `access`.
 | `resource_type` | string | same | `Resource` |
 | `topic`, `level`, `access`, `provider` | string | same | `Data Analytics` |
 | `position` | integer | same | `3` |
-| `cta_location` | string | cta_substack_click | `library` |
+| `cta_location` | string | cta_substack_click | `banner` (also `header`, `resource_card`, `footer`) |
 
 ## URL parameters (library page)
 
