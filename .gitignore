@@ -1,0 +1,20 @@
+# Draft / reference files that should not be published
+zoe_data_ai_library_mockup.html
+zoe-learning-library-tech-spec.md
+/index.old.html
+
+# Secrets and local configuration
+.env
+.env.*
+*.local
+
+# Local OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Dependencies and local tooling
+node_modules/
+.claude/
