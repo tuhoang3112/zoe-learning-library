@@ -60,6 +60,7 @@ Working mapping between the source categories, used only for aggregate compariso
 ## 4. Limits of the native reports
 
 - **Short windows:** Growth sources and Network effect are shown for 30 to 90 days, and free retention only from 2026-01-01. Older data is not available in the interface, so **history must be captured on a schedule** (export the tables or save them monthly; see §5).
+- **Data leaves only by manual export:** the reports are read in the dashboard or exported by hand. No scheduled export, API, warehouse or BI connector was found, so history, joins and dashboards depend on a routine of saving the numbers. This is a main reason to send behavior data through GA4, whose export to BigQuery and connector to Looker Studio are automatic. It does not extend to subscriber counts, which stay on the manual route.
 - **Aggregates only:** no raw events, no session, no way to join with the survey or with GA4 at person level.
 - **Attribution rules are Substack's:** a subscriber counted under "Recommendations" or "Notes" cannot be traced further.
 - **Sharing report identifies people:** treat it as personal data; do not publish it.
