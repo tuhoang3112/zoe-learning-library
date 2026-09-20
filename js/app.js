@@ -40,7 +40,7 @@
   }
 
   function externalLink(a, r) {
-    a.href = r.url;
+    a.href = withSubstackUtm(r.url, "resource_card", r.id);
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     // New tab => page is not unloaded, so the synchronous dataLayer push is never lost.

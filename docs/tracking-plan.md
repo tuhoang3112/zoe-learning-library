@@ -23,3 +23,16 @@ All events go through `pushDataLayer()` in `js/analytics.js`. GA4 `page_view` st
 ## Privacy
 
 No emails, names, survey responses or other PII in event parameters. Search terms are free text: never add fields that collect personal data.
+
+## UTM on links to Substack
+
+Every link from the library to `zoedatalens.substack.com` (header logo, banner, footer icon and resource cards that point to Substack) gets UTM parameters added in the browser (`withSubstackUtm` in `js/analytics.js`), so the Substack GA4 property can attribute the visit:
+
+| Parameter | Value |
+|---|---|
+| `utm_source` | `learning-library` |
+| `utm_medium` | `referral` |
+| `utm_campaign` | the `cta_location` (`header`, `banner`, `footer`, `resource_card`) |
+| `utm_content` | resource id (resource cards only) |
+
+Links to Tomorrow Marketers pages keep their own fixed UTM (`utm_medium=service`, `utm_campaign=hct`) in `data/resources.json`.

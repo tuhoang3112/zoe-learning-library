@@ -45,6 +45,26 @@ function trackSubstackCta(location) {
   pushDataLayer({ event: "cta_substack_click", cta_location: location });
 }
 
+/* Add UTM parameters to links that lead to Zoe's Substack, so Substack/GA4 can attribute the traffic. */
+function withSubstackUtm(url, campaign, content) {
+  try {
+    var u = new URL(url);
+    if (u.hostname !== new URL(window.ZoeConfig.SUBSTACK_URL).hostname) return url;
+    u.searchParams.set("utm_source", "learning-library");
+    u.searchParams.set("utm_medium", "referral");
+    u.searchParams.set("utm_campaign", campaign);
+    if (content) u.searchParams.set("utm_content", content);
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+
+/* Static Substack CTAs: utm_campaign = their data-cta-location. */
+document.querySelectorAll("a[data-cta-location]").forEach(function (a) {
+  a.href = withSubstackUtm(a.href, a.getAttribute("data-cta-location"));
+});
+
 /* Any element with data-cta-location is a Substack CTA. */
 document.addEventListener("click", function (e) {
   var cta = e.target.closest && e.target.closest("[data-cta-location]");
