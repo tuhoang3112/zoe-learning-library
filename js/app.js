@@ -212,12 +212,6 @@
       e.preventDefault();
       submitSearch();
     });
-    document.querySelectorAll(".chip").forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        els.search.value = chip.getAttribute("data-q");
-        submitSearch();
-      });
-    });
 
     fetch("data/resources.json")
       .then(function (res) { return res.json(); })
