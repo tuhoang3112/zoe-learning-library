@@ -31,7 +31,7 @@ gtm.blocklist: ["customPixels", "customScripts", "html", "nonGooglePixels",
 |---|---|
 | Google tag, GA4 Event tags | Custom HTML tags |
 | Built-in triggers (click, scroll depth, timer, element visibility, custom event, history change) | Custom JavaScript variables |
-| Constant and Data Layer variables | Non-Google pixels and scripts (this includes Microsoft Clarity) |
+| Constant and Data Layer variables | Non-Google pixels and scripts inside Tag Manager (this includes Microsoft Clarity) |
 | Data pushed by Substack itself (`sign_up`) | Iframes from non-Google vendors |
 
 ### Native integrations in Substack settings
