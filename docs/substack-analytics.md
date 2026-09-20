@@ -10,7 +10,7 @@ Substack's built-in analytics is the source of truth for **subscribers**. Google
 
 | Report | What it shows | Snapshot (window) |
 |---|---|---|
-| **Growth sources** (new subscribers) | New subscribers by source, with a daily chart and post markers | 266 new subscribers in 90 days. Substack network 163 (61%): Recommendations 78, Notes 54, Other 19, Onboarding 11, Search 1. Direct 39 (15%). Direct to App 31 (12%). LinkedIn 14 (5%). About 19 more (7%) are in rows not captured |
+| **Growth sources** | Two tabs, **Unique visitors** and **New subscribers**, by source, with a daily chart and post markers. Together they give a conversion rate per source without GA4. The snapshot below captured only the New subscribers tab; the Unique visitors tab is still to be saved | 266 new subscribers in 90 days. Substack network 163 (61%): Recommendations 78, Notes 54, Other 19, Onboarding 11, Search 1. Direct 39 (15%). Direct to App 31 (12%). LinkedIn 14 (5%). About 19 more (7%) are in rows not captured |
 | **Network effect** | How much of the growth comes from the Substack network | 266 subscribers in 90 days: Substack App 76 (29%), other Substack network 84 (32%), existing Substack accounts 85 (32%), new accounts 21 (8%) |
 | **Audience** | Subscriber count and location | Vietnam 1,735 (94%), so about 1.85K subscribers with a known location; United States 23, Australia 13, Singapore 13, Japan 12; 27 countries |
 | **Retention** (free) | Growth rate, new and lost subscribers | 30 days: growth rate 1.82%, 46 new, 13 unsubscribed. **Free retention data exists only from 2026-01-01** |
@@ -23,7 +23,7 @@ Substack's built-in analytics is the source of truth for **subscribers**. Google
 
 | Question | Substack analytics | GA4 (after the fix) | BigQuery (raw events) |
 |---|---|---|---|
-| Which sources bring subscribers? | **Yes**, new subscribers by source, incl. Substack network, app and email | Only the `sign_up` event on the web, with GA4 channels | Same as GA4, by session, from 2026-09-20 |
+| Which sources bring subscribers, and at what conversion? | **Yes**, new subscribers and unique visitors by source, incl. Substack network, app and email | Only the `sign_up` event on the web, with GA4 channels | Same as GA4, by session, from 2026-09-20 |
 | Which posts bring subscribers? | **Yes**, free subscribers per post | `sign_up` by landing page, web only | Same, at event level |
 | Is the Substack network (Recommendations, Notes, app) driving growth? | **Yes**, and it is the largest source (61%) | **No**: in-app and network traffic is not visible to GA4 | No |
 | How far do readers scroll, how long do they stay? | Engagement rate per post only | `scroll_depth`, `read_time` per post | Yes, per session |
@@ -67,6 +67,6 @@ Working mapping between the source categories, used only for aggregate compariso
 ## 5. How it is used in the project
 
 1. **Conversion in the period before key events:** subscribers per day and per source come from Substack, sessions per source from GA4; they are compared **by day and by source category, never by person**, and the limit is stated with every chart.
-2. **Snapshot routine:** at the start of the project and at the end of each 4-week UTM measurement window, save Growth sources (90 days), Traffic by source and Posts (with free subscribers per post). This builds the history the interface does not keep.
+2. **Snapshot routine:** at the start of the project and at the end of each 4-week UTM measurement window, save Growth sources (both tabs, 90 days), Traffic by source and Posts (with free subscribers per post). This builds the history the interface does not keep.
 3. **Reader survey:** Substack's built-in survey tool exists (1 response so far, the onboarding survey). The project survey uses Google Forms instead (see [`survey-design.md`](survey-design.md)) because it needs to reach followers who do not subscribe (LinkedIn), allows the question types in the design and exports cleanly.
 4. **Say vs. do:** free subscribers per post (Posts report) is a second behavioral signal to place beside GA4 reading depth per post.

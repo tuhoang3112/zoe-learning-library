@@ -20,6 +20,7 @@ Verdicts: **holds**, **partly**, **does not hold**, **untested**.
 | 10 | Clarity cannot run on Substack | No Clarity field in Substack settings; Tag Manager blocks non-Google tags | **Holds** | Clarity is limited to the Library, and not installed for now (decision recorded) |
 | 11 | The audience survey will show what readers want | Substack adds two more revealed signals: views and free subscribers per post, and engagement rate | **Holds, with more evidence available** | "Say vs. do" compares the survey with two behavioral signals: Substack per-post outcomes and GA4 reading depth |
 | 12 | 18K users, 35K sessions, ~9.5K direct / none since Jan 2025 | Taken from project notes; GA4 28-day window shows about 2.2K sessions and 383 direct | **Untested** | Re-read from GA4 before publication; the 28-day and 7-day snapshots are used as the baseline |
+| 14 | Custom tracking on Substack adds enough value over Substack's own analytics to justify itself | Native reports already give subscribers and unique visitors by source, and subscribers per post; GA4 adds diagnosis (scroll, time, Subscribe placement, campaign) for web readers only, at low volume | **Untested** | Value is judged piece by piece with a keep-or-remove rule after 4 weeks ([`ga4-vs-substack-analytics.md`](ga4-vs-substack-analytics.md)) |
 | 13 | About 1K subscribers | Audience report: about 1.85K (Vietnam 1,735 = 94%) | **Does not hold** | Corrected everywhere |
 
 ## 2. What this does to the project

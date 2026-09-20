@@ -22,7 +22,7 @@ Tag Manager was already installed on the newsletter, but with default settings o
 - Custom GA4 events can be built with Google tags and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility).
 - The real limit is an allowlist: inside Tag Manager only Google tags and built-in triggers run on Substack (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked). Substack's own settings add fields for GA4, Tag Manager, Facebook, X and Parse.ly pixels, but nothing for Clarity.
 
-Reading Substack's own analytics later showed that several other starting assumptions did not hold either (for example, most new subscribers arrive through the Substack network and app, where the web tag never runs). They are listed with verdicts in [`docs/assumptions-review.md`](docs/assumptions-review.md).
+Custom tracking has to earn its place against what Substack already reports: what GA4 adds, where it does not, and the rule for keeping or dropping each piece is in [`docs/ga4-vs-substack-analytics.md`](docs/ga4-vs-substack-analytics.md). Reading Substack's own analytics later showed that several other starting assumptions did not hold either (for example, most new subscribers arrive through the Substack network and app, where the web tag never runs). They are listed with verdicts in [`docs/assumptions-review.md`](docs/assumptions-review.md).
 
 Knowing exactly what the platform allows, instead of living with the defaults, defined what could be fixed there and what had to move to a site I control. The evidence is in [`docs/tracking-audit.md`](docs/tracking-audit.md).
 
