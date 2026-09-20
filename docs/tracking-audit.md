@@ -54,59 +54,53 @@ There is no field for Microsoft Clarity or other analytics vendors, so heatmaps 
 
 ## 2. Baseline before the changes (Substack GA4 property)
 
-| Metric | Value |
+Figures are rounded on purpose; the exact values are kept in a private folder outside this repository.
+
+| Metric (28 days to 2026-09-19) | Value |
 |---|---|
-| Active users / new users | 1.2K / 1.1K |
-| Sessions | 2.2K |
-| Average engagement time | 1 min 51 s |
+| Active users / new users | about 1.2K / 1.1K |
+| Sessions | about 2.2K |
+| Average engagement time | about 1 min 50 s |
 | Key events | **0** |
 
-**Events recorded** (all automatic GA4 events; total 8,559 events, 1,215 users):
+**Events recorded** (all automatic GA4 events; about 8.6K events from about 1.2K users):
 
-| Event | Count | Users | Meaning on this site |
+| Event | Approx. count | Approx. users | Meaning on this site |
 |---|---|---|---|
-| `page_view` | 3,111 | 1,204 | Page views |
-| `session_start` | 2,211 | 1,210 | Sessions |
-| `user_engagement` | 1,421 | 880 | Visitor stayed engaged on the page |
-| `first_visit` | 1,072 | 1,071 | New users |
-| `scroll` | 580 | 356 | Scrolled to **90%** of the page (a single threshold) |
-| `click` | 137 | 59 | Outbound link click (link leaves the domain) |
-| `form_start` | 27 | 18 | Started typing in a form (the email box). Not a submission |
+| `page_view` | 3.1K | 1.2K | Page views |
+| `session_start` | 2.2K | 1.2K | Sessions |
+| `user_engagement` | 1.4K | 0.9K | Visitor stayed engaged on the page |
+| `first_visit` | 1.1K | 1.1K | New users |
+| `scroll` | 0.6K | 0.4K | Scrolled to **90%** of the page (a single threshold) |
+| `click` | 140 | 60 | Outbound link click (link leaves the domain) |
+| `form_start` | 30 | 20 | Started typing in a form (the email box). Not a submission |
 
-**Traffic sources** (sessions):
+**Traffic sources** (share of the ~2.2K sessions, rounded):
 
-| Session source / medium | Sessions |
+| Session source / medium | Share |
 |---|---|
-| google / organic | ~1,000 (1,026) |
-| (direct) / (none) | 383 |
-| linkedin.com / referral | 306 |
-| l.facebook.com / referral | 58 |
-| multiple-personal-recommendation-email / … | 47 |
-| activity_item / (not set) | 36 |
-| confirmation_email / (not set) | 36 |
+| google / organic | ~47% |
+| (direct) / (none) | ~17% |
+| linkedin.com / referral | ~14% |
+| l.facebook.com / referral | ~3% |
+| multiple-personal-recommendation-email / … | ~2% |
+| activity_item / (not set) | ~2% |
+| confirmation_email / (not set) | ~2% |
 
 ### Snapshot: last 7 days (Sep 14 – Sep 20, 2026)
 
-Read from the Home and "Suggested for you" cards of the same GA4 property. Percentages are the change against the previous 7 days.
+A few hundred active users, up about 7% on the previous 7 days; key events still 0. Sessions by primary channel group (share of the sessions in the six channels shown; change against the previous 7 days):
 
-| Measure | Value |
-|---|---|
-| Active users | 285 (+7.1%) |
-| Event count | 1.9K (+0.2%) |
-| Key events | **0** |
-
-| Session primary channel group | Sessions | Change |
+| Session primary channel group | Share | Change |
 |---|---|---|
-| Organic Search | 293 | +18.1% |
-| Direct | 81 | −18.2% |
-| **Unassigned** | **67** | +45.7% |
-| Organic Social | 60 | −22.1% |
-| Email | 15 | −31.8% |
-| Referral | 7 | −56.3% |
+| Organic Search | ~56% | +18% |
+| Direct | ~15% | −18% |
+| **Unassigned** | **~13%** | +46% |
+| Organic Social | ~11% | −22% |
+| Email | ~3% | −32% |
+| Referral | ~1% | −56% |
 
-Of the 523 sessions in these six channels, Direct is about 15% and Unassigned about 13%: two opaque buckets, together over a quarter. *Unassigned* means the session carried a source or medium that matches no default channel rule (for example Substack's own `activity_item` or `confirmation_email` sources, or a custom medium such as `newsletter`), which is why the UTM convention only uses mediums that GA4 recognises.
-
-Active users by country: Vietnam 253, United States 14, India 2, Japan 2, Sweden 2, Australia 1, Belarus 1. The most viewed pages are the post on Claude token usage (193 views, +19.1%) and the publication home page (105 views, +118.8%).
+Direct and Unassigned are two opaque buckets, together over a quarter of sessions. *Unassigned* means the session carried a source or medium that matches no default channel rule (for example Substack's own `activity_item` or `confirmation_email` sources, or a custom medium such as `newsletter`), which is why the UTM convention only uses mediums that GA4 recognises. Almost all active users are in Vietnam.
 
 ## 3. What the constraints do to the numbers
 

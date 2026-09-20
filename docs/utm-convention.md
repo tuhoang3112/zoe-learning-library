@@ -94,13 +94,13 @@ https://zoedatalens.substack.com/p/claude-cowork
 
 The reason for the convention is the size of the `(direct) / (none)` bucket in the Substack property. It is measured with the same report before and after the convention is applied to every link I publish.
 
-| | Window | Sessions | (direct) / (none) | Share |
-|---|---|---|---|---|
-| **Before** (28-day window, GA4 Traffic acquisition) | Aug 23 – Sep 19, 2026 | ~2,200 | 383 | ~17% |
-| **Before** (whole history, from the project notes) | Jan 2025 – Sep 2026 | ~35,000 | ~9,500 | ~27% |
-| **After** | first 4 weeks starting 2026-09-21 | to be measured | to be measured | to be measured |
+| | Window | Share of sessions with (direct) / (none) |
+|---|---|---|
+| **Before** (28-day window, GA4 Traffic acquisition) | Aug 23 – Sep 19, 2026 | ~17% |
+| **Before** (whole history, from the project notes) | Jan 2025 – Sep 2026 | ~27% |
+| **After** | first 4 weeks starting 2026-09-21 | to be measured |
 
-Direct / none is not the only opaque bucket. In the last-7-days snapshot (Sep 14–20, 2026) the Substack property also shows **Unassigned** sessions (67, about 13% of the sessions in the six channels shown, against 81 for Direct, about 15%): traffic that carries a medium GA4 does not recognise, or Substack's own tagging (see [`tracking-audit.md`](tracking-audit.md)). The comparison therefore tracks both buckets.
+Direct / none is not the only opaque bucket. In the last-7-days snapshot (Sep 14–20, 2026) the Substack property also shows **Unassigned** sessions (about 13% of the sessions in the six channels shown, against about 15% for Direct): traffic that carries a medium GA4 does not recognise, or Substack's own tagging (see [`tracking-audit.md`](tracking-audit.md)). The comparison therefore tracks both buckets.
 
 How the comparison will be made: same property, same report, same window length; sources set by Substack itself (`activity_item`, `confirmation_email`, `multiple-personal-recommendation-email`, `cover_page`) are reported apart because they cannot be tagged. The share will not drop for traffic that has no link I control (bookmarks, typed addresses, some apps), so the expected result is a **smaller** direct share, not a zero one.
 

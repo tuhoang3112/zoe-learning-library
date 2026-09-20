@@ -4,19 +4,19 @@ Substack's built-in analytics is the source of truth for **subscribers**. Google
 
 - **Snapshot date:** 2026-09-21. Each report has its own window (stated per row), so figures from different reports are not directly comparable.
 - **Scope:** free subscribers only. The publication has no paid tier, so paid subscribers, paid retention and earnings are out of scope (the Earnings tab is empty).
-- **Not reproduced here:** the "Top sharers" list names individual subscribers (with names and, in one case, an email address). Only aggregate figures are recorded in this repository.
+- **Public and private figures:** this repository carries only shares and rounded values, enough for the argument. The exact figures, the per-post numbers and the country breakdown are kept in a private folder outside the repository. The "Top sharers" list names individual subscribers and is not reproduced anywhere.
 
-## 1. The reports and their snapshot values
+## 1. The reports and what they show
 
 | Report | What it shows | Snapshot (window) |
 |---|---|---|
-| **Growth sources** | Two tabs, **Unique visitors** and **New subscribers**, by source, with a daily chart and post markers. Together they give a conversion rate per source without GA4. The snapshot below captured only the New subscribers tab; the Unique visitors tab is still to be saved | 266 new subscribers in 90 days. Substack network 163 (61%): Recommendations 78, Notes 54, Other 19, Onboarding 11, Search 1. Direct 39 (15%). Direct to App 31 (12%). LinkedIn 14 (5%). About 19 more (7%) are in rows not captured |
-| **Network effect** | How much of the growth comes from the Substack network | 266 subscribers in 90 days: Substack App 76 (29%), other Substack network 84 (32%), existing Substack accounts 85 (32%), new accounts 21 (8%) |
-| **Audience** | Subscriber count and location | Vietnam 1,735 (94%), so about 1.85K subscribers with a known location; United States 23, Australia 13, Singapore 13, Japan 12; 27 countries |
-| **Retention** (free) | Growth rate, new and lost subscribers | 30 days: growth rate 1.82%, 46 new, 13 unsubscribed. **Free retention data exists only from 2026-01-01** |
+| **Growth sources** | Two tabs, **Unique visitors** and **New subscribers**, by source, with a daily chart and post markers. Together they give a conversion rate per source without GA4. The snapshot captured only the New subscribers tab; the Unique visitors tab is still to be saved | Under 300 new subscribers in 90 days. Substack network about 61% (Recommendations about 29%, Notes about 20%, other, onboarding and search about 12%). Direct about 15%. Direct to App about 12%. LinkedIn about 5%. The remaining ~7% is in rows not captured |
+| **Network effect** | How much of the growth comes from the Substack network | Substack app about 29%, other Substack network about 32%, existing Substack accounts about 32%, new accounts about 8% |
+| **Audience** | Subscriber count and location | Under 2K subscribers; about 94% in Vietnam, the rest spread over 26 other countries |
+| **Retention** (free) | Growth rate, new and lost subscribers | 30-day free growth rate about 1.8%. **Free retention data exists only from 2026-01-01** |
 | **Sharing** | Which subscribers bring views and new subscribers | Individual-level list; not reproduced. The author's own account is the top source of new free subscribers, which is worth understanding before reading "sharing" as word of mouth |
-| **Traffic** | Views, users and free subscribers by source, including email opens | 30-day views 4,942 (−277 vs the previous 30 days). Over 06-22 to 09-20: direct 5,729 views, 2,810 users, 40 free subscribers; email opens 4,189 views, 3,240 users, 0 free subscribers |
-| **Posts** | Views, engagement rate and free subscribers per post | 30-day open rate 26.73% (+6.69%). Example: a Power BI post of Aug 26 had 1,285 views, 14.38% engagement and 12 free subscribers; a post of Aug 29 had 680 views and 3.64% engagement |
+| **Traffic** | Views, users and free subscribers by source, including email opens | About 5K views in 30 days (down about 5%). Email opens account for nearly as many views as direct visits and bring no free subscribers directly |
+| **Posts** | Views, engagement rate and free subscribers per post | 30-day open rate about 27%. Engagement rate and free subscribers per post differ widely between posts, which is what makes the post comparison worth doing |
 | **Surveys** | Native survey embedded in posts | One survey ("New Reader Survey") with 1 response |
 
 ## 2. Who can answer which question

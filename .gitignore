@@ -18,3 +18,7 @@ desktop.ini
 # Dependencies and local tooling
 node_modules/
 .claude/
+
+# Private snapshots and raw analytics exports
+data/private/
+private-data/

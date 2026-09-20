@@ -9,7 +9,7 @@
 I write a newsletter on Substack about data and AI. It has about **18,000 users and 35,000 sessions** (Jan 2025 – Sep 2026), yet I could not answer basic questions:
 
 - **Behavior and outcome sat in two places.** Substack's own statistics already show which posts and sources bring subscribers, but as a closed dashboard: totals only, no raw events, nothing about what readers do on the page. Google Analytics, which records behavior and can feed SQL, showed **0 conversions**. I could see subscribers and I could see traffic, but not what made a visitor subscribe.
-- **Where do readers really come from?** About **a quarter of sessions (~9,500) had no source at all** ("direct / none"), almost as many as LinkedIn, so the real channels were hidden.
+- **Where do readers really come from?** About **a quarter of sessions had no source at all** ("direct / none"), almost as many as LinkedIn, so the real channels were hidden.
 - **What does the audience actually want?** Content decisions were made by feel.
 
 Without joining behavior to outcome, more traffic could not be told apart from more results.
