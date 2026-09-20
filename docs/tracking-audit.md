@@ -83,6 +83,29 @@ There is no field for Microsoft Clarity or other analytics vendors, so heatmaps 
 | activity_item / (not set) | 36 |
 | confirmation_email / (not set) | 36 |
 
+### Snapshot: last 7 days (Sep 14 – Sep 20, 2026)
+
+Read from the Home and "Suggested for you" cards of the same GA4 property. Percentages are the change against the previous 7 days.
+
+| Measure | Value |
+|---|---|
+| Active users | 285 (+7.1%) |
+| Event count | 1.9K (+0.2%) |
+| Key events | **0** |
+
+| Session primary channel group | Sessions | Change |
+|---|---|---|
+| Organic Search | 293 | +18.1% |
+| Direct | 81 | −18.2% |
+| **Unassigned** | **67** | +45.7% |
+| Organic Social | 60 | −22.1% |
+| Email | 15 | −31.8% |
+| Referral | 7 | −56.3% |
+
+Of the 523 sessions in these six channels, Direct is about 15% and Unassigned about 13%: two opaque buckets, together over a quarter. *Unassigned* means the session carried a source or medium that matches no default channel rule (for example Substack's own `activity_item` or `confirmation_email` sources, or a custom medium such as `newsletter`), which is why the UTM convention only uses mediums that GA4 recognises.
+
+Active users by country: Vietnam 253, United States 14, India 2, Japan 2, Sweden 2, Australia 1, Belarus 1. The most viewed pages are the post on Claude token usage (193 views, +19.1%) and the publication home page (105 views, +118.8%).
+
 ## 3. What the constraints do to the numbers
 
 | Issue | Effect on the data | Handling |

@@ -53,12 +53,12 @@ The goal of these rules: **every link I publish says where it was published, in 
 | `zalo` | `social` | Zalo groups and messages |
 | `threads` | `social` | Threads posts |
 | `youtube` | `video` | Links in video descriptions |
-| `substack` | `newsletter` | Links inside a Substack email or post that lead to the library |
+| `substack` | `email` | Links inside a Substack email or post that lead to the library |
 | `learning-library` | `referral` | Links from the library to Substack (added automatically, see §5) |
 | `email` | `email` | Other email campaigns |
 | any source above | `service` | Links to partner course pages (Tomorrow Marketers). Medium is always `service` and campaign is always `hct` |
 
-Why `social`, `newsletter`, `email`, `video`: GA4 groups traffic into default channels from `medium`. `social` is counted as *Organic Social*; `email` as *Email*; anything unrecognised falls into *Unassigned* and disappears from channel reports.
+Why these mediums: GA4 assigns a default channel from the medium (or the source), and only certain values are recognised. `social` (also `social-network`, `social-media`, `sm`) counts as *Organic Social*; `email` (also `e-mail`, `e_mail`, `e mail`) as *Email*; `referral` as *Referral*; a medium that contains `video` as *Video*. **Anything else falls into *Unassigned*** and is lost in channel reports. That is why the newsletter uses `email`, not `newsletter`, and why the rule is checked against Google's channel definitions rather than invented. (`service`, used for partner course links, is not recognised either; that is acceptable only because those links leave for a site I do not measure.)
 
 ## 5. Links tagged automatically
 
@@ -99,6 +99,8 @@ The reason for the convention is the size of the `(direct) / (none)` bucket in t
 | **Before** (28-day window, GA4 Traffic acquisition) | Aug 23 – Sep 19, 2026 | ~2,200 | 383 | ~17% |
 | **Before** (whole history, from the project notes) | Jan 2025 – Sep 2026 | ~35,000 | ~9,500 | ~27% |
 | **After** | first 4 weeks starting 2026-09-21 | to be measured | to be measured | to be measured |
+
+Direct / none is not the only opaque bucket. In the last-7-days snapshot (Sep 14–20, 2026) the Substack property also shows **Unassigned** sessions (67, about 13% of the sessions in the six channels shown, against 81 for Direct, about 15%): traffic that carries a medium GA4 does not recognise, or Substack's own tagging (see [`tracking-audit.md`](tracking-audit.md)). The comparison therefore tracks both buckets.
 
 How the comparison will be made: same property, same report, same window length; sources set by Substack itself (`activity_item`, `confirmation_email`, `multiple-personal-recommendation-email`, `cover_page`) are reported apart because they cannot be tagged. The share will not drop for traffic that has no link I control (bookmarks, typed addresses, some apps), so the expected result is a **smaller** direct share, not a zero one.
 
