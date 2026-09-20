@@ -34,6 +34,22 @@ gtm.blocklist: ["customPixels", "customScripts", "html", "nonGooglePixels",
 | Constant and Data Layer variables | Non-Google pixels and scripts (this includes Microsoft Clarity) |
 | Data pushed by Substack itself (`sign_up`) | Iframes from non-Google vendors |
 
+### Native integrations in Substack settings
+
+Besides Tag Manager, Substack has its own tracking fields (Settings → Analytics). They are the only way to run some non-Google tools, because Tag Manager cannot:
+
+| Field | Use | Status here |
+|---|---|---|
+| Google Analytics Measurement ID | GA4 page views and conversion, sent by Substack itself | **Left empty on purpose**: the Google tag inside Tag Manager already sends GA4 hits, and filling both would count every page view twice |
+| Google Tag Manager ID | Custom tags on the publication | In use (all custom events described below) |
+| Facebook pixel ID | Conversion tracking for Facebook ads | Not used (no paid Facebook campaigns) |
+| Twitter pixel ID | Conversion tracking for X ads | Not used |
+| Parse.ly pixel ID | Publisher analytics | Not used |
+| Google Site Verification | Meta tag for Google verification (URL-prefix property, HTML tag method) | Not needed: Search Console was verified through the Tag Manager container |
+| Facebook Site Verification | Meta tag for Facebook domain verification | Not used |
+
+There is no field for Microsoft Clarity or other analytics vendors, so heatmaps and session recordings are not possible on Substack.
+
 ## 2. Baseline before the changes (Substack GA4 property)
 
 | Metric | Value |

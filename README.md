@@ -20,7 +20,7 @@ Tag Manager was already installed on the newsletter, but with default settings o
 
 - Substack pushes its own `sign_up` event into the Data Layer, but no tag forwarded it to GA4 and no event was marked as a key event. **The "0 key events" was a configuration gap, not a platform limit.**
 - Custom GA4 events can be built with Google tags and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility).
-- The real limit is an allowlist: only Google tags and built-in triggers run on Substack (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked).
+- The real limit is an allowlist: inside Tag Manager only Google tags and built-in triggers run on Substack (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked). Substack's own settings add fields for GA4, Tag Manager, Facebook, X and Parse.ly pixels, but nothing for Clarity.
 
 Knowing exactly what the platform allows, instead of living with the defaults, defined what could be fixed there and what had to move to a site I control. The evidence is in [`docs/tracking-audit.md`](docs/tracking-audit.md).
 
