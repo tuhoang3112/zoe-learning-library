@@ -55,7 +55,7 @@ Working mapping between the source categories, used only for aggregate compariso
 | Social (LinkedIn…) | Organic Social, or Referral | UTM `social` makes the LinkedIn side reliable |
 | Email | Email | Only with UTM `email` on links I control |
 
-**Hypothesis to test, not a finding:** part of the `direct / none` and `Unassigned` traffic in GA4 is Substack-internal navigation (app, recommendations, notes), which no UTM of mine can fix. The comparison of direct / none before and after UTM should therefore be read next to Substack's own "Direct" and "Direct to App" numbers.
+**Hypotheses to test, not findings:** GA4 does not measure reading inside the Substack app at all, so the app cannot explain GA4's `direct / none`. Substack's own tagging on web links (`activity_item`, `cover_page`, `confirmation_email`) most likely shows as Unassigned, and Direct is most likely untagged shares (messaging apps, email clients, typed addresses). The UTM experiment tests the last one; the first two need Substack's tagging to be read, not fixed.
 
 ## 4. Limits of the native reports
 

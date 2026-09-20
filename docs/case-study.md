@@ -49,6 +49,7 @@ Google Tag Manager · Data Layer · Google Analytics 4 · BigQuery (SQL) · Look
 | Behavior linked to subscribers | Two separate reports | Joined by day and source: *to be measured* |
 | Signals available about readers | 7 automatic ones (views, scroll at 90%, outbound clicks…) | + Subscribe clicks by placement, scroll depth at 4 levels, time on post |
 | Sessions with no source | ~17% (28 days to 2026-09-19); ~27% over the whole history | *to be measured after 4 weeks of tagged links* |
+| Share of new subscribers visible to Google Analytics | unknown | *to be measured*; most subscribers arrive through the Substack network and app, where the web tag does not run |
 | Library visitors who click through to the newsletter | not tracked | *to be measured* |
 | Largest drop-off in the library funnel | not tracked | *to be measured* |
 | Searches that returned nothing | not tracked | *to be measured* |
@@ -59,12 +60,14 @@ Google Tag Manager · Data Layer · Google Analytics 4 · BigQuery (SQL) · Look
 ## What I learned so far
 
 - **Defaults hide what is possible.** With default settings analytics showed 0 conversions. Reading the Data Layer showed the platform was already emitting sign-up events; the missing piece was configuration. Checking what a tool really allows, and writing it down as evidence, defined what could be fixed and what had to move to a site I control.
+- **Web analytics sees only the web path.** Reading Substack's own statistics showed that most new subscribers come through the Substack network and app, so a conversion rate measured on the web describes a minority of the growth. Several of my starting assumptions did not survive that reading; they are listed with verdicts in [assumptions review](assumptions-review.md).
 - **Attribution across two sites can only be aggregate.** The two analytics properties share no user id, so I can link them by campaign and day, not by person. Every analysis states that.
 - **Some numbers will always be a lower bound.** Ad blockers, email clients and the mobile app hide part of the traffic. Measuring less is not the same as measuring wrong, as long as the gap is stated.
 - **Design the measurement before the data arrives.** Position in the list, impressions and clicks are recorded together from day one; a missing denominator (how often something was shown) cannot be rebuilt later.
 
 ## Limits
 
+- Traffic to the Library comes mostly from my own links, so volumes will be small. Results are descriptive until each compared group has enough events (rules in the [assumptions review](assumptions-review.md)).
 - The survey reaches people who already read the newsletter and chose to answer; it describes engaged readers, not the market.
 - With the default alphabetical order, an item's position and the item itself cannot be separated; the position analysis is a first look, not a proof.
 - Heatmaps and session recordings were not added: traffic is still small and the recorded events already answer the main questions (recorded as a decision in [SEO/GEO check](seo-geo-check.md)).

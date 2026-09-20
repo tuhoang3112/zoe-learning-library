@@ -22,6 +22,8 @@ Tag Manager was already installed on the newsletter, but with default settings o
 - Custom GA4 events can be built with Google tags and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility).
 - The real limit is an allowlist: inside Tag Manager only Google tags and built-in triggers run on Substack (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked). Substack's own settings add fields for GA4, Tag Manager, Facebook, X and Parse.ly pixels, but nothing for Clarity.
 
+Reading Substack's own analytics later showed that several other starting assumptions did not hold either (for example, most new subscribers arrive through the Substack network and app, where the web tag never runs). They are listed with verdicts in [`docs/assumptions-review.md`](docs/assumptions-review.md).
+
 Knowing exactly what the platform allows, instead of living with the defaults, defined what could be fixed there and what had to move to a site I control. The evidence is in [`docs/tracking-audit.md`](docs/tracking-audit.md).
 
 ## What was built
@@ -59,6 +61,7 @@ Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe 
 | Behavior linked to subscribers | Substack statistics (totals) and GA4 (behavior) not joined | Joined by day and source, with the limit stated: *to be measured* |
 | Events available on Substack | 7 automatic events (page view, scroll at 90%, outbound click…) | + custom events for Subscribe, scroll depth, read time |
 | Share of sessions with no source (`direct / none`) | ~17% (28-day window to 2026-09-19); ~27% over the whole history | *to be measured* over 4 weeks of UTM-tagged links |
+| Share of new subscribers visible to GA4 (`sign_up` ÷ Substack new subscribers) | unknown | *to be measured*; the source mix suggests at most about a quarter |
 | Library conversion (`cta_substack_click` per session) | not tracked | *to be measured* |
 | Biggest drop-off in the Library funnel | not tracked | *to be measured* |
 | Searches with zero results | not tracked | *to be measured* |

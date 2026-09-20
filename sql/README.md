@@ -24,6 +24,7 @@ Queries on the raw GA4 export of the two properties (Learning Library and Substa
 | `08_substack_reading_depth.sql` | Substack | How far readers scroll and how long they stay, per post |
 | `09_direct_none_share.sql` | Substack | Share of sessions with no source (direct / none) per week |
 | `10_library_to_substack_bridge.sql` | both | Library clicks to Substack against Substack sessions from the library, by day and campaign |
+| `11_signup_coverage.sql` | Substack | GA4 `sign_up` per day against Substack's new subscribers per day (how much of the growth GA4 can see) |
 
 ## Reading the GA4 export
 
