@@ -7,18 +7,19 @@ Audit of what can and cannot be measured on the two properties of the ZoeDataLen
 - **Method:** GA4 reports, Google Tag Manager Preview (Tag Assistant) on both sites, Substack settings, inspection of the public pages
 - **Numbers below** were read from GA4 screenshots taken on the audit date (window Aug 23 – Sep 19, 2026, about 28 days). They are a baseline, not final results.
 
-## 1. Headline finding: the platform constraint is narrower than assumed
+## 1. Headline finding: the gap was configuration depth, not the platform
 
-The starting assumption was that Substack only accepts a GA4 pageview tag and therefore cannot host Google Tag Manager, a Data Layer or custom events. The audit shows otherwise:
+Tag Manager was already installed on the publication before this audit, with a single Google tag: page views plus GA4's automatic events. Nothing custom had been designed and no event was marked as a key event. The audit looked at what the platform would allow beyond those defaults:
 
-| Assumption | What was found |
+| Question | Finding |
 |---|---|
-| GTM cannot be installed | Settings → Analytics has a **Google Tag Manager ID** field. The container loads on the publication's pages (Tag Assistant: "Connected", container ID detected) |
-| No Data Layer | Substack pushes its own `sign_up` event into `dataLayer` (`dataLayer.push({event: "sign_up", ...})`) with no other parameters |
-| No custom events | Custom GA4 events can be created with **Google tags** and GTM's built-in triggers (click, scroll depth, timer, element visibility, custom event) |
-| Zero key events because the platform is closed | Zero key events was a **configuration gap**: no event had been marked as a key event, and `sign_up` was pushed to the Data Layer but never forwarded to GA4 |
+| Is there a Data Layer to work with? | Yes. Substack pushes its own `sign_up` event into `dataLayer` (`dataLayer.push({event: "sign_up", ...})`) with no other parameters |
+| Can custom events be created? | Yes, with **Google tags** (GA4 Event) and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility, custom event) |
+| Why were there zero key events? | A **configuration gap**: no event had been marked as a key event, and `sign_up` was pushed to the Data Layer but never forwarded to GA4 |
 
-The real limit is what GTM is allowed to run. The `dataLayer` of every Substack page contains:
+Substack's built-in analytics already report subscribers by date, source and post; the gap is that this is a closed dashboard (totals only, no raw events, nothing on what readers do on the page) that cannot be joined with GA4 behavior or queried in BigQuery.
+
+The real limit is what Tag Manager is allowed to run. The `dataLayer` of every Substack page contains:
 
 ```text
 gtm.allowlist: ["google"]
@@ -78,6 +79,7 @@ gtm.blocklist: ["customPixels", "customScripts", "html", "nonGooglePixels",
 | `form_start` is not a submission | Intent, not conversion | `sign_up` is the conversion; funnel: `subscribe_popup_view` → `subscribe_click` → `sign_up` |
 | No per-person link between sites | A visitor from the library to Substack becomes a new user in the second property | Link the two by campaign (`utm_campaign` equals `cta_location`), aggregate by day and by source, and state this limit in every analysis |
 | Email opens and the Substack app | Not measurable in GA4 | Use Substack's own statistics for email; state the gap |
+| GA4 conversions vs. Substack subscribers | Two different counts of the outcome: GA4 counts `sign_up` events per session, Substack counts subscribers | Substack's own statistics stay the source of truth for subscribers (by date, source and post); GA4 is used for behavior. Reconcile by day and expect small differences |
 | Ad blockers, no consent layer | Some visits not recorded in either property | Accept as an undercount; do not treat counts as exact |
 
 ## 4. What was implemented

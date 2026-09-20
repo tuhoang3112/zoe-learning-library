@@ -1,6 +1,6 @@
 # Marketing Tracking & Behavioral Analytics — Zoe's Data & AI Lens
 
-> Rebuilding the measurement of a newsletter (Substack) that had traffic but no way to tell what worked, and building a site I control ([Zoe's Learning Library](https://tuhoang3112.github.io/zoe-learning-library/)) to collect clean behavioral data for analysis in GA4 and BigQuery.
+> Connecting three things that lived apart for a newsletter on Substack (what readers do, whether they subscribe, what they say they want), fixing what Google Analytics could not see, and building a site I control ([Zoe's Learning Library](https://tuhoang3112.github.io/zoe-learning-library/)) to collect clean behavioral data for analysis in GA4 and BigQuery.
 
 **Status: measurement implemented on 2026-09-20; analysis in progress while data accumulates.** Numbers marked *to be measured* are filled in from real data as it arrives (see [Results](#results)).
 
@@ -8,21 +8,21 @@
 
 | | |
 |---|---|
-| **Problem** | The newsletter had about 18K users and 35K sessions (Jan 2025 – Sep 2026, GA4) but **0 key events**: views were counted, outcomes were not. About a quarter of sessions (~9.5K) had no source (`direct / none`), and nobody knew which posts or channels brought subscribers, or what the audience wanted to read. |
-| **Data** | Substack GA4 property (history since 2025) + a new GA4 property for the Learning Library (since 2026-09-20), both exported daily to BigQuery (raw events, from 2026-09-20). Audience survey (Google Forms, planned). Search Console on both sites. |
+| **Problem** | The newsletter had about 18K users and 35K sessions (Jan 2025 – Sep 2026, GA4). Substack's built-in statistics already show subscribers by date, source and post, but as a closed dashboard: totals only, no raw events, nothing about what readers do on the page. Google Analytics, which records behavior and can feed BigQuery, showed **0 key events** (Tag Manager was installed with default settings only). So behavior and outcome sat in two places that could not be joined. About a quarter of sessions (~9.5K) had no source (`direct / none`), and content choices rested on feel rather than on what the audience says versus does. |
+| **Data** | Substack GA4 property (history since 2025) and Substack's own analytics (subscribers by date, source and post) + a new GA4 property for the Learning Library (since 2026-09-20), both GA4 properties exported daily to BigQuery (raw events, from 2026-09-20). Audience survey (Google Forms, planned). Search Console on both sites. |
 | **Tools** | Google Tag Manager, Data Layer, GA4, BigQuery (SQL), Looker Studio, Google Search Console, Google Forms, vanilla JavaScript on GitHub Pages |
 | **Result** | Tracking rebuilt on both sites: a documented audit, 6 Library events and 12 Substack tags, a UTM convention. Conversion tracking on Substack goes from **0 to `sign_up`, Subscribe clicks by placement, scroll depth and read time**. Effect numbers: see [Results](#results). |
 | **Demo** | Live site: <https://tuhoang3112.github.io/zoe-learning-library/> · Case study: [`docs/case-study.md`](docs/case-study.md) · Dashboard: *to be published* |
 
-## A finding worth knowing about
+## What the audit found
 
-The project started from the assumption that Substack (a closed platform) only allows a GA4 pageview tag: no Google Tag Manager, no Data Layer, no custom events. Testing it showed something different:
+Tag Manager was already installed on the newsletter, but with default settings only: a single Google tag (page views and GA4's automatic events). No custom event had been designed. Reading the Data Layer and testing the platform showed:
 
-- Substack has a **Google Tag Manager ID** field and the container runs on every page.
-- Substack pushes its own `sign_up` event into the Data Layer, but nothing was forwarding it to GA4. **The "0 key events" was a configuration gap, not a platform limit.**
-- The real limit is an allowlist: only Google tags and built-in triggers run (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked).
+- Substack pushes its own `sign_up` event into the Data Layer, but no tag forwarded it to GA4 and no event was marked as a key event. **The "0 key events" was a configuration gap, not a platform limit.**
+- Custom GA4 events can be built with Google tags and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility).
+- The real limit is an allowlist: only Google tags and built-in triggers run on Substack (custom HTML, custom JavaScript variables and non-Google pixels such as Clarity are blocked).
 
-Verifying a constraint instead of assuming it changed the plan. The evidence is in [`docs/tracking-audit.md`](docs/tracking-audit.md).
+Knowing exactly what the platform allows, instead of living with the defaults, defined what could be fixed there and what had to move to a site I control. The evidence is in [`docs/tracking-audit.md`](docs/tracking-audit.md).
 
 ## What was built
 
@@ -55,7 +55,8 @@ Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe 
 
 | Measure | Before | After |
 |---|---|---|
-| Key events on Substack | **0** | `sign_up` and Subscribe clicks tracked from 2026-09-20; counts *to be measured* |
+| Key events on Substack (GA4) | **0** | `sign_up` and Subscribe clicks tracked from 2026-09-20; counts *to be measured* |
+| Behavior linked to subscribers | Substack statistics (totals) and GA4 (behavior) not joined | Joined by day and source, with the limit stated: *to be measured* |
 | Events available on Substack | 7 automatic events (page view, scroll at 90%, outbound click…) | + custom events for Subscribe, scroll depth, read time |
 | Share of sessions with no source (`direct / none`) | ~17% (28-day window to 2026-09-19); ~27% over the whole history | *to be measured* over 4 weeks of UTM-tagged links |
 | Library conversion (`cta_substack_click` per session) | not tracked | *to be measured* |
