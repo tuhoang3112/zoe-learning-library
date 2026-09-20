@@ -18,8 +18,16 @@ function resourceParams(resource) {
   };
 }
 
-function trackResourceClick(resource) {
-  pushDataLayer(Object.assign({ event: "resource_click" }, resourceParams(resource)));
+/* position = fixed catalogue rank; list_position = rank in the list the visitor is looking at (after search / filters). */
+function trackResourceClick(resource, listPosition) {
+  pushDataLayer(Object.assign({ event: "resource_click", list_position: listPosition }, resourceParams(resource)));
+}
+
+function trackResourceImpression(resource, listPosition, resultCount) {
+  pushDataLayer(Object.assign(
+    { event: "resource_impression", list_position: listPosition, result_count: resultCount },
+    resourceParams(resource)
+  ));
 }
 
 function trackCategoryClick(categoryName) {

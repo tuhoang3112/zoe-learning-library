@@ -11,7 +11,7 @@ resources.json → static frontend → user interactions → dataLayer → GTM �
 | Tech | Why |
 |---|---|
 | HTML/CSS/vanilla JS | Static, tiny, no build step; V1 does not need React/Next.js |
-| JSON (`data/resources.json`) | The catalogue is static; no database needed. Metadata is defined once, not repeated in HTML |
+| JSON (`landing-page/data/resources.json`) | The catalogue is static; no database needed. Metadata is defined once, not repeated in HTML |
 | Client-side search | Dataset is small; AND-term matching over title, description, provider, tags, topic, type, level. Fuse.js only if the dataset grows enough to need fuzzy search |
 | GTM | Central tag layer; app code only pushes to `dataLayer` |
 | GA4 → BigQuery | Raw event export for SQL analysis. BigQuery is for analytics, not for serving the app |
@@ -23,11 +23,11 @@ resources.json → static frontend → user interactions → dataLayer → GTM �
 
 | File | Role |
 |---|---|
-| `js/config.js` | Site URL + taxonomy (topics, types, levels, access) — single source |
-| `js/analytics.js` | `pushDataLayer` and all event helpers |
-| `js/search.js` | Query matching |
-| `js/filters.js` | Filter state, URL sync, combined filtering |
-| `js/app.js` | Library rendering, events, resource click tracking (cards link straight to the external site) |
+| `landing-page/js/config.js` | Site URL + taxonomy (topics, types, levels, access) — single source |
+| `landing-page/js/analytics.js` | `pushDataLayer` and all event helpers |
+| `landing-page/js/search.js` | Query matching |
+| `landing-page/js/filters.js` | Filter state, URL sync, combined filtering |
+| `landing-page/js/app.js` | Library rendering, events, resource click tracking (cards link straight to the external site) |
 | `scripts/build-seo.mjs` | Generates sitemap.xml, robots.txt, canonical tags from `SITE_URL` |
 
 ## Not in V1

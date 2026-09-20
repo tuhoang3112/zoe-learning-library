@@ -33,19 +33,19 @@
 
   var substackHost = hostOf(cfg.SUBSTACK_URL);
 
-  function onResourceOpen(r) {
-    trackResourceClick(r);
+  function onResourceOpen(r, listPos) {
+    trackResourceClick(r, listPos);
     // Resources hosted on Zoe's Substack also count as a Substack CTA.
     if (hostOf(r.url) === substackHost) trackSubstackCta("resource_card");
   }
 
-  function externalLink(a, r) {
+  function externalLink(a, r, listPos) {
     a.href = withSubstackUtm(r.url, "resource_card", r.id);
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     // New tab => page is not unloaded, so the synchronous dataLayer push is never lost.
-    a.addEventListener("click", function () { onResourceOpen(r); });
-    a.addEventListener("auxclick", function () { onResourceOpen(r); });
+    a.addEventListener("click", function () { onResourceOpen(r, listPos); });
+    a.addEventListener("auxclick", function () { onResourceOpen(r, listPos); });
   }
 
   /* ---------- rendering ---------- */
@@ -74,8 +74,9 @@
     });
   }
 
-  function renderCard(r) {
+  function renderCard(r, listPos) {
     var card = h("article", "item");
+    card.dataset.listPosition = String(listPos);
     var top = h("div", "item-top");
     top.appendChild(h("span", "type", r.type.toUpperCase()));
     top.appendChild(h("span", "badge badge-" + r.access.toLowerCase(), r.access));
@@ -83,7 +84,7 @@
 
     var title = h("h3");
     var link = h("a", null, r.title);
-    externalLink(link, r);
+    externalLink(link, r, listPos);
     title.appendChild(link);
     card.appendChild(title);
 
@@ -106,11 +107,33 @@
     meta.appendChild(h("span", "topic", r.level));
     bottom.appendChild(meta);
     var open = h("a", "open", "Open resource ↗");
-    externalLink(open, r);
+    externalLink(open, r, listPos);
     open.setAttribute("aria-label", "Open resource: " + r.title + " (new tab)");
     bottom.appendChild(open);
     card.appendChild(bottom);
     return card;
+  }
+
+  /* resource_impression: fired once per resource + list position when a card is at least half visible. */
+  var impressionSeen = {};
+  var impressionObserver = null;
+
+  function observeImpressions(shown, total) {
+    if (impressionObserver) impressionObserver.disconnect();
+    if (!("IntersectionObserver" in window)) return;
+    impressionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || document.visibilityState === "hidden") return;
+        var pos = Number(entry.target.dataset.listPosition);
+        var r = shown[pos - 1];
+        var key = r.id + "|" + pos;
+        if (impressionSeen[key]) return;
+        impressionSeen[key] = true;
+        impressionObserver.unobserve(entry.target);
+        trackResourceImpression(r, pos, total);
+      });
+    }, { threshold: 0.5 });
+    els.grid.querySelectorAll(".item").forEach(function (card) { impressionObserver.observe(card); });
   }
 
   var ROWS_PER_PAGE = 2;
@@ -123,7 +146,9 @@
   function render() {
     var results = applyFilters(resources, state);
     var limit = visibleRows * gridColumns();
-    els.grid.replaceChildren.apply(els.grid, results.slice(0, limit).map(renderCard));
+    var shown = results.slice(0, limit);
+    els.grid.replaceChildren.apply(els.grid, shown.map(function (r, i) { return renderCard(r, i + 1); }));
+    observeImpressions(shown, results.length);
     els.more.style.display = results.length > limit ? "inline-flex" : "none";
     els.count.textContent = results.length + " item" + (results.length === 1 ? "" : "s");
     els.empty.style.display = results.length ? "none" : "block";

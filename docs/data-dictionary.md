@@ -1,6 +1,6 @@
 # Data dictionary
 
-## Resource (`data/resources.json`)
+## Resource (`landing-page/data/resources.json`)
 
 | Field | Type | Required | Example / allowed values |
 |---|---|---|---|
@@ -17,7 +17,7 @@
 | `position` | integer (1-based, unique) | yes | `4` — display order, used for position-bias analysis |
 | `secondary_topics` | string[] | no | `["Marketing & Growth"]` — extra topics the resource is also listed under (topic filter, category shortcuts, search). Events still report only the primary `topic` |
 | `featured` | boolean | no | `false` |
-| `image` | string | no | path under `assets/images/` |
+| `image` | string | no | path under `landing-page/assets/images/` |
 | `date_added`, `last_updated` | string (YYYY-MM-DD) | no | `2026-09-20` |
 
 There is deliberately no `price` field — only `access`.
@@ -34,7 +34,8 @@ There is deliberately no `price` field — only `access`.
 | `resource_name` | string | same | `SQLBolt` |
 | `resource_type` | string | same | `Resource` |
 | `topic`, `level`, `access`, `provider` | string | same | `Data Analytics` |
-| `position` | integer | same | `3` |
+| `position` | integer | same | `3` — fixed catalogue rank |
+| `list_position` | integer | resource_click, resource_impression | `1` — rank in the currently displayed list |
 | `cta_location` | string | cta_substack_click | `banner` (also `header`, `resource_card`, `footer`) |
 
 ## URL parameters (library page)
