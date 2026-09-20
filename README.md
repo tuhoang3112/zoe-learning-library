@@ -87,7 +87,7 @@ Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe 
 | Tracking audit on Substack | Done — [`docs/tracking-audit.md`](docs/tracking-audit.md) |
 | Tracking fix on Substack (GTM, Google tags only) | Deployed 2026-09-20; key events to be marked once events appear in GA4; before/after counts pending |
 | UTM governance | Convention and builder done; before/after `direct / none` measurement pending |
-| Conversion before key events (aggregate by day) | Planned — needs the Substack subscriber export |
+| Conversion before key events (aggregate by day) | Substack analytics reviewed ([`docs/substack-analytics.md`](docs/substack-analytics.md)); snapshots of subscribers by source and post to be saved on a schedule, then joined with GA4 by day and source |
 | Tracking plan and Data Layer on the Learning Library | Done — [`docs/tracking-plan.md`](docs/tracking-plan.md) |
 | Search behavior (zero-result searches) | Implemented; analysis pending data |
 | Tracking validation | GTM Preview and GA4 Realtime done for the main events; DebugView and evidence screenshots to add |

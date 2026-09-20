@@ -17,7 +17,8 @@ A short anonymous survey of the readers of the newsletter (Google Forms). It giv
 ## 2. Population and sampling
 
 - **Target population:** people who read the newsletter or use the library.
-- **Sampling frame available:** subscribers (~1K) and followers who see the LinkedIn post. There is no list of all readers and no list of non-readers.
+- **Sampling frame available:** subscribers (~1.85K) and followers who see the LinkedIn post. There is no list of all readers and no list of non-readers.
+- **Tool:** Google Forms, not Substack's built-in survey. The built-in tool only reaches people who read the post it is embedded in, while the survey also has to reach LinkedIn followers who do not subscribe; Google Forms also gives the question types below and a clean export.
 - **Method:** open link, shared in one newsletter post and in one LinkedIn post, open for 14 days, one reminder. This is a **self-selected convenience sample**, not a random sample.
 - **Consequence:** results describe engaged readers who chose to answer. They do not describe the market or the silent majority.
 
