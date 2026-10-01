@@ -24,12 +24,12 @@
   {
     "id": "futurepedia-n8n",
     "title": "Agents & Automation with No Code",
-    "type": "Course",
+    "type": "Resource",
     "topic": "AI Agents & Automation",
     "level": "Beginner",
     "access": "Free",
     "provider": "Futurepedia",
-    "description": "Playlist học n8n và AI Agent không cần code: crash course n8n, tạo AI Agent đầu tiên, dùng template n8n miễn phí, xây hệ thống social media tự động và so sánh n8n với Zapier.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn tự động hóa công việc cho doanh nghiệp, side project hoặc năng suất cá nhân mà không cần biết code.",
+    "description": "Playlist học n8n và AI Agent không cần code: crash course n8n, tạo AI Agent đầu tiên, dùng template n8n miễn phí, xây hệ thống social media tự động và so sánh n8n với Zapier.",
     "url": "https://www.youtube.com/playlist?list=PLXMuq8RQj16bGvBccTrGD2WeDeE4SM4wy",
     "tags": [
       "n8n",
@@ -197,12 +197,12 @@
   {
     "id": "h2dev-claude-code-youtube",
     "title": "Claude Code + YouTube = $39,700/Month (No Face Required)",
-    "type": "Course",
+    "type": "Resource",
     "topic": "AI Agents & Automation",
     "level": "Beginner",
     "access": "Free",
     "provider": "H2Dev",
-    "description": "Video hướng dẫn làm kênh YouTube giấu mặt bằng Claude Code kết hợp Google Flow và Capcut: từ lên ý tưởng, tạo video đến đăng tự động.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn tự động hóa sản xuất video YouTube bằng AI mà không cần xuất hiện trên camera.",
+    "description": "Video hướng dẫn làm kênh YouTube giấu mặt bằng Claude Code kết hợp Google Flow và Capcut: từ lên ý tưởng, tạo video đến đăng tự động.",
     "url": "https://www.youtube.com/watch?v=hpJuB3llhbk",
     "tags": [
       "Claude Code",
@@ -218,12 +218,12 @@
   {
     "id": "kj-rainey-claude-cowork",
     "title": "Claude COWORK Full Course: Zero To Working AI Employee (2026)",
-    "type": "Course",
+    "type": "Resource",
     "topic": "AI Agents & Automation",
     "level": "Beginner",
     "access": "Free",
     "provider": "KJ Rainey",
-    "description": "Khóa học đầy đủ về Claude Cowork: từ cơ bản đến xây một \"AI Employee\" làm việc thật, tự động hóa quy trình và kết nối nhiều công cụ.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn dùng Claude Cowork để tự động hóa công việc và xây trợ lý AI riêng.",
+    "description": "Khóa học đầy đủ về Claude Cowork: từ cơ bản đến xây một \"AI Employee\" làm việc thật, tự động hóa quy trình và kết nối nhiều công cụ.",
     "url": "https://www.youtube.com/watch?v=C9gKWTzRukM",
     "tags": [
       "Claude",
@@ -788,12 +788,12 @@
   {
     "id": "chase-dimond-linkedin-growth",
     "title": "The LinkedIn Growth Playbook for 2025",
-    "type": "Course",
+    "type": "Resource",
     "topic": "Marketing & Growth",
     "level": "Beginner",
     "access": "Free",
     "provider": "Chase Dimond",
-    "description": "Khóa học miễn phí đầy đủ về cách tăng trưởng trên LinkedIn trong năm 2025.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn xây dựng thương hiệu cá nhân hoặc tăng trưởng doanh nghiệp trên LinkedIn.",
+    "description": "Khóa học miễn phí đầy đủ về cách tăng trưởng trên LinkedIn trong năm 2025.",
     "url": "https://www.youtube.com/watch?v=dZWYh0l-ysc",
     "tags": [
       "LinkedIn",
