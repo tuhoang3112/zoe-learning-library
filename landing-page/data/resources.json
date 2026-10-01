@@ -7,7 +7,7 @@
     "level": "Beginner",
     "access": "Free",
     "provider": "Mandarin Training Center, National Taiwan Normal University",
-    "description": "Bộ giáo trình tiếng Trung phồn thể (chữ Đài Loan) 6 tập gồm sách và bài tập, đi từ giao tiếp hằng ngày đến văn viết và các chủ đề xã hội, công nghệ, kinh tế, văn hóa, tương đương trình độ A1 đến B2 theo CEFR.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người học tiếng Trung từ cơ bản đến trung cấp và muốn có giáo trình bài bản kèm bài tập.",
+    "description": "Bộ giáo trình tiếng Trung phồn thể (chữ Đài Loan) 6 tập gồm sách và bài tập, đi từ giao tiếp hằng ngày đến văn viết và các chủ đề xã hội, công nghệ, kinh tế, văn hóa, tương đương trình độ A1 đến B2 theo CEFR.",
     "url": "https://drive.google.com/drive/folders/1Mva3ObdltW3MZRrwfRPSyg3_mJzyeqw7",
     "tags": [
       "Chinese",
@@ -199,10 +199,10 @@
     "title": "Claude Code + YouTube = $39,700/Month (No Face Required)",
     "type": "Course",
     "topic": "AI Agents & Automation",
-    "level": "Intermediate",
+    "level": "Beginner",
     "access": "Free",
     "provider": "H2Dev",
-    "description": "Video hướng dẫn làm kênh YouTube giấu mặt bằng Claude Code kết hợp Google Flow và Capcut: từ lên ý tưởng, tạo video đến đăng tự động.\n\nYêu cầu đầu vào: đã biết dùng Claude Code cơ bản.\n\nPhù hợp với: người muốn tự động hóa sản xuất video YouTube bằng AI mà không cần xuất hiện trên camera.",
+    "description": "Video hướng dẫn làm kênh YouTube giấu mặt bằng Claude Code kết hợp Google Flow và Capcut: từ lên ý tưởng, tạo video đến đăng tự động.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn tự động hóa sản xuất video YouTube bằng AI mà không cần xuất hiện trên camera.",
     "url": "https://www.youtube.com/watch?v=hpJuB3llhbk",
     "tags": [
       "Claude Code",
@@ -220,10 +220,10 @@
     "title": "Claude COWORK Full Course: Zero To Working AI Employee (2026)",
     "type": "Course",
     "topic": "AI Agents & Automation",
-    "level": "Intermediate",
+    "level": "Beginner",
     "access": "Free",
     "provider": "KJ Rainey",
-    "description": "Khóa học đầy đủ về Claude Cowork: từ cơ bản đến xây một \"AI Employee\" làm việc thật, tự động hóa quy trình và kết nối nhiều công cụ.\n\nYêu cầu đầu vào: đã biết dùng Claude cơ bản.\n\nPhù hợp với: người muốn dùng Claude Cowork để tự động hóa công việc và xây trợ lý AI riêng.",
+    "description": "Khóa học đầy đủ về Claude Cowork: từ cơ bản đến xây một \"AI Employee\" làm việc thật, tự động hóa quy trình và kết nối nhiều công cụ.\n\nYêu cầu đầu vào: không yêu cầu đầu vào.\n\nPhù hợp với: người muốn dùng Claude Cowork để tự động hóa công việc và xây trợ lý AI riêng.",
     "url": "https://www.youtube.com/watch?v=C9gKWTzRukM",
     "tags": [
       "Claude",
@@ -960,5 +960,28 @@
     "position": 47,
     "featured": false,
     "date_added": "2026-09-20"
+  },
+  {
+    "id": "zoe-tochonggiaima-youtube",
+    "title": "YouTube Channel: Tóc Hồng Giải Mã",
+    "type": "Resource",
+    "topic": "Data Analytics",
+    "secondary_topics": [
+      "Marketing & Growth"
+    ],
+    "level": "Beginner",
+    "access": "Free",
+    "provider": "Zoe",
+    "description": "Kênh YouTube giải mã cách Data & AI vận hành phía sau những điều quen thuộc, qua 3 mạch nội dung: Giải Mã Thương Hiệu Lớn dùng Data (Grab, Netflix, Amazon, TikTok...), Tại Sao Lại Thế (giải đáp thắc mắc về Data, AI và công nghệ) và Hóng Drama Công Nghệ (chuyện và góc khuất phía sau AI, thuật toán).",
+    "url": "https://www.youtube.com/@zoedataai",
+    "tags": [
+      "YouTube",
+      "Data & AI",
+      "Brand Case Study",
+      "Tech Explainer"
+    ],
+    "position": 48,
+    "featured": false,
+    "date_added": "2026-10-01"
   }
 ]
