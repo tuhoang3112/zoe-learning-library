@@ -195,6 +195,48 @@
     "date_added": "2026-09-20"
   },
   {
+    "id": "h2dev-claude-code-youtube",
+    "title": "Claude Code + YouTube = $39,700/Month (No Face Required)",
+    "type": "Course",
+    "topic": "AI Agents & Automation",
+    "level": "Intermediate",
+    "access": "Free",
+    "provider": "H2Dev",
+    "description": "Video hướng dẫn làm kênh YouTube giấu mặt bằng Claude Code kết hợp Google Flow và Capcut: từ lên ý tưởng, tạo video đến đăng tự động.\n\nYêu cầu đầu vào: đã biết dùng Claude Code cơ bản.\n\nPhù hợp với: người muốn tự động hóa sản xuất video YouTube bằng AI mà không cần xuất hiện trên camera.",
+    "url": "https://www.youtube.com/watch?v=hpJuB3llhbk",
+    "tags": [
+      "Claude Code",
+      "YouTube",
+      "Capcut",
+      "Automation",
+      "Faceless Channel"
+    ],
+    "position": 10,
+    "featured": false,
+    "date_added": "2026-10-01"
+  },
+  {
+    "id": "kj-rainey-claude-cowork",
+    "title": "Claude COWORK Full Course: Zero To Working AI Employee (2026)",
+    "type": "Course",
+    "topic": "AI Agents & Automation",
+    "level": "Intermediate",
+    "access": "Free",
+    "provider": "KJ Rainey",
+    "description": "Khóa học đầy đủ về Claude Cowork: từ cơ bản đến xây một \"AI Employee\" làm việc thật, tự động hóa quy trình và kết nối nhiều công cụ.\n\nYêu cầu đầu vào: đã biết dùng Claude cơ bản.\n\nPhù hợp với: người muốn dùng Claude Cowork để tự động hóa công việc và xây trợ lý AI riêng.",
+    "url": "https://www.youtube.com/watch?v=C9gKWTzRukM",
+    "tags": [
+      "Claude",
+      "Claude Cowork",
+      "AI Agent",
+      "Automation",
+      "YouTube"
+    ],
+    "position": 11,
+    "featured": false,
+    "date_added": "2026-10-01"
+  },
+  {
     "id": "tm-content-marketing",
     "title": "Content Marketing",
     "type": "Course",
@@ -210,7 +252,7 @@
       "Email",
       "AI"
     ],
-    "position": 10,
+    "position": 12,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -230,7 +272,7 @@
       "Content Marketing",
       "AI"
     ],
-    "position": 11,
+    "position": 13,
     "featured": false,
     "date_added": "2026-09-20",
     "secondary_topics": [
@@ -255,7 +297,7 @@
       "Python",
       "YouTube"
     ],
-    "position": 12,
+    "position": 14,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -274,7 +316,7 @@
       "Dashboard Templates",
       "Reporting"
     ],
-    "position": 13,
+    "position": 15,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -293,7 +335,7 @@
       "Charts",
       "Decision Tree"
     ],
-    "position": 14,
+    "position": 16,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -315,7 +357,7 @@
       "Airbyte",
       "Dataform"
     ],
-    "position": 15,
+    "position": 17,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -337,7 +379,7 @@
       "Airflow",
       "Kafka"
     ],
-    "position": 16,
+    "position": 18,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -357,7 +399,7 @@
       "KPIs",
       "AI"
     ],
-    "position": 17,
+    "position": 19,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -376,7 +418,7 @@
       "Roadmap",
       "Content"
     ],
-    "position": 18,
+    "position": 20,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -395,7 +437,7 @@
       "Charts",
       "Ebook"
     ],
-    "position": 19,
+    "position": 21,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -415,7 +457,7 @@
       "Metrics",
       "Ebook"
     ],
-    "position": 20,
+    "position": 22,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -434,7 +476,7 @@
       "Metrics",
       "Ebook"
     ],
-    "position": 21,
+    "position": 23,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -454,7 +496,7 @@
       "Pivot Table",
       "Dashboard"
     ],
-    "position": 22,
+    "position": 24,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -474,7 +516,7 @@
       "n8n",
       "Automation"
     ],
-    "position": 23,
+    "position": 25,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -495,7 +537,7 @@
       "E-Commerce",
       "Lazada"
     ],
-    "position": 24,
+    "position": 26,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -514,7 +556,7 @@
       "Programming",
       "Beginner"
     ],
-    "position": 25,
+    "position": 27,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -534,7 +576,7 @@
       "IMC",
       "AI"
     ],
-    "position": 26,
+    "position": 28,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -555,7 +597,7 @@
       "SQL",
       "Python"
     ],
-    "position": 27,
+    "position": 29,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -575,7 +617,7 @@
       "Templates",
       "AI"
     ],
-    "position": 28,
+    "position": 30,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -596,7 +638,7 @@
       "Google Ads",
       "TikTok"
     ],
-    "position": 29,
+    "position": 31,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -616,7 +658,7 @@
       "Personal Finance",
       "Template"
     ],
-    "position": 30,
+    "position": 32,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -636,7 +678,7 @@
       "DAX",
       "Certification"
     ],
-    "position": 31,
+    "position": 33,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -655,7 +697,7 @@
       "Power BI",
       "Business Thinking"
     ],
-    "position": 32,
+    "position": 34,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -676,7 +718,7 @@
       "MVP",
       "AI"
     ],
-    "position": 33,
+    "position": 35,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -697,7 +739,7 @@
       "n8n",
       "MCP"
     ],
-    "position": 34,
+    "position": 36,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -717,9 +759,31 @@
       "Window Function",
       "CTE"
     ],
-    "position": 35,
+    "position": 37,
     "featured": false,
     "date_added": "2026-09-20"
+  },
+  {
+    "id": "tien-quoc-nguyen-digital-docs",
+    "title": "Tài liệu Digital - Tien Quoc Nguyen",
+    "type": "Resource",
+    "topic": "Marketing & Growth",
+    "level": "Beginner",
+    "access": "Free",
+    "provider": "Tien Quoc Nguyen",
+    "description": "Kho tài liệu Digital Marketing tổng hợp: webinar, tài liệu đào tạo, SEO, proposal & brief mẫu, media plan, content plan social, email marketing, e-commerce, consumer mix modeling, hướng dẫn Capcut và sách tham khảo.",
+    "url": "https://drive.google.com/drive/folders/1PwEI3g-leZIFviayvhHAemamIKJAz5jl?usp=sharing",
+    "tags": [
+      "Digital Marketing",
+      "SEO",
+      "Social Media",
+      "Brief",
+      "Media Plan",
+      "Proposal"
+    ],
+    "position": 38,
+    "featured": false,
+    "date_added": "2026-10-01"
   },
   {
     "id": "chase-dimond-linkedin-growth",
@@ -737,7 +801,7 @@
       "Social Media",
       "YouTube"
     ],
-    "position": 36,
+    "position": 39,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -758,7 +822,7 @@
       "Sales",
       "Segmentation"
     ],
-    "position": 37,
+    "position": 40,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -776,7 +840,7 @@
       "Excel",
       "Dashboard Templates"
     ],
-    "position": 38,
+    "position": 41,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -794,7 +858,7 @@
       "Power BI",
       "Dashboard Templates"
     ],
-    "position": 39,
+    "position": 42,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -814,7 +878,7 @@
       "Soft Skills",
       "Ebook"
     ],
-    "position": 40,
+    "position": 43,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -835,7 +899,7 @@
       "SQL",
       "Python"
     ],
-    "position": 41,
+    "position": 44,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -855,7 +919,7 @@
       "SEO",
       "Web Analytics"
     ],
-    "position": 42,
+    "position": 45,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -874,7 +938,7 @@
       "Power BI",
       "Certification"
     ],
-    "position": 43,
+    "position": 46,
     "featured": false,
     "date_added": "2026-09-20"
   },
@@ -893,7 +957,7 @@
       "Video",
       "YouTube"
     ],
-    "position": 44,
+    "position": 47,
     "featured": false,
     "date_added": "2026-09-20"
   }
