@@ -983,5 +983,28 @@
     "position": 48,
     "featured": false,
     "date_added": "2026-10-01"
+  },
+  {
+    "id": "zoe-short-video-explainer-kit",
+    "title": "Short-Form Explainer Video Kit | Quy trình + công cụ video dọc 9:16",
+    "type": "Tools & Templates",
+    "topic": "Marketing & Growth",
+    "secondary_topics": [
+      "AI Agents & Automation"
+    ],
+    "level": "Beginner",
+    "access": "Paid",
+    "provider": "Zoe",
+    "description": "Bộ quy trình + công cụ để làm video ngắn dọc (9:16, 45–60 giây) giải thích và so sánh hai khái niệm dễ nhầm trong ngách của bạn (ví dụ: cổ phiếu vs trái phiếu, hoặc bất kỳ ngách nào bạn chọn).",
+    "url": "https://buymeacoffee.com/zoedatalensai/e/582024",
+    "tags": [
+      "Short-form Video",
+      "Video 9:16",
+      "Content Creation",
+      "Explainer"
+    ],
+    "position": 49,
+    "featured": false,
+    "date_added": "2026-10-01"
   }
 ]
