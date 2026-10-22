@@ -32,6 +32,14 @@ flowchart LR
 
 ---
 
+## Skills shown
+
+Solo project: tracking design, front end, tag management and documentation.
+
+Google Tag Manager (triggers, tags, Data Layer, container import and export) · GA4 (events, key events, custom dimensions, data streams) · UTM taxonomy and channel attribution · JavaScript · HTML and CSS · GitHub Pages and Actions · documentation.
+
+---
+
 ## The problem
 
 The ZoeDataLens newsletter on Substack has real traffic (about 2.2K sessions and 1.2K users in the 28 days before the fix, 23 Aug to 19 Sep 2026) but GA4 could not say what that traffic achieved:
@@ -93,14 +101,6 @@ Each implementation is checked in GTM Preview and the data checked in GA4 report
 <p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
 <p align="center"><sub>GTM Preview (left) on a Substack post (right): the container loads and the Google tag, <code>GA4 Event | sign_up</code>, <code>read_time 120s</code> and <code>scroll_depth</code> (4 times, one per threshold) fire. <code>sign_up</code> was triggered for this test by pushing the event name to the Data Layer from the browser console, not by a real subscription.</sub></p>
-
----
-
-## Skills shown
-
-Solo project: tracking design, front end, tag management and documentation.
-
-Google Tag Manager (triggers, tags, Data Layer, container import and export) · GA4 (events, key events, custom dimensions, data streams) · UTM taxonomy and channel attribution · JavaScript · HTML and CSS · GitHub Pages and Actions · documentation.
 
 ---
 
