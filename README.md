@@ -38,7 +38,7 @@ Reader ─► Learning Library / Substack ─► Data Layer ─► GTM ─► GA
 `sign_up` forwarded to GA4, Subscribe clicks by placement (header, popup, in-post, footer, home), popup views and dismissals, scroll depth (25/50/75/90%) and read time (30/60/120 s) on posts.
 
 **2. Learning Library (own code): full tracking plan.**
-A static site (HTML, CSS, vanilla JS, JSON) listing 44 courses, datasets and resources, with search and filters. Every interaction is pushed to the Data Layer with structured parameters (type, topic, level, free/paid, provider, catalogue position, position in the list shown):
+A static site (HTML, CSS, vanilla JS, JSON) listing 53 courses, datasets and resources, with search and filters. Every interaction is pushed to the Data Layer with structured parameters (type, topic, level, free/paid, provider, catalogue position, position in the list shown):
 
 | Event | Question it serves |
 |---|---|
@@ -48,7 +48,7 @@ A static site (HTML, CSS, vanilla JS, JSON) listing 44 courses, datasets and res
 | `cta_substack_click` (4 placements) | The main conversion: from library to newsletter |
 
 **3. UTM convention and builder.**
-A controlled vocabulary for source / medium / campaign, automatic UTM on every library → Substack link, and a small tool that builds compliant links ([`docs/utm-convention.md`](docs/utm-convention.md), [`tools/utm-builder.html`](tools/utm-builder.html)).
+A controlled vocabulary for source / medium / campaign, automatic UTM on every library → Substack link, and a small tool that builds compliant links ([`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html)).
 
 **4. SQL on raw GA4 data.**
 Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe funnel, direct/none share, cross-site bridge) in [`sql/`](sql/).

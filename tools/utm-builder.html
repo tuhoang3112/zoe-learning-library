@@ -18,23 +18,37 @@
   .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .field{margin-bottom:16px}
-  label{display:block;font-size:12px;font-weight:700;color:#475467;margin-bottom:6px}
+  .field[hidden]{display:none}
+  .row[hidden]{display:none}
+  label,.lbl{display:block;font-size:12px;font-weight:700;color:#475467;margin-bottom:6px}
   .hint{font-weight:400;color:#98A2B3}
   input,select{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}
   input:focus,select:focus{outline:3px solid rgba(93,121,168,.25);border-color:var(--blue)}
-  input[readonly]{background:#F5F7FA;color:#475467;cursor:not-allowed}
-  .types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+  input[readonly],select:disabled{background:#F5F7FA;color:#475467;cursor:not-allowed}
+  .types{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
   .types button{padding:12px 10px;text-align:center;line-height:1.35}
   .types button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .types small{display:block;font-weight:400;opacity:.75;font-size:11px;margin-top:2px}
   .note{background:var(--blue-light);border-radius:10px;padding:10px 12px;font-size:13px;color:#344054;margin-bottom:16px;line-height:1.5}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pills button{padding:8px 14px;font-size:13px}
+  .pills button.on{background:var(--blue-dark);color:#fff;border-color:var(--blue-dark)}
+  .meta{font-size:12px;color:var(--muted);margin-top:6px;min-height:16px}
+  .norm{font-size:12px;color:#667085;margin-top:5px;min-height:16px}
+  .norm b{color:#175CD3}
   .result{margin-top:8px;background:var(--blue-light);border-radius:14px;padding:18px}
   .result-label{font-size:12px;font-weight:800;color:var(--blue-dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
   .url{word-break:break-all;font-size:14px;line-height:1.6;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;min-height:48px}
+  .params{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .params td{padding:6px 10px;border-bottom:1px solid var(--line)}
+  .params tr:last-child td{border-bottom:0}
+  .params td:first-child{color:var(--muted);width:130px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+  .params td:last-child{word-break:break-all}
   .actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
   button{font:inherit;font-size:14px;font-weight:800;border-radius:10px;padding:11px 18px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--blue-dark)}
   button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-  button:hover{filter:brightness(.97)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  button:hover:not(:disabled){filter:brightness(.97)}
   .warn{color:var(--warn);font-size:13px;margin-top:10px;line-height:1.5}
   h2{font-size:18px;margin:32px 0 12px;letter-spacing:-.02em}
   .hist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
@@ -49,13 +63,14 @@
 <div class="wrap">
   <div class="eyebrow">Công cụ nội bộ</div>
   <h1>UTM Builder</h1>
-  <p class="sub">Chọn loại trang đích, dán link (không nhất thiết là trang chủ), điền các ô. Chữ tự chuyển thành chữ thường, bỏ dấu, dấu cách thành dấu gạch ngang.</p>
+  <p class="sub">Chọn trang đích, dán link, chọn kênh và vị trí. Ô điền tay (tên group, tiêu đề, campaign khác) cứ gõ tự do: có dấu, viết hoa, cách chữ đều được. Công cụ tự chuẩn hóa theo quy tắc trong docs/utm-rules.md: chữ thường, bỏ dấu, dấu cách và dấu gạch dưới thành dấu gạch ngang. Dòng xanh dưới mỗi ô cho thấy giá trị sẽ được ghi vào link.</p>
 
   <div class="card">
     <div class="types" id="types">
-      <button type="button" data-type="tm">Tomorrow Marketers<small>medium và campaign cố định</small></button>
+      <button type="button" data-type="tm">Tomorrow Marketers<small>source, medium, campaign cố định</small></button>
       <button type="button" data-type="substack">Substack<small>trang chủ hoặc bài bất kỳ</small></button>
       <button type="button" data-type="library">Learning Library<small>trang chủ hoặc link có bộ lọc</small></button>
+      <button type="button" data-type="bmc">Buy Me a Coffee<small>shop hoặc trang sản phẩm</small></button>
     </div>
 
     <div class="note" id="typeNote"></div>
@@ -65,35 +80,64 @@
       <input id="url" type="url" placeholder="https://...">
     </div>
 
-    <div class="row">
+    <div class="field">
+      <label for="channel">Bạn đăng link ở đâu? <span class="hint">kênh</span></label>
+      <select id="channel"></select>
+      <div class="meta" id="channelMeta"></div>
+    </div>
+
+    <div class="row" id="otherRow" hidden>
       <div class="field">
-        <label for="source">utm_source <span class="hint">nơi bạn đăng link</span></label>
-        <input id="source" list="sources" placeholder="linkedin">
-        <datalist id="sources"><option value="linkedin"><option value="substack"><option value="facebook"><option value="zalo"><option value="youtube"><option value="email"><option value="threads"><option value="learning-library"></datalist>
+        <label for="srcOther">utm_source <span class="hint">nơi bạn đăng link</span></label>
+        <input id="srcOther" list="sources" placeholder="linkedin">
+        <datalist id="sources"><option value="linkedin"><option value="youtube"><option value="facebook"><option value="substack"><option value="learning-library"><option value="buymeacoffee"></datalist>
+        <div class="norm" id="norm-srcOther"></div>
       </div>
       <div class="field">
-        <label for="medium">utm_medium <span class="hint" id="mediumHint">loại kênh</span></label>
-        <input id="medium" list="mediums" placeholder="social">
-        <datalist id="mediums"><option value="social"><option value="email"><option value="referral"><option value="video"></datalist>
+        <label for="medOther">utm_medium <span class="hint">loại kênh</span></label>
+        <input id="medOther" list="mediums" placeholder="social">
+        <datalist id="mediums"><option value="social"><option value="video"><option value="email"><option value="referral"></datalist>
+        <div class="norm" id="norm-medOther"></div>
       </div>
     </div>
+
+    <div class="field" id="groupField" hidden>
+      <label for="group">Tên group Facebook <span class="hint">gõ tự do, ví dụ Data Vietnam</span></label>
+      <input id="group" placeholder="Data Vietnam">
+      <div class="norm" id="norm-group"></div>
+    </div>
+
+    <div class="field" id="positionField">
+      <div class="lbl">Vị trí của link <span class="hint">nằm ở đâu trong bài hoặc trang</span></div>
+      <div class="pills" id="positions"></div>
+      <div class="meta" id="positionHint"></div>
+    </div>
+
+    <div class="field">
+      <label for="title">Tiêu đề <span class="hint" id="titleHint">tên ngắn của bài, video hoặc sản phẩm, tối đa 5 đến 6 từ</span></label>
+      <input id="title" placeholder="Claude Cowork">
+      <div class="norm" id="norm-title"></div>
+    </div>
+
     <div class="row">
       <div class="field">
-        <label for="campaign">utm_campaign <span class="hint" id="campaignHint">chủ đề hoặc series</span></label>
-        <input id="campaign" placeholder="learn-ai-from-0">
+        <label for="campaign">utm_campaign <span class="hint" id="campaignHint">chiến dịch hoặc tuyến bài</span></label>
+        <select id="campaign"></select>
       </div>
-      <div class="field">
-        <label for="content">utm_content <span class="hint">không bắt buộc, ví dụ ngày đăng</span></label>
-        <input id="content" placeholder="2026-09-25">
+      <div class="field" id="campaignOtherField" hidden>
+        <label for="campaignOther">Campaign khác <span class="hint">gõ tự do</span></label>
+        <input id="campaignOther" placeholder="Học AI từ 0">
+        <div class="norm" id="norm-campaignOther"></div>
       </div>
     </div>
 
     <div class="result">
       <div class="result-label">Link của bạn</div>
       <div class="url" id="out" aria-live="polite"></div>
+      <table class="params" id="params" hidden></table>
       <div class="actions">
-        <button class="primary" id="copy">Sao chép link</button>
-        <button id="reset">Xóa các ô</button>
+        <button class="primary" id="copy" disabled>Sao chép link</button>
+        <button id="reset">Làm lại</button>
       </div>
       <div class="warn" id="warn" hidden></div>
     </div>
@@ -106,47 +150,126 @@
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
-  var urlEl=$("url"),out=$("out"),warn=$("warn"),hist=$("hist");
-  var fields=["source","medium","campaign","content"];
-  var KEY="zoe-utm-builder-v2";
+  var urlEl=$("url"),out=$("out"),warn=$("warn"),hist=$("hist"),params=$("params");
+  var KEY="zoe-utm-builder-v3",HKEY="zoe-utm-builder-v2-hist";
+
+  /* Khớp với docs/utm-rules.md */
+  var SOURCES=["linkedin","youtube","facebook","substack","learning-library","buymeacoffee"];
+  var MEDIUMS=["social","video","email","referral"];
+
+  var CHANNELS={
+    "linkedin":{label:"LinkedIn",source:"linkedin",medium:"social",slug:"linkedin",positions:["caption","bio","cmt"]},
+    "youtube":{label:"YouTube",source:"youtube",medium:"video",slug:"youtube",positions:["description","cmt"]},
+    "facebook-group":{label:"Facebook group",source:"facebook",medium:"social",slug:"facebook-group",positions:["group"],needsGroup:true},
+    "substack":{label:"Substack",source:"substack",medium:"email",slug:"substack",positions:["caption","menu","sidebar"]},
+    "bmc":{label:"Buy Me a Coffee",source:"buymeacoffee",medium:"referral",slug:"buymeacoffee",positions:["caption"]},
+    "library":{label:"Learning Library",source:"learning-library",medium:"referral",slug:"learning-library",positions:["caption"]},
+    "other":{label:"Khác, tự nhập source và medium",source:"",medium:"",slug:"",positions:["caption","bio","description","cmt","menu","sidebar"],other:true}
+  };
+  var CHANNEL_GROUPS=[
+    {label:"Mạng xã hội",ids:["linkedin","youtube","facebook-group"]},
+    {label:"Nền tảng của Zoe",ids:["substack","bmc","library"]},
+    {label:"Khác",ids:["other"]}
+  ];
+  var POSITIONS={
+    caption:{label:"Thân bài / caption",hint:"Link nằm trong thân bài hoặc caption.",title:true},
+    bio:{label:"Bio / profile",hint:"Link cố định ở profile, không cần tiêu đề.",title:false},
+    description:{label:"Mô tả video",hint:"Link trong mô tả video.",title:true},
+    cmt:{label:"Comment",hint:"Link trong comment.",title:true},
+    menu:{label:"Menu",hint:"Link ở menu điều hướng của Substack. Tiêu đề là tên mục menu. Chỉ gắn khi link dẫn ra ngoài Substack.",title:true},
+    sidebar:{label:"Sidebar",hint:"Link ở thanh category dọc của Substack. Chỉ gắn khi link dẫn ra ngoài Substack.",title:true},
+    group:{label:"Bài đăng trong group",hint:"Bài đăng trong Facebook group. Nhập tên group ở trên.",title:true}
+  };
+  var CAMPAIGNS=[
+    {v:"",label:"Không thuộc chiến dịch nào"},
+    {v:"bmc-shop",label:"bmc-shop (bán sản phẩm Buy Me a Coffee)"},
+    {v:"learn-ai-from-0",label:"learn-ai-from-0 (tuyến bài Học AI từ 0)"},
+    {v:"__other",label:"Khác, tự nhập"}
+  ];
 
   var TYPES={
     tm:{
-      note:"Link sang trang của Tomorrow Marketers. Theo quy tắc, utm_medium = service và utm_campaign = hct luôn cố định. utm_source mặc định là learning-library, đổi nếu bạn đăng ở kênh khác.",
+      note:"Link sang trang của Tomorrow Marketers. Theo quy tắc: utm_source = referral, utm_medium = service, utm_campaign = hct luôn cố định. utm_content ghi kênh trước, tên bài sau, nên không cần chọn vị trí.",
       hint:"trang bất kỳ của tomorrowmarketers.org",
       placeholder:"https://www.tomorrowmarketers.org/data-analysis-course",
-      host:/(^|\.)tomorrowmarketers\.org$/,
-      hostName:"tomorrowmarketers.org",
-      defUrl:"",
-      lock:{medium:"service",campaign:"hct"},
-      defSource:"learning-library"
+      host:/(^|\.)tomorrowmarketers\.org$/,hostName:"tomorrowmarketers.org",
+      defUrl:"",lock:true,defCampaign:"hct"
     },
     substack:{
       note:"Link sang Substack của bạn. Dán trang chủ hoặc link một bài cụ thể.",
       hint:"trang chủ hoặc bài của zoedatalens.substack.com",
       placeholder:"https://zoedatalens.substack.com/p/ten-bai",
-      host:/^zoedatalens\.substack\.com$/,
-      hostName:"zoedatalens.substack.com",
-      defUrl:"https://zoedatalens.substack.com/",
-      lock:null,defSource:""
+      host:/^zoedatalens\.substack\.com$/,hostName:"zoedatalens.substack.com",
+      defUrl:"https://zoedatalens.substack.com/",lock:false,defCampaign:""
     },
     library:{
       note:"Link sang Learning Library. Dán trang chủ hoặc link đã có bộ lọc, ví dụ ?topic=Data%20Analytics.",
       hint:"trang chủ hoặc link có bộ lọc của tuhoang3112.github.io",
       placeholder:"https://tuhoang3112.github.io/zoe-learning-library/?topic=Data%20Analytics",
-      host:/^tuhoang3112\.github\.io$/,
-      hostName:"tuhoang3112.github.io",
-      defUrl:"https://tuhoang3112.github.io/zoe-learning-library/",
-      lock:null,defSource:""
+      host:/^tuhoang3112\.github\.io$/,hostName:"tuhoang3112.github.io",
+      defUrl:"https://tuhoang3112.github.io/zoe-learning-library/",lock:false,defCampaign:""
+    },
+    bmc:{
+      note:"Link sang Buy Me a Coffee. Dán trang shop hoặc link một sản phẩm. Link bán sản phẩm đặt ở Substack hoặc mạng xã hội dùng campaign bmc-shop.",
+      hint:"trang shop hoặc sản phẩm của buymeacoffee.com/zoedatalensai",
+      placeholder:"https://buymeacoffee.com/zoedatalensai/e/575413",
+      host:/^buymeacoffee\.com$/,hostName:"buymeacoffee.com",
+      defUrl:"https://buymeacoffee.com/zoedatalensai/extras",lock:false,defCampaign:"bmc-shop"
     }
   };
-  var state={type:"library",urls:{},vals:{}};
+
+  var state={type:"library",channel:"linkedin",position:"caption",group:"",title:"",campaign:"",campaignOther:"",srcOther:"",medOther:"",urls:{}};
 
   function clean(v){
-    return v.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/[^a-z0-9_-]+/g,"-").replace(/^-+|-+$/g,"");
+    return String(v||"").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
   }
   function cfg(){return TYPES[state.type]}
+  function chan(){return CHANNELS[state.channel]}
 
+  /* ---------- render ---------- */
+  function fillSelect(sel,html){sel.innerHTML=html}
+  function renderChannels(){
+    var html="";
+    CHANNEL_GROUPS.forEach(function(g){
+      var opts=g.ids.filter(function(id){return !(state.type==="tm"&&CHANNELS[id].other)});
+      if(!opts.length)return;
+      html+='<optgroup label="'+g.label+'">'+opts.map(function(id){return '<option value="'+id+'">'+CHANNELS[id].label+'</option>'}).join("")+'</optgroup>';
+    });
+    fillSelect($("channel"),html);
+    if(state.type==="tm"&&CHANNELS[state.channel].other)state.channel="linkedin";
+    $("channel").value=state.channel;
+  }
+  function renderCampaigns(){
+    var tm=state.type==="tm",sel=$("campaign");
+    if(tm){fillSelect(sel,'<option value="hct">hct (cố định)</option>');sel.value="hct";sel.disabled=true}
+    else{
+      fillSelect(sel,CAMPAIGNS.map(function(c){return '<option value="'+c.v+'">'+c.label+'</option>'}).join(""));
+      sel.disabled=false;sel.value=state.campaign;
+      if(sel.value!==state.campaign){state.campaign="";sel.value=""}
+    }
+    $("campaignOtherField").hidden=tm||state.campaign!=="__other";
+  }
+  function renderPositions(){
+    var ch=chan(),tm=state.type==="tm";
+    $("positionField").hidden=tm;
+    if(tm){return}
+    if(ch.positions.indexOf(state.position)<0)state.position=ch.positions[0];
+    var box=$("positions");box.innerHTML="";
+    ch.positions.forEach(function(p){
+      var b=document.createElement("button");b.type="button";b.textContent=POSITIONS[p].label;
+      if(p===state.position)b.className="on";
+      b.onclick=function(){state.position=p;renderPositions();build();save()};
+      box.appendChild(b);
+    });
+    $("positionHint").textContent=POSITIONS[state.position].hint;
+  }
+  function applyChannel(){
+    var ch=chan();
+    $("otherRow").hidden=!ch.other;
+    $("groupField").hidden=!ch.needsGroup;
+    $("channelMeta").textContent=ch.other?"Nhập source và medium theo bảng trong docs/utm-rules.md.":"utm_source = "+ch.source+", utm_medium = "+(state.type==="tm"?"service (cố định cho TM)":ch.medium);
+    renderPositions();
+  }
   function applyType(fromUser){
     var c=cfg();
     document.querySelectorAll("#types button").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-type")===state.type)});
@@ -154,53 +277,92 @@
     $("urlHint").textContent=c.hint;
     urlEl.placeholder=c.placeholder;
     urlEl.value=state.urls[state.type]!==undefined?state.urls[state.type]:c.defUrl;
-    var lock=c.lock;
-    ["medium","campaign"].forEach(function(f){
-      var el=$(f);
-      if(lock){el.value=lock[f];el.readOnly=true}
-      else{el.readOnly=false;if(fromUser&&(el.value===TYPES.tm.lock[f]))el.value=""}
+    if(fromUser&&!c.lock)state.campaign=c.defCampaign;
+    renderChannels();renderCampaigns();applyChannel();
+    $("titleHint").textContent=state.type==="tm"?"tên bài hoặc resource, ghép sau tên kênh":"tên ngắn của bài, video hoặc sản phẩm, tối đa 5 đến 6 từ";
+    $("campaignHint").textContent=c.lock?"cố định":"chiến dịch hoặc tuyến bài";
+  }
+  function setInputs(){
+    ["group","title","campaignOther","srcOther","medOther"].forEach(function(f){$(f).value=state[f]||""});
+  }
+  function updateNorm(){
+    ["group","title","campaignOther","srcOther","medOther"].forEach(function(f){
+      var raw=$(f).value,n=clean(raw),el=$("norm-"+f);
+      el.innerHTML="";
+      if(raw.trim()&&n!==raw){el.appendChild(document.createTextNode("Sẽ ghi: "));var b=document.createElement("b");b.textContent=n||"(trống)";el.appendChild(b)}
     });
-    $("mediumHint").textContent=lock?"cố định":"loại kênh";
-    $("campaignHint").textContent=lock?"cố định":"chủ đề hoặc series";
-    if(fromUser&&c.defSource&&!$("source").value)$("source").value=c.defSource;
-    if(fromUser&&!c.defSource&&$("source").value===TYPES.tm.defSource)$("source").value="";
   }
 
-  function build(){
-    var c=cfg(),msgs=[],base=urlEl.value.trim();
-    if(!base){out.textContent="Dán link đích ở trên.";warn.hidden=true;return null}
-    var u;
-    try{u=new URL(base)}catch(e){out.textContent="Link đích chưa hợp lệ (cần bắt đầu bằng https://).";warn.hidden=true;return null}
-    var vals={};
-    fields.forEach(function(f){vals[f]=clean($(f).value)});
-    if(!vals.source||!vals.medium||!vals.campaign){
-      out.textContent="Điền đủ source, medium và campaign để tạo link.";warn.hidden=true;return null;
+  /* ---------- build ---------- */
+  function buildParts(){
+    var tm=state.type==="tm",ch=chan();
+    var source=tm?"referral":(ch.other?clean(state.srcOther):ch.source);
+    var medium=tm?"service":(ch.other?clean(state.medOther):ch.medium);
+    var campaign=tm?"hct":(state.campaign==="__other"?clean(state.campaignOther):state.campaign);
+    var title=clean(state.title),group=clean(state.group);
+    var content="",missing=[];
+    if(tm){
+      var kenh=ch.slug+(ch.needsGroup&&group?"-"+group:"");
+      content=[kenh,title].filter(Boolean).join("-");
+      if(ch.needsGroup&&!group)missing.push("tên group");
+      if(!title)missing.push("tiêu đề");
+    }else{
+      var pos=state.position,tok=pos==="group"?(group?"group-"+group:""):pos;
+      if(pos==="group"&&!group)missing.push("tên group");
+      if(pos==="bio")content="bio";
+      else{content=[tok,title].filter(Boolean).join("-");if(!title)missing.push("tiêu đề")}
     }
-    if(!c.host.test(u.hostname))msgs.push("Link đích không thuộc "+c.hostName+". Kiểm tra lại loại trang đích đã chọn.");
+    if(ch.other&&!tm){if(!source)missing.push("utm_source");if(!medium)missing.push("utm_medium")}
+    if(!tm&&state.campaign==="__other"&&!campaign)missing.push("campaign khác");
+    return {source:source,medium:medium,campaign:campaign,content:content,missing:missing,title:title};
+  }
+  function showParams(p){
+    var rows=[["utm_source",p.source],["utm_medium",p.medium],["utm_campaign",p.campaign],["utm_content",p.content]];
+    params.innerHTML="";
+    rows.forEach(function(r){var tr=document.createElement("tr"),a=document.createElement("td"),b=document.createElement("td");a.textContent=r[0];b.textContent=r[1]||"—";tr.appendChild(a);tr.appendChild(b);params.appendChild(tr)});
+    params.hidden=false;
+  }
+  function build(){
+    updateNorm();
+    var c=cfg(),msgs=[],base=urlEl.value.trim(),btn=$("copy");
+    btn.disabled=true;params.hidden=true;
+    if(!base){out.textContent="Dán link đích ở trên.";warn.hidden=true;return null}
+    if(!/^https?:\/\//i.test(base))base="https://"+base;
+    var u;
+    try{u=new URL(base)}catch(e){out.textContent="Link đích chưa hợp lệ.";warn.hidden=true;return null}
+    var p=buildParts();
+    if(p.missing.length){out.textContent="Còn thiếu: "+p.missing.join(", ")+".";warn.hidden=true;return null}
+    if(!c.host.test(u.hostname))msgs.push("Link đích không thuộc "+c.hostName+". Kiểm tra lại trang đích đã chọn.");
     if(/(^|&)utm_/.test(u.search.replace(/^\?/,"")))msgs.push("Link đích đã có UTM, các tham số UTM cũ được thay bằng giá trị mới.");
-    fields.forEach(function(f){
-      if(vals[f])u.searchParams.set("utm_"+f,vals[f]);else u.searchParams.delete("utm_"+f);
+    if(state.type!=="tm"&&chan().other){
+      if(SOURCES.indexOf(p.source)<0)msgs.push("utm_source '"+p.source+"' chưa có trong bảng quy tắc. Thêm vào docs/utm-rules.md trước khi dùng.");
+      if(MEDIUMS.indexOf(p.medium)<0)msgs.push("utm_medium '"+p.medium+"' không nằm trong social, video, email, referral. GA4 có thể xếp vào Unassigned.");
+    }
+    if(p.title&&p.title.split("-").length>6)msgs.push("Tiêu đề dài hơn 6 từ. Nên rút ngắn để báo cáo dễ đọc.");
+    ["source","medium","campaign","content"].forEach(function(k){
+      if(p[k])u.searchParams.set("utm_"+k,p[k]);else u.searchParams.delete("utm_"+k);
     });
     warn.hidden=!msgs.length;warn.textContent=msgs.join(" ");
-    out.textContent=u.toString();
+    out.textContent=u.toString();showParams(p);btn.disabled=false;
     return u.toString();
   }
 
+  /* ---------- storage ---------- */
   function save(){
     state.urls[state.type]=urlEl.value;
-    state.vals={};fields.forEach(function(f){state.vals[f]=$(f).value});
     try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
   }
   function load(){
     try{
       var d=JSON.parse(localStorage.getItem(KEY)||"null");
       if(!d)return;
-      state.type=TYPES[d.type]?d.type:"library";state.urls=d.urls||{};
-      fields.forEach(function(f){$(f).value=(d.vals&&d.vals[f])||""});
+      Object.keys(state).forEach(function(k){if(d[k]!==undefined)state[k]=d[k]});
+      if(!TYPES[state.type])state.type="library";
+      if(!CHANNELS[state.channel])state.channel="linkedin";
     }catch(e){}
   }
-  function getHist(){try{return JSON.parse(localStorage.getItem(KEY+"-hist")||"[]")}catch(e){return[]}}
-  function setHist(h){try{localStorage.setItem(KEY+"-hist",JSON.stringify(h.slice(0,10)))}catch(e){}}
+  function getHist(){try{return JSON.parse(localStorage.getItem(HKEY)||"[]")}catch(e){return[]}}
+  function setHist(h){try{localStorage.setItem(HKEY,JSON.stringify(h.slice(0,10)))}catch(e){}}
   function renderHist(){
     var h=getHist();hist.innerHTML="";
     if(!h.length){var li=document.createElement("li");li.className="empty";li.textContent="Chưa có link nào.";hist.appendChild(li);return}
@@ -217,6 +379,7 @@
   }
   function fallback(t,done){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done()}catch(e){}document.body.removeChild(ta)}
 
+  /* ---------- events ---------- */
   document.querySelectorAll("#types button").forEach(function(b){
     b.onclick=function(){
       state.urls[state.type]=urlEl.value;
@@ -224,23 +387,35 @@
       applyType(true);build();save();
     };
   });
+  $("channel").onchange=function(){state.channel=this.value;applyChannel();build();save()};
+  $("campaign").onchange=function(){state.campaign=this.value;$("campaignOtherField").hidden=state.campaign!=="__other";build();save()};
+  ["group","title","campaignOther","srcOther","medOther"].forEach(function(f){
+    $(f).addEventListener("input",function(){state[f]=this.value;build();save()});
+  });
+  urlEl.addEventListener("input",function(){build();save()});
   $("copy").onclick=function(){
     var url=build();if(!url)return;
     copyText(url,$("copy"));
     var h=getHist().filter(function(x){return x!==url});h.unshift(url);setHist(h);renderHist();
   };
   $("reset").onclick=function(){
-    var lock=cfg().lock;
-    fields.forEach(function(f){if(!(lock&&lock[f]))$(f).value=""});
-    if(cfg().defSource)$("source").value=cfg().defSource;
-    urlEl.value=cfg().defUrl;save();build();
+    state.group=state.title=state.campaignOther=state.srcOther=state.medOther="";
+    state.campaign=cfg().defCampaign;state.position=chan().positions[0];
+    setInputs();urlEl.value=cfg().defUrl;
+    renderCampaigns();renderPositions();save();build();
   };
-  [urlEl].concat(fields.map($)).forEach(function(el){el.addEventListener("input",function(){build();save()})});
+  /* Source / medium tự nhập: bấm vào ô thì xóa tạm để danh sách gợi ý hiện đủ; không chọn gì thì giá trị cũ quay lại. */
+  ["srcOther","medOther"].forEach(function(f){
+    var el=$(f),old="",ph=el.placeholder;
+    el.addEventListener("focus",function(){old=el.value;if(old){el.value="";el.placeholder=old}});
+    el.addEventListener("blur",function(){
+      el.placeholder=ph;
+      if(!el.value&&old){el.value=old;el.dispatchEvent(new Event("input",{bubbles:true}))}
+      old="";
+    });
+  });
 
-  load();applyType(false);
-  if(cfg().lock){fields.forEach(function(f){if(cfg().lock[f])$(f).value=cfg().lock[f]})}
-  if(cfg().defSource&&!$("source").value)$("source").value=cfg().defSource;
-  build();renderHist();
+  load();setInputs();applyType(false);build();renderHist();
 })();
 </script>
 </body>
