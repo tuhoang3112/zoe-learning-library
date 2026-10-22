@@ -40,6 +40,7 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 
 | File | What it covers |
 |---|---|
+| [`docs/baseline.md`](docs/baseline.md) | The 28-day GA4 baseline before the Substack fix, and how the "after" will be measured |
 | [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the audit of Substack and the Library found, and what was fixed |
 | [`docs/tracking-plan.md`](docs/tracking-plan.md) | The Library events, when they fire and what they measure |
 | [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples |
