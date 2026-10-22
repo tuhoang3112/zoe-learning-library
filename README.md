@@ -78,19 +78,29 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 | **Buy Me a Coffee** | A GA4 stream inside the Library property | Only the platform's Google Analytics ID field is available | Platform setting | Purchases |
 | **LinkedIn, YouTube, Facebook** | Source tracking through UTM, no tag possible | Fixed vocabulary of source, medium, campaign, content | [`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html) | Anything after the click |
 
-<p align="center"><img src="docs/images/substack-post-events.webp" alt="Substack post page with the Subscribe placements mapped to their events" width="760"></p>
-
 The `sign_up` tag is live and fires in GTM Preview; confirming it on a real subscription and marking it as a key event are the next steps (see Status below). Links leaving the Library are tagged with UTM by code; a small local tool builds compliant links for everything else.
 
 ---
 
 ## Tracking plan
 
+One plan per measured property, all sent to GA4 through Tag Manager.
+
+**Substack newsletter** (6 event types, 12 tags, Google tags and built-in triggers only):
+
+<p align="center"><img src="docs/images/substack-post-events.webp" alt="Substack post page with the Subscribe placements mapped to their events" width="760"></p>
+
+`subscribe_click` by placement (header, inline, popup, home, footer), `subscribe_popup_view` and `subscribe_popup_dismiss`, `scroll_depth` at 25/50/75/90% and `read_time` at 30/60/120 seconds on posts, plus `sign_up`. Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push); `subscribe_click` and `sign_up` on a real subscription are still to confirm.
+
+**Learning Library** (8 events through the Data Layer):
+
 <p align="center"><img src="docs/images/site-live-events.webp" alt="Learning Library with each tracked area numbered and mapped to its event" width="760"></p>
 
-The Library's 8 events, with the parameters each carries (resource type, topic, level, access, provider, position in the catalogue and in the list the visitor sees), so reports can answer which topic, level and price range get clicked, and whether a top-ranked item is clicked only because it is first.
+Each event carries the parameters of the resource (type, topic, level, access, provider, position in the catalogue and in the list the visitor sees), so reports can answer which topic, level and price range get clicked, and whether a top-ranked item is clicked only because it is first.
 
-→ [Tracking plan](docs/tracking-plan.md) (events) · [Data dictionary](docs/data-dictionary.md) (parameters)
+**Buy Me a Coffee** has a GA4 stream (page views and sources, no purchases) and **LinkedIn, YouTube and Facebook** are tracked only through UTM, since neither can run a tag.
+
+→ [Tracking plan](docs/tracking-plan.md) (events by property) · [Data dictionary](docs/data-dictionary.md) (parameters)
 
 ---
 
