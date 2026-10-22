@@ -59,7 +59,7 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 |---|---|---|---|
 | **Substack newsletter** | 12 GA4 event tags: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time ([container](gtm/substack-container.json)) | Substack runs only Google tags and built-in triggers (GTM Preview shows `allowlist: google`). Custom HTML, custom JavaScript variables and Microsoft Clarity are blocked, so tracking is built within that limit instead of assumed away | Email opens, reading inside the app |
 | **Learning Library** | 8 events through the Data Layer: resource impressions and clicks, search, filters, topic clicks, product banner clicks, clicks toward Substack and Buy Me a Coffee ([`analytics.js`](landing-page/js/analytics.js), [container](gtm/library-container.json)) | Substack allows no custom tracking code, so Data Layer events with item attributes (type, topic, level, price, position) needed a site where I own the code | What visitors do after they click through to an outside page (Substack, Buy Me a Coffee, the courses and resources linked): the Library only sees the click |
-| **Buy Me a Coffee** | A GA4 data stream in the Library property, connected through the shop's Google Analytics field | It is the only analytics option the platform offers | Purchases |
+| **Buy Me a Coffee** | A GA4 data stream in the Library property, connected through the shop's Google Analytics field | It is the only analytics option the platform offers | Purchases in GA4 (they are recorded in Buy Me a Coffee's own dashboard) |
 | **LinkedIn, YouTube, Facebook** | Source tracking through UTM ([rules](docs/utm-rules.md), [builder](tools/utm-builder.html)) | No tag can run there, and free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows while untagged app links fall into `(direct) / (none)` | Anything after the click |
 
 **Across all channels**
@@ -89,7 +89,7 @@ One plan per measured property, all sent to GA4 through Tag Manager.
 
 Each event carries the parameters of the resource (type, topic, level, access, provider, position in the catalogue and in the list the visitor sees), so reports can answer which topic, level and price range get clicked, and whether a top-ranked item is clicked only because it is first.
 
-**Buy Me a Coffee** (no events, a connection only): a GA4 data stream was created in the Library property and its Measurement ID pasted into the **Google Analytics** field in the shop's Settings, the only option the platform offers. GA4 receives page views and sources, not purchases.
+**Buy Me a Coffee** (no events, a connection only): a GA4 data stream was created in the Library property and its Measurement ID pasted into the **Google Analytics** field in the shop's Settings, the only option the platform offers. GA4 receives page views and sources; purchases are recorded in the shop's own dashboard, not in GA4.
 
 <p align="center"><img src="docs/images/bmc-google-analytics-setting.webp" alt="Buy Me a Coffee settings: the Google Analytics field holds the GA4 Measurement ID" width="460"></p>
 
@@ -166,4 +166,4 @@ Run and deploy notes for the site are in [`landing-page/README.md`](landing-page
 - Attribution between the sites is aggregate (by day and campaign), never by person: the properties share no user id.
 - Email opens and reading inside the Substack app are not measured by GA4.
 - Ad blockers and the lack of a consent banner mean counts are a lower bound.
-- Buy Me a Coffee only exposes the Google Analytics field: page views and sources are measured, purchases are not.
+- Buy Me a Coffee only exposes the Google Analytics field: page views and sources reach GA4, purchases do not. Purchases are still recorded in the shop's own dashboard, but they cannot be joined to GA4 sessions.
