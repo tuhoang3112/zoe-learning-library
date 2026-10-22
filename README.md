@@ -60,7 +60,7 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 | **Substack newsletter** | 12 GA4 event tags: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time ([container](gtm/substack-container.json)) | Substack runs only Google tags and built-in triggers (GTM Preview shows `allowlist: google`). Custom HTML, custom JavaScript variables and Microsoft Clarity are blocked, so tracking is built within that limit instead of assumed away | Email opens, reading inside the app |
 | **Learning Library** | 8 events through the Data Layer: resource impressions and clicks, search, filters, topic clicks, product banner clicks, clicks toward Substack and Buy Me a Coffee ([`analytics.js`](landing-page/js/analytics.js), [container](gtm/library-container.json)) | Substack allows no custom tracking code, so Data Layer events with item attributes (type, topic, level, price, position) needed a site where I own the code | What visitors do after they click through to an outside page (Substack, Buy Me a Coffee, the courses and resources linked): the Library only sees the click |
 | **Buy Me a Coffee** | A GA4 data stream in the Library property, connected through the shop's Google Analytics field | It is the only analytics option the platform offers | Purchases in GA4 (they are recorded in Buy Me a Coffee's own dashboard) |
-| **LinkedIn, YouTube, Facebook** | Source tracking through UTM ([rules](docs/utm-rules.md), [builder](tools/utm-builder.html)) | No tag can run there, and free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows while untagged app links fall into `(direct) / (none)` | Anything after the click |
+| **LinkedIn, YouTube, Facebook** | One UTM rule set for every link I publish there: `utm_source` (the platform), `utm_medium` (`social` or `video`), `utm_campaign` (the content series) and `utm_content` (where the link sits: caption, bio, description, comment). For example `?utm_source=linkedin&utm_medium=social&utm_campaign=learn-ai-from-0&utm_content=caption-claude-cowork`. Links are built with the [UTM builder](tools/utm-builder.html) following the [rules](docs/utm-rules.md) | I do not control the pages these visitors come from, so no tag can run there and the link is the only thing I own. Without UTM, visits from apps and emails land in `(direct) / (none)`, and free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows. A fixed vocabulary makes one source one row, so GA4 shows which channel and which post brought each visitor | What happens on the platform itself (impressions, reactions, profile views) and anything after the click, which is only seen on the destination site |
 
 **Across all channels**
 - **One tag manager:** Google Tag Manager, one container per site, versioned and exported to [`gtm/`](gtm/). Substack has a GTM ID field.
@@ -93,7 +93,7 @@ Each event carries the parameters of the resource (type, topic, level, access, p
 
 <p align="center"><img src="docs/images/bmc-google-analytics-setting.webp" alt="Buy Me a Coffee settings: the Google Analytics field holds the GA4 Measurement ID" width="460"></p>
 
-**LinkedIn, YouTube and Facebook** cannot run a tag, so they are tracked only through the UTM on each link.
+**LinkedIn, YouTube and Facebook** cannot run a tag, so they are tracked only through the UTM on each link: source, medium, campaign and the position of the link, from one fixed vocabulary.
 
 → [Tracking plan](docs/tracking-plan.md) (events and parameters by property)
 
