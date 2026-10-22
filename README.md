@@ -1,8 +1,8 @@
-# Zoe's Learning Library
+# Marketing Tracking & Behavioral Analytics
 
-A curated learning library (courses, ebooks, tools and templates for data, marketing and AI) and the measurement system behind it. I built it to see what visitors actually do across a small content ecosystem: a static site, a Substack newsletter and a Buy Me a Coffee shop.
+Tag Manager, GA4 and UTM tracking built across a small content ecosystem: a Substack newsletter, a static site I control (Zoe's Learning Library) and a Buy Me a Coffee shop. The goal is to see what visitors actually do and which sources lead to subscribers.
 
-**Live site:** <https://tuhoang3112.github.io/zoe-learning-library/>
+**The site being measured:** <https://tuhoang3112.github.io/zoe-learning-library/> (a curated library of courses, ebooks, tools and templates for data, marketing and AI).
 
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
