@@ -1,6 +1,6 @@
 # Tracking plan
 
-One plan per measured property. Every event is sent to GA4 by Google Tag Manager; GA4's automatic `page_view` stays on everywhere. Parameters are described in [`data-dictionary.md`](data-dictionary.md).
+One plan per measured property. Every event is sent to GA4 by Google Tag Manager; GA4's automatic `page_view` stays on everywhere.
 
 | Property | How it is tracked | Events |
 |---|---|---|
@@ -22,6 +22,8 @@ Container: [`gtm/substack-container.json`](../gtm/substack-container.json). Clic
 | `read_time` | A post page has been open for 30, 60 and 120 seconds (once each) | `read_seconds` | How long posts keep readers. It measures time on the page, not active reading |
 | `sign_up` | A `sign_up` event appears in the Data Layer | none | Subscriptions: the conversion |
 
+`percent_scrolled` comes from the built-in variable Scroll Depth Threshold; the other parameters are fixed values set in each tag, since the container can only use Google tags and built-in triggers.
+
 **Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (the last one by a manual push). Still to confirm: `subscribe_click` on a real click (Preview shows errors for the `Click Text` variable these triggers use) and `sign_up` on a real subscription. See [`tracking-audit.md`](tracking-audit.md).
 
 ## Learning Library
@@ -39,7 +41,31 @@ What the Library measures, when each event fires and why it matters. Every event
 | `cta_substack_click` | Any link toward Substack is clicked (header, banner, resource card, post card, About, footer) | The main goal: visitors moving to the newsletter |
 | `cta_buymeacoffee_click` | The coffee-cup donate button is clicked | Interest in supporting the project |
 
-**Parameters.** Resource events carry `resource_id`, `resource_name`, `resource_type`, `topic`, `level`, `access`, `provider` and `position`. `cta_*` events carry `cta_location` (where the link was). Search and filter events carry the term or filters plus `result_count`.
+**Resource parameters**, sent with `resource_impression`, `resource_click` and `tool_banner_click`. Values come from the catalogue ([`resources.json`](../landing-page/data/resources.json)) and the allowed values from [`config.js`](../landing-page/js/config.js).
+
+| Parameter | Meaning | Values |
+|---|---|---|
+| `resource_id` | Stable ID of the resource in the catalogue (`shop` for the "Visit the shop" link) | text |
+| `resource_name` | Title of the resource | text |
+| `resource_type` | Kind of resource | `Course`, `Dataset`, `Tools & Templates`, `Resource` |
+| `topic` | Topic the resource belongs to | the 6 topics in `config.js` |
+| `level` | Difficulty | `Beginner`, `Intermediate`, `Advanced` |
+| `access` | Price model | `Free`, `Paid` |
+| `provider` | Who publishes it | text |
+| `position` | Fixed rank in the catalogue | number |
+| `list_position` | Rank in the list the visitor is looking at, after search and filters (not sent by `tool_banner_click`) | number |
+| `result_count` | Number of results in the list at that moment (`resource_impression`) | number |
+
+**Search, filter and navigation parameters**
+
+| Parameter | Sent with | Meaning |
+|---|---|---|
+| `search_term` | `library_search` | What the visitor typed (free text, after a 1 s pause or on submit, minimum 2 characters) |
+| `result_count` | `library_search`, `filter_apply` | Number of results. `0` means the visitor found nothing |
+| `filter_topic`, `filter_type`, `filter_level`, `filter_access` | `filter_apply` | The filter values active after the change |
+| `category_name` | `category_click` | Topic card that was clicked |
+| `cta_location` | `cta_substack_click`, `cta_buymeacoffee_click` | Where the link sits (header, banner, resource card, post card, About, footer) |
+
 
 **Two position fields.** `position` is a resource's fixed place in the catalogue. `list_position` is its place in the list the visitor is actually looking at (after search and filters). Click-through rate by position = `resource_click` ÷ `resource_impression`, grouped by `list_position`. The catalogue order is fixed, so position and resource are partly mixed up; search and filters add some natural variation, and a clean test would need shuffled order.
 

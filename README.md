@@ -95,7 +95,7 @@ Each event carries the parameters of the resource (type, topic, level, access, p
 
 **LinkedIn, YouTube and Facebook** cannot run a tag, so they are tracked only through the UTM on each link.
 
-→ [Tracking plan](docs/tracking-plan.md) (events by property) · [Data dictionary](docs/data-dictionary.md) (parameters)
+→ [Tracking plan](docs/tracking-plan.md) (events and parameters by property)
 
 ---
 
@@ -145,7 +145,6 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
     ├── baseline.md       # GA4 baseline before the Substack fix
     ├── tracking-audit.md # what the audit found and what was fixed
     ├── tracking-plan.md  # Library events: when they fire, what they measure
-    ├── data-dictionary.md# event parameters
     └── utm-rules.md      # UTM format, vocabulary, examples
 ```
 
