@@ -78,6 +78,8 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 | **Buy Me a Coffee** | A GA4 stream inside the Library property | Only the platform's Google Analytics ID field is available | Platform setting | Purchases |
 | **LinkedIn, YouTube, Facebook** | Source tracking through UTM, no tag possible | Fixed vocabulary of source, medium, campaign, content | [`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html) | Anything after the click |
 
+<p align="center"><img src="docs/images/substack-post-events.webp" alt="Substack post page with the Subscribe placements mapped to their events" width="760"></p>
+
 `sign_up` now reaches GA4; marking it as a key event is the next step (see Status below). Links leaving the Library are tagged with UTM by code; a small local tool builds compliant links for everything else.
 
 ---
