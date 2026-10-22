@@ -27,7 +27,7 @@ How the ZoeDataLens newsletter looked in GA4 **before** the tracking fix. It is 
 
 ## What GA4 recorded as events
 
-At that point **no custom event had been set up**: GA4 only collected its automatic events (page views, enhanced measurement). That is the starting point, not a fault.
+At that point Tag Manager was installed with **only the Google tag** (the one that connects the site to GA4). No trigger, no event tag and no other Tag Manager configuration existed, so GA4 only collected its automatic events (page views, enhanced measurement). That is the starting point, not a fault: everything beyond it was built in the fix.
 
 | Event | Count (rounded) | What it can tell | What it cannot tell |
 |---|---|---|---|
