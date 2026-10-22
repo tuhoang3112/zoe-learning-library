@@ -32,7 +32,7 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 |---|---|
 | [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the audit of Substack and the Library found, and what was fixed |
 | [`docs/tracking-plan.md`](docs/tracking-plan.md) | The Library events, when they fire and what they measure |
-| [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples (in Vietnamese) |
+| [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples |
 
 ## Repository
 

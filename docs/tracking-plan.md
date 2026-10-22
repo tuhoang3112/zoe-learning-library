@@ -1,45 +1,24 @@
-# Tracking plan
+# Tracking plan: Learning Library
 
-All events go through `pushDataLayer()` in `landing-page/js/analytics.js`. GA4 `page_view` stays enabled (automatic via the GTM Google tag).
+What the Library measures, when each event fires and why it matters. Every event is pushed to the Data Layer by [`landing-page/js/analytics.js`](../landing-page/js/analytics.js) and sent to GA4 by Tag Manager. GA4's automatic `page_view` stays on.
 
-| Event | Trigger | Parameters | Business purpose |
-|---|---|---|---|
-| `category_click` | Click a topic card | `category_name` | Which topics attract interest |
-| `library_search` | Debounced (1 s, ≥2 chars) or on submit; an identical consecutive term is not re-sent | `search_term`, `result_count` | Search demand; `result_count = 0` = unmet demand |
-| `filter_apply` | A filter dropdown changes (not on page load, not on category click; an unchanged combination is not re-sent) | `filter_topic`, `filter_type`, `filter_level`, `filter_access`, `result_count` | Filter usage and combinations. Unselected = `"All"` |
-| `resource_impression` | A resource card is at least 50% visible (IntersectionObserver). Fired once per resource and list position per page view; not fired while the tab is hidden | `resource_*`, `list_position`, `result_count` | Exposure count: the denominator for click-through rate by resource and by position |
-| `resource_click` | Card title or "Open resource" clicked (opens the external site in a new tab, so the event is never lost in navigation) | `resource_*` | Resource click-through |
-| `tool_banner_click` | A product card or "Visit the shop" clicked in the "Tools made by Zoe" banner (opens Buy Me a Coffee in a new tab) | `resource_*` (`resource_id` is `shop` for the shop button) | Interest in Zoe's own products, separate from library CTR (no impression or list position) |
-| `cta_buymeacoffee_click` | The coffee-cup donate button in the footer (opens Buy Me a Coffee in a new tab); any later link to Buy Me a Coffee outside the tools banner uses this event with another `cta_location` | `cta_location` (`footer`) | Interest in supporting Zoe; the visit itself is also seen in the Buy Me a Coffee stream through its UTM |
-| `cta_substack_click` | Any `[data-cta-location]` link clicked, or a resource card whose URL is on zoedatalens.substack.com (also fires `resource_click`) | `cta_location` (`header`, `banner`, `resource_card`, `blog_card`, `about_link`, `footer`) | Primary conversion (click toward Substack, not a subscription) |
+| Event | Fires when | What it tells me |
+|---|---|---|
+| `resource_impression` | A resource card is at least 50% visible (once per card and position, never while the tab is hidden) | How many people saw each resource: the base for click-through rate |
+| `resource_click` | A resource title or "Open resource" is clicked | Which resources people open |
+| `library_search` | Someone searches (after a pause, or on submit) | What people look for, and what they do not find (`result_count = 0`) |
+| `filter_apply` | A filter changes | Which filters and combinations are used |
+| `category_click` | A topic card is clicked | Which topics attract interest |
+| `tool_banner_click` | A product or "Visit the shop" is clicked in the "Tools made by Zoe" banner | Interest in my own products, apart from the library list |
+| `cta_substack_click` | Any link toward Substack is clicked (header, banner, resource card, post card, About, footer) | The main goal: visitors moving to the newsletter |
+| `cta_buymeacoffee_click` | The coffee-cup donate button is clicked | Interest in supporting the project |
 
-`resource_*` parameters: `resource_id`, `resource_name`, `resource_type`, `topic`, `level`, `access`, `provider`, `position`.
+**Parameters.** Resource events carry `resource_id`, `resource_name`, `resource_type`, `topic`, `level`, `access`, `provider` and `position`. `cta_*` events carry `cta_location` (where the link was). Search and filter events carry the term or filters plus `result_count`.
 
-`position` is the fixed catalogue rank (alphabetical by title). `list_position` is the rank of the card in the list the visitor is actually looking at (after search and filters), so the same resource can have different `list_position` values. `resource_click` also carries `list_position`.
+**Two position fields.** `position` is a resource's fixed place in the catalogue. `list_position` is its place in the list the visitor is actually looking at (after search and filters). Click-through rate by position = `resource_click` ÷ `resource_impression`, grouped by `list_position`. The catalogue order is fixed, so position and resource are partly mixed up; search and filters add some natural variation, and a clean test would need shuffled order.
 
-**CTR by position** = `resource_click` count / `resource_impression` count, grouped by `list_position`. With the default alphabetical order a resource always sits at the same position, so position and resource are confounded; search and filters change `list_position` and provide some natural variation. A clean test of position bias would need the order to be shuffled or A/B tested.
+**Set-up in Tag Manager.** One Custom Event trigger and one GA4 Event tag per event, with Data Layer Variables for the parameters (no tag per resource). The parameters used in reports are registered as GA4 custom dimensions, and `result_count` as a custom metric.
 
-## GTM setup
+**Privacy.** No emails, names or other personal data in any event. Search terms are free text, so no field that collects personal data is ever added.
 
-1. One Custom Event trigger per event name above.
-2. One GA4 Event tag per event, using Data Layer Variables for the parameters (no per-resource tags).
-3. Register GA4 custom dimensions for the parameters you want in reports (`resource_id`, `topic`, `level`, `access`, `position`, `list_position`, `search_term`, `filter_*`, `category_name`, `cta_location`) and `result_count` as a custom metric.
-4. Add Clarity via GTM.
-5. Validate with GTM Preview and GA4 DebugView.
-
-## Privacy
-
-No emails, names, survey responses or other PII in event parameters. Search terms are free text: never add fields that collect personal data.
-
-## UTM on links to Substack
-
-Every link from the library to `zoedatalens.substack.com` (header logo, banner, footer icon and resource cards that point to Substack) gets UTM parameters added in the browser (`withSubstackUtm` in `landing-page/js/analytics.js`), so the Substack GA4 property can attribute the visit:
-
-| Parameter | Value |
-|---|---|
-| `utm_source` | `learning-library` |
-| `utm_medium` | `referral` |
-| `utm_campaign` | the `cta_location` (`header`, `banner`, `footer`, `resource_card`) |
-| `utm_content` | resource id (resource cards only) |
-
-Links to Tomorrow Marketers pages keep their own fixed UTM (`utm_medium=service`, `utm_campaign=hct`) in `landing-page/data/resources.json`.
+Links the site sends to Substack and Buy Me a Coffee carry UTM parameters, see [`utm-rules.md`](utm-rules.md).

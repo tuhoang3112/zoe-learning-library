@@ -1,176 +1,46 @@
-# Tracking audit — Substack and Learning Library
+# Tracking audit: Substack and Learning Library
 
-Audit of what can and cannot be measured on the two properties of the ZoeDataLens ecosystem, what the limits do to the numbers, and what was implemented in response.
+What can and cannot be measured on the two sites, and what I did about it. Audit date: 2026-09-20, using GA4 reports, Tag Manager Preview and Substack's settings.
 
-- **Audit date:** 2026-09-20
-- **Properties:** Substack publication (`zoedatalens.substack.com`) and the Learning Library (GitHub Pages)
-- **Method:** GA4 reports, Google Tag Manager Preview (Tag Assistant) on both sites, Substack settings, inspection of the public pages
-- **Numbers below** were read from GA4 screenshots taken on the audit date (window Aug 23 – Sep 19, 2026, about 28 days). They are a baseline, not final results.
+## The main finding
 
-> This audit is about what Google Analytics and Tag Manager can and cannot measure. Substack's own statistics (subscribers by source and post) are a separate source and are not covered here.
+GA4 on the newsletter showed **0 key events**. The cause was **configuration, not the platform**:
 
-## 1. Headline finding: the gap was configuration depth, not the platform
+- Tag Manager was installed with only the default Google tag (page views and GA4's automatic events). No custom event had been designed.
+- Substack already pushes a `sign_up` event into the Data Layer, but no tag forwarded it to GA4, and no event was marked as a key event. So conversions were invisible.
 
-Tag Manager was already installed on the publication before this audit, with a single Google tag: page views plus GA4's automatic events. Nothing custom had been designed and no event was marked as a key event. The audit looked at what the platform would allow beyond those defaults:
+## What Substack allows
 
-| Question | Finding |
-|---|---|
-| Is there a Data Layer to work with? | Yes. Substack pushes its own `sign_up` event into `dataLayer` (`dataLayer.push({event: "sign_up", ...})`) with no other parameters |
-| Can custom events be created? | Yes, with **Google tags** (GA4 Event) and Tag Manager's built-in triggers (click, scroll depth, timer, element visibility, custom event) |
-| Why were there zero key events? | A **configuration gap**: no event had been marked as a key event, and `sign_up` was pushed to the Data Layer but never forwarded to GA4 |
+Tag Manager on Substack only runs **Google tags and built-in triggers** (click, scroll depth, timer, element visibility, custom event). Custom HTML, custom JavaScript variables and non-Google pixels (including Microsoft Clarity) are blocked. Custom tracking therefore had to be built around that list.
 
-Substack's built-in analytics already report subscribers by date, source and post; the gap is that this is a closed dashboard (totals only, no raw events, nothing on what readers do on the page) that cannot be joined with GA4 behavior or queried in BigQuery.
+## Problems found and fixes
 
-The real limit is what Tag Manager is allowed to run. The `dataLayer` of every Substack page contains:
-
-```text
-gtm.allowlist: ["google"]
-gtm.blocklist: ["customPixels", "customScripts", "html", "nonGooglePixels",
-                "nonGoogleScripts", "nonGoogleIframes", "sandboxedScripts"]
-```
-
-| Allowed | Blocked |
-|---|---|
-| Google tag, GA4 Event tags | Custom HTML tags |
-| Built-in triggers (click, scroll depth, timer, element visibility, custom event, history change) | Custom JavaScript variables |
-| Constant and Data Layer variables | Non-Google pixels and scripts inside Tag Manager (this includes Microsoft Clarity) |
-| Data pushed by Substack itself (`sign_up`) | Iframes from non-Google vendors |
-
-### Native integrations in Substack settings
-
-Besides Tag Manager, Substack has its own tracking fields (Settings → Analytics). They are the only way to run some non-Google tools, because Tag Manager cannot:
-
-| Field | Use | Status here |
+| Problem | Effect | Fix |
 |---|---|---|
-| Google Analytics Measurement ID | GA4 page views and conversion, sent by Substack itself | **Left empty on purpose**: the Google tag inside Tag Manager already sends GA4 hits, and filling both would count every page view twice |
-| Google Tag Manager ID | Custom tags on the publication | In use (all custom events described below) |
-| Facebook pixel ID | Conversion tracking for Facebook ads | Not used (no paid Facebook campaigns) |
-| Twitter pixel ID | Conversion tracking for X ads | Not used |
-| Parse.ly pixel ID | Publisher analytics | Not used |
-| Google Site Verification | Meta tag for Google verification (URL-prefix property, HTML tag method) | Not needed: Search Console was verified through the Tag Manager container |
-| Facebook Site Verification | Meta tag for Facebook domain verification | Not used |
+| `sign_up` not forwarded, no key event | Subscriptions invisible in GA4 | `sign_up` tag added; marked as key event |
+| `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25, 50, 75, 90% |
+| `click` only covers outbound links | Subscribe buttons not measured | `subscribe_click` per placement (header, popup, inline, footer, home) |
+| `form_start` is typing, not signing up | Counts intent, not conversion | `sign_up` is the conversion |
+| Links from apps and emails have no source | Inflated `(direct) / (none)` | UTM rules for every link ([`utm-rules.md`](utm-rules.md)) |
+| Sources set by Substack itself (`activity_item`, `confirmation_email`...) | Cannot be renamed | Read them as "Substack internal", not as marketing channels |
 
-There is no field for Microsoft Clarity or other analytics vendors, so heatmaps and session recordings are not possible on Substack.
+## What was built
 
-## 2. Baseline before the changes (Substack GA4 property)
+**Substack** (12 GA4 event tags, Google tags only): `sign_up`, `subscribe_click` (5 placements), `subscribe_popup_view`, `subscribe_popup_dismiss`, `scroll_depth` (25/50/75/90%), `read_time` (30/60/120 s on posts).
 
-Figures are rounded on purpose; the exact values are kept in a private folder outside this repository.
+**Learning Library** (own code, no restriction): 8 events pushed to the Data Layer and sent by Tag Manager: resource impressions and clicks, search, filters, topic clicks, product banner clicks, and clicks toward Substack and Buy Me a Coffee. Details in [`tracking-plan.md`](tracking-plan.md).
 
-| Metric (28 days to 2026-09-19) | Value |
-|---|---|
-| Active users / new users | about 1.2K / 1.1K |
-| Sessions | about 2.2K |
-| Average engagement time | about 1 min 50 s |
-| Key events | **0** |
+**Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field (the only option it offers).
 
-**Events recorded** (all automatic GA4 events; about 8.6K events from about 1.2K users):
+Supporting setup: GA4 data export to BigQuery on both properties, custom dimensions for the event parameters, and Search Console verified on both sites.
 
-| Event | Approx. count | Approx. users | Meaning on this site |
-|---|---|---|---|
-| `page_view` | 3.1K | 1.2K | Page views |
-| `session_start` | 2.2K | 1.2K | Sessions |
-| `user_engagement` | 1.4K | 0.9K | Visitor stayed engaged on the page |
-| `first_visit` | 1.1K | 1.1K | New users |
-| `scroll` | 0.6K | 0.4K | Scrolled to **90%** of the page (a single threshold) |
-| `click` | 140 | 60 | Outbound link click (link leaves the domain) |
-| `form_start` | 30 | 20 | Started typing in a form (the email box). Not a submission |
+## Status
 
-**Traffic sources** (share of the ~2.2K sessions, rounded):
+All of the above is live (Library since 2026-09-20, Substack since 2026-10-22). Still to do: mark `sign_up` as a key event once it appears in GA4.
 
-| Session source / medium | Share |
-|---|---|
-| google / organic | ~47% |
-| (direct) / (none) | ~17% |
-| linkedin.com / referral | ~14% |
-| l.facebook.com / referral | ~3% |
-| multiple-personal-recommendation-email / … | ~2% |
-| activity_item / (not set) | ~2% |
-| confirmation_email / (not set) | ~2% |
+## Limits
 
-### Snapshot: last 7 days (Sep 14 – Sep 20, 2026)
-
-A few hundred active users, up about 7% on the previous 7 days; key events still 0. Sessions by primary channel group (share of the sessions in the six channels shown; change against the previous 7 days):
-
-| Session primary channel group | Share | Change |
-|---|---|---|
-| Organic Search | ~56% | +18% |
-| Direct | ~15% | −18% |
-| **Unassigned** | **~13%** | +46% |
-| Organic Social | ~11% | −22% |
-| Email | ~3% | −32% |
-| Referral | ~1% | −56% |
-
-Direct and Unassigned are two opaque buckets, together over a quarter of sessions. *Unassigned* means the session carried a source or medium that matches no default channel rule (for example Substack's own `activity_item` or `confirmation_email` sources, or a custom medium such as `newsletter`), which is why the UTM convention only uses mediums that GA4 recognises. Almost all active users are in Vietnam.
-
-## 3. What the constraints do to the numbers
-
-| Issue | Effect on the data | Handling |
-|---|---|---|
-| No key event marked, `sign_up` not forwarded | Conversions invisible: reports show 0 although people subscribe | `sign_up` tag added in GTM; mark `sign_up` as key event |
-| Traffic without UTM from apps and emails | Clicks from LinkedIn/Facebook apps, newsletter emails and the Substack app arrive without a referrer and land in `(direct) / (none)`, which is inflated | UTM convention for every link published (see [`utm-rules.md`](utm-rules.md)); compare the direct/none share before and after |
-| Sources set by Substack itself (`activity_item`, `confirmation_email`, `multiple-personal-recommendation-email`, `cover_page`) | Not standard UTM, cannot be renamed | Group them as "Substack internal" in reports instead of treating them as marketing channels |
-| `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25/50/75/90% on post pages |
-| `click` is outbound only | Internal navigation and Subscribe buttons not measured | `subscribe_click` per placement (`header`, `popup`, `inline`, `footer`, `home`) |
-| `form_start` is not a submission | Intent, not conversion | `sign_up` is the conversion; funnel: `subscribe_popup_view` → `subscribe_click` → `sign_up` |
-| No per-person link between sites | A visitor from the library to Substack becomes a new user in the second property | Link the two by campaign (`utm_campaign` equals `cta_location`), aggregate by day and by source, and state this limit in every analysis |
-| Email opens and the Substack app | Not measurable in GA4 | Use Substack's own statistics for email; state the gap |
-| GA4 conversions vs. Substack subscribers | Two different counts of the outcome: GA4 counts `sign_up` events per session, Substack counts subscribers | Substack's own statistics stay the source of truth for subscribers (by date, source and post); GA4 is used for behavior. Reconcile by day and expect small differences |
-| Ad blockers, no consent layer | Some visits not recorded in either property | Accept as an undercount; do not treat counts as exact |
-
-## 4. What was implemented
-
-### Substack container (Google tags only, by design)
-
-| Event | Trigger | Parameters |
-|---|---|---|
-| `sign_up` | Custom Event `sign_up` (pushed by Substack) | none |
-| `subscribe_click` | Click on a Subscribe button, one tag per placement | `subscribe_location` = `header`, `popup`, `inline`, `footer`, `home` |
-| `subscribe_popup_view` | The "Discover more from…" dialog becomes visible | `subscribe_location` = `popup` |
-| `subscribe_popup_dismiss` | Click on a non-Subscribe button inside the dialog | `subscribe_location` = `popup` |
-| `scroll_depth` | Scroll depth 25/50/75/90% on post pages (`/p/`) | `percent_scrolled` |
-| `read_time` | Timer 30 s, 60 s, 120 s on post pages | `read_seconds` |
-
-Placement is recognised from the page structure (menu, dialog, subscription widget, page path), because custom JavaScript variables are blocked. This depends on Substack's markup and must be re-checked if their interface changes.
-
-### Learning Library container (no restriction, own code)
-
-Events pushed to the Data Layer by `landing-page/js/analytics.js` and forwarded by GTM: `category_click`, `library_search`, `filter_apply`, `resource_impression`, `resource_click`, `cta_substack_click`. Parameters, triggers and business purpose are in `docs/tracking-plan.md`. Notable design choices:
-
-- `resource_impression` gives the denominator for click-through rate by resource and by list position.
-- `position` is the fixed catalogue rank; `list_position` is the rank in the list actually shown after search and filters.
-- `library_search` records the term and `result_count`, so searches with zero results (unmet demand) are visible.
-
-### Tags and consolidation
-
-| Site | Tags loaded | Managed in GTM |
-|---|---|---|
-| Learning Library | GTM container, Google tag (GA4), 6 GA4 event tags | Yes. No tag is hard-coded in the page except the GTM snippet |
-| Substack | GTM container, Google tag (GA4), 10+ GA4 event tags | Yes for everything the owner controls |
-
-Other tags detected on Substack pages that the owner does not manage: a Google Ads tag (`AW-…`) and a second GA4 tag (`G-…`) different from the owner's property. Their origin (Substack platform or a legacy setting) was not confirmed and is left unchanged.
-
-### Supporting setup
-
-- GA4 → BigQuery daily export enabled on both properties (event data only; no streaming, no user export). It starts from the link date and cannot backfill.
-- Enhanced measurement on the library: page views (without history-based page changes, because filters and search rewrite the URL), scrolls. Outbound clicks, site search, form interactions, video and file downloads are off so they do not duplicate the custom events.
-- Custom dimensions registered in both properties for the parameters above; `result_count` is a custom metric.
-- Search Console: both properties verified through the GTM container (no meta tag; Substack does not need a custom domain for this).
-
-## 5. Validation status
-
-| Item | Status |
-|---|---|
-| Library GTM Preview: tags fire with parameters | Verified for `category_click` and `resource_click` |
-| Library GA4 Realtime | Verified: `page_view`, `filter_apply`, `resource_click`, `category_click`, `cta_substack_click`. `library_search` to be confirmed in GA4 |
-| Substack Preview: `sign_up` reaches the tag and fires | Verified (Tags Fired) |
-| Substack Preview: `subscribe_click`, scroll, timer, popup tags | To be validated after publishing and checked in Realtime |
-| `resource_impression` and `list_position` | Tested locally; to be validated in Preview after the GTM update is imported |
-| Key events marked | Pending (events must first appear in GA4, about 24 hours) |
-
-Validation method: GTM Preview and Tag Assistant for tag firing and parameter values; GA4 Realtime and DebugView for delivery; BigQuery export for final record-level checks.
-
-## 6. Limits of this audit
-
-- Numbers come from one day of screenshots, not a full series; the baseline for the direct/none share must be captured before UTM-tagged links start to circulate.
-- The Substack constraint description reflects the platform as observed on the audit date and can change.
-- Subscribers cannot be tied to individual visits: attribution is by day and by source, never by person.
+- The two properties share no user id, so the sites are linked by campaign name, never by person.
+- Email opens and reading inside the Substack app are not measured by GA4.
+- Ad blockers and the lack of a consent banner mean counts are a lower bound.
+- Substack's own statistics (subscribers by source and post) stay the source of truth for subscriber counts; GA4 is used for behaviour.
