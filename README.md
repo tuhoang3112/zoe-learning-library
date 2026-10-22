@@ -38,7 +38,7 @@ Reader ─► Learning Library / Substack ─► Data Layer ─► GTM ─► GA
 `sign_up` forwarded to GA4, Subscribe clicks by placement (header, popup, in-post, footer, home), popup views and dismissals, scroll depth (25/50/75/90%) and read time (30/60/120 s) on posts.
 
 **2. Learning Library (own code): full tracking plan.**
-A static site (HTML, CSS, vanilla JS, JSON) listing 53 courses, datasets and resources, with search and filters. Every interaction is pushed to the Data Layer with structured parameters (type, topic, level, free/paid, provider, catalogue position, position in the list shown):
+A static site (HTML, CSS, vanilla JS, JSON) listing 55 courses, datasets and resources, with search and filters. Every interaction is pushed to the Data Layer with structured parameters (type, topic, level, free/paid, provider, catalogue position, position in the list shown):
 
 | Event | Question it serves |
 |---|---|

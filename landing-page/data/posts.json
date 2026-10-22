@@ -1,0 +1,23 @@
+[
+  {
+    "id": "claude-features",
+    "title": "Những tính năng của Claude mà mình ước mình biết sớm hơn",
+    "description": "Mặc dù đã chuyển qua dùng thêm Claude một thời gian rồi, thú thực ra mình chưa từng nghiêm túc trong việc tận dụng công cụ này cho đến dạo gần đây mình mới được khai sáng những tính năng siêu hay ho của Claude, mình test thấy khá wow nên muốn share lại cho bạn.",
+    "url": "https://zoedatalens.substack.com/p/tinh-nang-claude",
+    "image": "https://substackcdn.com/image/fetch/$s_!o35R!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f91c9d2-f77b-4f9a-a444-8d9b1b2bb4d6_1043x466.png"
+  },
+  {
+    "id": "input-black-box-output",
+    "title": "Input → Black Box → Output: tư duy “xương sống” giúp bạn làm việc với AI hiệu quả",
+    "description": "Mindset không chỉ giúp bạn biết cách giao tiếp, đặt câu hỏi, và training AI đúng hướng, mà còn reflex cách tư duy và làm việc mỗi ngày ^^",
+    "url": "https://zoedatalens.substack.com/p/input-blackbox-output",
+    "image": "https://substackcdn.com/image/fetch/$s_!mJ_M!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4af42aeb-6876-4be6-bc65-2751cd9a0f7c_735x500.jpeg"
+  },
+  {
+    "id": "google-analytics-dashboard",
+    "title": "Mình đã build Google Analytics Dashboard để giúp team Marketing theo dõi performance website thế nào?",
+    "description": "Khám phá cách mình giúp team Marketing dễ dàng theo dõi các chỉ số quan trọng như traffic, tỷ lệ tương tác, và hiệu suất website để tối ưu hóa chiến lược marketing.",
+    "url": "https://zoedatalens.substack.com/p/build-google-analytics-dashboard",
+    "image": "https://substackcdn.com/image/fetch/$s_!cJAu!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F15682f87-cb12-4bf7-8186-058f23fb74f0_1600x989.png"
+  }
+]

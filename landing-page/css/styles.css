@@ -153,16 +153,15 @@
 
   .category-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
   }
 
   .category{
     background:#fff;
     border:1px solid var(--line);
-    border-radius:18px;
-    padding:28px;
-    min-height:190px;
+    border-radius:16px;
+    padding:20px 22px;
     transition:.18s ease;
   }
 
@@ -173,9 +172,9 @@
   }
 
   .category h3{
-    font-size:19px;
+    font-size:18px;
     letter-spacing:-.025em;
-    margin:0 0 9px;
+    margin:0 0 6px;
   }
 
   .category p{
@@ -187,7 +186,7 @@
 
   .category-link{
     display:inline-block;
-    margin-top:20px;
+    margin-top:12px;
     color:var(--blue-dark);
     font-size:13px;
     font-weight:800;
@@ -386,6 +385,7 @@
 
   @media(max-width:900px){
     .library{grid-template-columns:repeat(2,1fr)}
+    .category-grid{grid-template-columns:repeat(2,1fr)}
   }
 
   @media(max-width:650px){
@@ -532,3 +532,68 @@
   .item p.desc strong{color:var(--ink)}
 
   .cta-sub{margin:6px 0 0;color:#475467;font-size:14px;line-height:1.55;max-width:520px}
+
+  /* ---------- Tools made by Zoe (highlight band) ---------- */
+  #tools{padding-top:10px}
+  .tools-band{
+    background:linear-gradient(135deg,#1D2B53 0%,#3E4C8A 100%);
+    border-radius:24px;padding:32px;color:#fff;
+  }
+  .tools-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:20px;flex-wrap:wrap;margin-bottom:24px;
+  }
+  .tools-eyebrow{color:#BAD2FF}
+  .tools-title{color:#fff;margin:6px 0}
+  .tools-sub{margin:0;color:#D6E2FF;font-size:15px;line-height:1.5}
+  .btn.tools-cta{background:#fff;color:#1D2B53}
+  .btn.tools-cta:hover{background:#E4ECFF}
+  .tools-strip{
+    display:grid;gap:16px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  }
+  .tool{
+    background:#fff;color:#111827;border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;transition:.18s ease;
+  }
+  .tool:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.25)}
+  .tool-cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+  .tool-cover-default{
+    display:flex;align-items:flex-end;padding:10px 14px;
+    color:#fff;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    text-shadow:0 1px 2px rgba(0,0,0,.25);
+  }
+  .tool-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .tool-name{
+    font-weight:800;font-size:15px;line-height:1.35;letter-spacing:-.01em;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .tool-link{margin-top:auto;padding-top:6px;font-weight:800;font-size:13px;color:#5D79A8}
+  @media(max-width:700px){
+    .tools-band{padding:22px 18px;border-radius:18px}
+  }
+
+  /* ---------- Popular posts from my blog ---------- */
+  .posts{margin-top:44px}
+  .posts-title{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:22px;letter-spacing:-.03em;margin:0 0 16px;
+  }
+  .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .post{
+    background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;transition:.18s ease;
+  }
+  .post:hover{transform:translateY(-2px);border-color:#D8E5FF;box-shadow:0 12px 28px rgba(16,24,40,.06)}
+  .post-cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#F2F6FF}
+  .post-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .post-name{
+    font-weight:800;font-size:16px;line-height:1.4;letter-spacing:-.015em;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .post-desc{
+    margin:0;color:#667085;font-size:13px;line-height:1.55;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .post-link{margin-top:auto;padding-top:4px;font-weight:800;font-size:13px;color:var(--blue-dark)}
+  @media(max-width:900px){.posts-grid{grid-template-columns:1fr}}

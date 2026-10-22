@@ -12,6 +12,9 @@
     search: document.getElementById("search"),
     searchForm: document.getElementById("searchForm"),
     categories: document.getElementById("categoryGrid"),
+    tools: document.getElementById("tools"),
+    toolsStrip: document.getElementById("toolsStrip"),
+    toolsShop: document.getElementById("toolsShop"),
     selects: {
       topic: document.getElementById("topicFilter"),
       type: document.getElementById("typeFilter"),
@@ -48,7 +51,107 @@
     a.addEventListener("auxclick", function () { onResourceOpen(r, listPos); });
   }
 
+  /* "12 resources" under each topic (counts resources listed under it, including secondary topics). */
+  function renderCategoryCounts(list) {
+    cfg.TOPICS.forEach(function (t) {
+      var n = list.filter(function (r) { return resourceTopics(r).indexOf(t.name) !== -1; }).length;
+      if (categoryLinks[t.name]) categoryLinks[t.name].textContent = "Browse " + n + (n === 1 ? " resource" : " resources") + " ↓";
+    });
+  }
+
+  /* ---------- tools made by Zoe ---------- */
+
+  /* Banner = Zoe's own paid products marked "featured": true in resources.json.
+     They are shown here AND stay in the library list below (filter Type = Tools & Templates). */
+  function isTool(r) {
+    return r.featured === true && r.provider === "Zoe" && r.access === "Paid" && r.type === "Tools & Templates";
+  }
+
+  /* Card name without the long subtitle: "Name | extra", "Name: extra", "Name (extra)". */
+  function shortTitle(t) {
+    return t.split(" | ")[0].replace(/:.*$/, "").replace(/\s*\(.*\)\s*$/, "").trim();
+  }
+
+  function toolCoverDefault(r) {
+    var g = COVER_GRADIENTS[r.topic] || ["#E4E7EC", "#667085"];
+    var d = h("div", "tool-cover tool-cover-default", r.topic);
+    d.setAttribute("aria-hidden", "true");
+    d.style.background = "linear-gradient(135deg," + g[0] + "," + g[1] + ")";
+    return d;
+  }
+
+  function toolCover(r) {
+    if (r.image) {
+      var img = h("img", "tool-cover");
+      img.src = r.image;
+      img.alt = r.title;
+      img.loading = "lazy";
+      img.referrerPolicy = "no-referrer";
+      img.addEventListener("error", function () {
+        if (img.parentNode) img.parentNode.replaceChild(toolCoverDefault(r), img);
+      });
+      return img;
+    }
+    return toolCoverDefault(r);
+  }
+
+  function renderTools(list) {
+    if (!list.length) return;
+    list.slice().sort(function (a, b) {
+      return (b.date_added || "").localeCompare(a.date_added || "") || b.position - a.position;
+    }).forEach(function (r) {
+      var a = h("a", "tool");
+      a.href = withBmcUtm(r.url, "tools-banner", r.id);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.appendChild(toolCover(r));
+      var body = h("div", "tool-body");
+      body.appendChild(h("div", "tool-name", shortTitle(r.title)));
+      body.appendChild(h("span", "tool-link", "View product ↗"));
+      a.appendChild(body);
+      a.addEventListener("click", function () { trackToolClick(r); });
+      a.addEventListener("auxclick", function () { trackToolClick(r); });
+      els.toolsStrip.appendChild(a);
+    });
+    els.toolsShop.href = withBmcUtm(els.toolsShop.href, "tools-banner", "shop-button");
+    els.toolsShop.addEventListener("click", trackToolsShopClick);
+    els.toolsShop.addEventListener("auxclick", trackToolsShopClick);
+    els.tools.hidden = false;
+  }
+
+  /* ---------- newsletter posts ---------- */
+
+  function renderPosts(list) {
+    var grid = document.getElementById("postsGrid");
+    if (!grid || !list.length) return;
+    list.forEach(function (p) {
+      var a = h("a", "post");
+      a.href = withSubstackUtm(p.url, "blog_card", p.id);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("data-cta-location", "blog_card"); // counted by the Substack CTA click handler
+      if (p.image) {
+        var img = h("img", "post-cover");
+        img.src = p.image;
+        img.alt = p.title;
+        img.loading = "lazy";
+        img.referrerPolicy = "no-referrer";
+        img.addEventListener("error", function () { img.remove(); });
+        a.appendChild(img);
+      }
+      var body = h("div", "post-body");
+      body.appendChild(h("div", "post-name", p.title));
+      body.appendChild(h("p", "post-desc", p.description));
+      body.appendChild(h("span", "post-link", "Read on Substack ↗"));
+      a.appendChild(body);
+      grid.appendChild(a);
+    });
+    document.getElementById("posts").hidden = false;
+  }
+
   /* ---------- rendering ---------- */
+
+  var categoryLinks = {}; // topic name -> the "N resources" label, filled in once the data is loaded
 
   function renderCategories() {
     cfg.TOPICS.forEach(function (t) {
@@ -56,7 +159,9 @@
       a.href = "?topic=" + encodeURIComponent(t.name) + "#library";
       a.appendChild(h("h3", null, t.name));
       a.appendChild(h("p", null, t.blurb));
-      a.appendChild(h("span", "category-link", "Explore resources"));
+      var label = h("span", "category-link", "Browse resources ↓");
+      categoryLinks[t.name] = label;
+      a.appendChild(label);
       a.addEventListener("click", function (e) {
         e.preventDefault();
         onCategoryClick(t.name);
@@ -285,10 +390,18 @@
       submitSearch();
     });
 
+    fetch("data/posts.json")
+      .then(function (res) { return res.json(); })
+      .then(renderPosts)
+      .catch(function () { /* the section simply stays hidden */ });
+
     fetch("data/resources.json")
       .then(function (res) { return res.json(); })
       .then(function (data) {
-        resources = data.slice().sort(function (a, b) { return a.position - b.position; });
+        var all = data.slice().sort(function (a, b) { return a.position - b.position; });
+        renderCategoryCounts(all);
+        renderTools(all.filter(isTool));
+        resources = all;
         render();
         lastFilterKey = filterKey(); // initial/URL state is not a user action
         lastSearchTerm = state.q.toLowerCase() || null;

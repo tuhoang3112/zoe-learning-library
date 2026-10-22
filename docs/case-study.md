@@ -26,7 +26,7 @@ Substack's statistics remain the source of truth for the outcome (subscribers by
 Forward the sign-up event to analytics; measure Subscribe clicks by where they happen (menu, pop-up, inside the post, footer, home page); measure how far people scroll and how long they stay on a post.
 
 **4. Build a site I fully control to collect richer data.**
-A curated learning library (53 courses, datasets and resources) with search and filters. Every action a visitor takes is recorded with structured details: topic, level, free or paid, position in the list, and what was searched, including searches that returned nothing (unmet demand). The library also sends visitors to the newsletter, which is its main goal.
+A curated learning library (55 courses, datasets and resources) with search and filters. Every action a visitor takes is recorded with structured details: topic, level, free or paid, position in the list, and what was searched, including searches that returned nothing (unmet demand). The library also sends visitors to the newsletter, which is its main goal.
 
 **5. Make traffic sources readable.**
 A naming convention for the tracking tags on every link I publish (LinkedIn, Facebook, email, and links between my own sites), with a builder tool so it stays consistent. The effect is measured by comparing the share of source-less traffic before and after.

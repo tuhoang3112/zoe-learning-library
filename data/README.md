@@ -12,7 +12,7 @@
 | Google Search Console (both sites) | Queries, impressions, clicks, position | grows over time | site verified 2026-09 |
 | Substack's own analytics ([details](../docs/substack-analytics.md)) | New subscribers by source, views, users and free subscribers by source, free subscribers per post, audience location | Under 2K subscribers (free only; paid features unused); a few hundred new in the last 90 days | Windows of 30–90 days; free retention only from 2026-01-01, so snapshots are saved on a schedule |
 | Audience survey (Google Forms) | Stated interests, goals, formats ([design](../docs/survey-design.md)) | *not launched* | — |
-| `landing-page/data/resources.json` | The catalogue shown on the Learning Library: 53 items with type, topic, level, free/paid, provider, description, link | 53 rows | in this repo (public, curated by hand) |
+| `landing-page/data/resources.json` | The catalogue shown on the Learning Library: 55 items with type, topic, level, free/paid, provider, description, link | 55 rows | in this repo (public, curated by hand) |
 
 ## Reproducing the analysis
 

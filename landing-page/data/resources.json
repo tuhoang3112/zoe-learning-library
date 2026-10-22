@@ -262,7 +262,7 @@
       "AI"
     ],
     "position": 13,
-    "featured": false,
+    "featured": true,
     "date_added": "2026-09-20",
     "secondary_topics": [
       "AI Agents & Automation"
@@ -458,7 +458,7 @@
     "position": 22,
     "featured": false,
     "date_added": "2026-09-20",
-    "image": "assets/images/covers/ebook-ecommerce-kpis.svg"
+    "image": "assets/images/covers/ebook-ecommerce-kpis.jpg"
   },
   {
     "id": "ebook-inbound-marketing-metrics",
@@ -499,7 +499,7 @@
     "position": 24,
     "featured": false,
     "date_added": "2026-09-20",
-    "image": "assets/images/covers/tm-data-visualization-excel.svg"
+    "image": "assets/images/covers/tm-data-visualization-excel.jpg"
   },
   {
     "id": "tm-generative-agentic-ai",
@@ -625,7 +625,7 @@
       "AI"
     ],
     "position": 30,
-    "featured": false,
+    "featured": true,
     "date_added": "2026-09-20",
     "secondary_topics": [
       "Marketing & Growth"
@@ -864,7 +864,7 @@
     "position": 41,
     "featured": false,
     "date_added": "2026-09-20",
-    "image": "assets/images/covers/excel-dashboard-templates.svg"
+    "image": "assets/images/covers/excel-dashboard-templates.jpg"
   },
   {
     "id": "powerbi-dashboard-templates",
@@ -883,7 +883,7 @@
     "position": 42,
     "featured": false,
     "date_added": "2026-09-20",
-    "image": "assets/images/covers/powerbi-dashboard-templates.svg"
+    "image": "assets/images/covers/powerbi-dashboard-templates.jpg"
   },
   {
     "id": "data-ebooks",
@@ -904,7 +904,7 @@
     "position": 43,
     "featured": false,
     "date_added": "2026-09-20",
-    "image": "assets/images/covers/data-ebooks.svg"
+    "image": "assets/images/covers/data-ebooks.jpg"
   },
   {
     "id": "youtube-channels-data",
@@ -1011,7 +1011,7 @@
     "position": 48,
     "featured": false,
     "date_added": "2026-10-01",
-    "image": "assets/images/covers/zoe-tochonggiaima-youtube.svg"
+    "image": "assets/images/covers/zoe-tochonggiaima-youtube.jpg"
   },
   {
     "id": "zoe-short-video-explainer-kit",
@@ -1054,7 +1054,7 @@
       "Content Creation"
     ],
     "position": 50,
-    "featured": false,
+    "featured": true,
     "date_added": "2026-10-22",
     "secondary_topics": [
       "AI Agents & Automation"
@@ -1103,7 +1103,7 @@
       "Google Sheets"
     ],
     "position": 52,
-    "featured": false,
+    "featured": true,
     "date_added": "2026-10-22",
     "image": "https://img.buymeacoffee.com/api/?extras=dXJsPSZjcmVhdG9yPVpvZSZkZXNpZ25fY29kZT0yJmRlc2lnbl9jb2xvcj0lMjM1ZjdmZmYmc2x1Zz16b2VkYXRhbGVuc2FpJmlzX2NyZWF0aW5nPVNoYXJpbmclMjBNeSUyMEpvdXJuZXklMjAlMjYlMjBIZWxwaW5nJTIwTWFya2V0ZXJzJTIwQXBwbHklMjBEYXRhJTIwJTI2JTIwQUklMjB0byUyMFNvbHZlJTIwQnVzaW5lJmV4dHJhc190aXRsZT1SR2xuYVhSaGJDQlFjbTlrZFdOMElGTmhiR1Z6SUVGMWRHOXRZWFJwYjI0Z0tFOXlaR1Z5TENCUVlYbHRaVzUwSUVOb1pXTnJJQ1lnUVhWMGJ5QkVaV3hwZG1WeWVTa2dmQ0J1T0c0Z0t5QkhiMjluYkdVZ1UyaGxaWFElM0QmZXh0cmFzX2ltYWdlPWFIUjBjSE02THk5alpHNHVZblY1YldWaFkyOW1abVZsTG1OdmJTOTFjR3h2WVdSekwzSmxkMkZ5WkhNdk1qQXlOaTB4TUMweU1pOHhMekEzTkRnMU9WOXJhR0ZqYUdoaGJtZGthV1Z1TXpJd01qWXdOekkzTVRFeU9UTXdhVEo1TTNBdVoybG1RRE13TUhkZk1HVXVhbkJu"
   },
@@ -1151,5 +1151,46 @@
     "featured": false,
     "date_added": "2026-10-22",
     "image": "https://img.buymeacoffee.com/api/?extras=dXJsPSZjcmVhdG9yPVpvZSZkZXNpZ25fY29kZT0yJmRlc2lnbl9jb2xvcj0lMjM1ZjdmZmYmc2x1Zz16b2VkYXRhbGVuc2FpJmlzX2NyZWF0aW5nPVNoYXJpbmclMjBNeSUyMEpvdXJuZXklMjAlMjYlMjBIZWxwaW5nJTIwTWFya2V0ZXJzJTIwQXBwbHklMjBEYXRhJTIwJTI2JTIwQUklMjB0byUyMFNvbHZlJTIwQnVzaW5lJmV4dHJhc190aXRsZT1RWFYwYnlCU1pXZHBjM1J5WVhScGIyNGdKaUJWYm1seGRXVWdTVVFnUjJWdVpYSmhkRzl5SUh3Z2JqaHVJQ3NnUjI5dloyeGxJRk5vWldWMCZleHRyYXNfaW1hZ2U9YUhSMGNITTZMeTlqWkc0dVluVjViV1ZoWTI5bVptVmxMbU52YlM5MWNHeHZZV1J6TDNKbGQyRnlaSE12TWpBeU5pMHhNQzB5TWk4eEx6QTNNREUxTWw5cGJXRm5aVjh6TG1wd1owQXpNREIzWHpCbExtcHdadyUzRCUzRA=="
+  },
+  {
+    "id": "hieu-tv-hanh-trinh-tu-do-tai-chinh",
+    "title": "Hành trình tự do tài chính",
+    "type": "Resource",
+    "topic": "Personal Finance & Investing",
+    "level": "Beginner",
+    "access": "Free",
+    "provider": "Hieu Nguyen",
+    "description": "Playlist YouTube miễn phí của kênh Hieu Nguyen về hành trình tự do tài chính, chia theo từng phần để xem lần lượt.",
+    "url": "https://www.youtube.com/playlist?list=PL1bLXQ3Ow2laRk3IFEqbDLM_l6YHNPp8W",
+    "tags": [
+      "Personal Finance",
+      "Financial Freedom",
+      "YouTube"
+    ],
+    "position": 55,
+    "featured": false,
+    "date_added": "2026-10-22",
+    "image": "https://i.ytimg.com/vi/HOPMqOCZ0jI/hqdefault.jpg"
+  },
+  {
+    "id": "happy-live-invest-lo-trinh-sach-dau-tu",
+    "title": "Lộ trình đọc sách đầu tư chứng khoán",
+    "type": "Resource",
+    "topic": "Personal Finance & Investing",
+    "level": "Beginner",
+    "access": "Free",
+    "provider": "Happy Live Invest",
+    "description": "Danh sách sách và video đầu tư chứng khoán theo lộ trình 3 giai đoạn (20 mục): tổng quan thị trường và tư duy đầu tư, các phương pháp và công cụ, rồi nguyên tắc nâng cao. Mỗi mục ghi rõ sách cần đọc và video đi kèm.",
+    "url": "https://docs.google.com/document/d/1F13A81hthi7w1qwSzTBv3pOtpnTtBebuTt4XkyhlHKA/edit?tab=t.0",
+    "tags": [
+      "Stock Market",
+      "Investing",
+      "Reading List",
+      "Books"
+    ],
+    "position": 56,
+    "featured": false,
+    "date_added": "2026-10-22",
+    "image": "assets/images/covers/happy-live-invest-lo-trinh-sach-dau-tu.jpg"
   }
 ]

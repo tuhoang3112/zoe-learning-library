@@ -65,7 +65,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Zoe’s Learning Library resources",
-  "numberOfItems": 53,
+  "numberOfItems": 55,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -384,6 +384,18 @@
       "position": 53,
       "name": "Auto Registration & Unique ID Generator | n8n + Google Sheet",
       "url": "https://buymeacoffee.com/zoedatalensai/e/589934"
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "name": "Hành trình tự do tài chính",
+      "url": "https://www.youtube.com/playlist?list=PL1bLXQ3Ow2laRk3IFEqbDLM_l6YHNPp8W"
+    },
+    {
+      "@type": "ListItem",
+      "position": 55,
+      "name": "Lộ trình đọc sách đầu tư chứng khoán",
+      "url": "https://docs.google.com/document/d/1F13A81hthi7w1qwSzTBv3pOtpnTtBebuTt4XkyhlHKA/edit?tab=t.0"
     }
   ]
 }
@@ -412,7 +424,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="brand" href="https://zoedatalens.substack.com/" target="_blank" rel="noopener noreferrer" data-cta-location="header"><img class="brand-logo-full" src="assets/images/logo.jpg" alt="Zoe’s Data &amp; AI Lens" width="207" height="207"></a>
     <nav class="navlinks" aria-label="Main">
       <a href="#learning">What I’ve been learning</a>
-      <a href="#library">My library</a>
+      <a href="#tools">Tools by Zoe</a>
+      <a href="#library">Resources</a>
+      <a href="https://zoedatalens.substack.com/about" target="_blank" rel="noopener noreferrer" data-cta-location="about_link">About Zoe ↗</a>
     </nav>
   </div>
 </header>
@@ -446,13 +460,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <section id="tools" aria-labelledby="tools-title" hidden>
+    <div class="wrap">
+      <div class="tools-band">
+        <div class="tools-head">
+          <div>
+            <div class="eyebrow tools-eyebrow">Made by Zoe</div>
+            <h2 class="section-title tools-title" id="tools-title">Tools made by Zoe</h2>
+            <p class="tools-sub">Templates, workflows and kits I built and use myself.</p>
+          </div>
+          <a class="btn tools-cta" id="toolsShop" href="https://buymeacoffee.com/zoedatalensai/extras" target="_blank" rel="noopener noreferrer">Visit the shop →</a>
+        </div>
+        <div class="tools-strip" id="toolsStrip"></div>
+      </div>
+    </div>
+  </section>
+
   <section id="library" aria-labelledby="library-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 class="section-title" id="library-title">My Library</h2>
+        <h2 class="section-title" id="library-title">Recommended resources</h2>
       </div>
 
-      <div class="note">This library will keep growing as I learn. Some resources are things I’ve worked through, while others are resources I want to explore later.</div>
+      <div class="note">Courses, ebooks and resources I recommend. This library will keep growing as I learn: some are things I’ve worked through, others I want to explore later.</div>
 
       <div class="toolbar">
         <div class="filters">
@@ -480,12 +510,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="empty" id="empty">No resources found.</div>
       <div class="see-more-wrap"><button type="button" class="see-more" id="seeMore">See more</button></div>
 
+      <div class="posts" id="posts" hidden>
+        <h3 class="posts-title">Popular posts from my blog</h3>
+        <div class="posts-grid" id="postsGrid"></div>
+      </div>
+
       <div class="cta">
         <div>
           <div class="cta-title">Found something useful?</div>
           <p class="cta-sub">I share what I’m learning and building with Data &amp; AI, straight from my own experiments.</p>
         </div>
-        <a class="btn" href="https://zoedatalens.substack.com/" target="_blank" rel="noopener noreferrer" data-cta-location="banner">Explore Zoe’s Data &amp; AI Lens →</a>
+        <a class="btn" href="https://zoedatalens.substack.com/" target="_blank" rel="noopener noreferrer" data-cta-location="banner">Explore Zoe’s Data &amp; AI Lens on Substack →</a>
       </div>
     </div>
   </section>
@@ -503,6 +538,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
       <a class="social-icon" href="https://zoedatalens.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Substack" data-cta-location="footer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M0 3.527h23.995v2.795H0V3.527zM0 8.848h23.995v2.795H0V8.848zM0 14.169v8.303L11.997 16.6 24 22.472v-8.303H0z"/></svg>
+      </a>
+      <a class="social-icon" href="https://buymeacoffee.com/zoedatalensai" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee" title="Buy me a coffee" data-bmc-campaign="footer" data-bmc-content="donate-button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9h13v5.5A4.5 4.5 0 0 1 12.5 19h-4A4.5 4.5 0 0 1 4 14.5V9z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M17 10.5h1a2.5 2.5 0 0 1 0 5h-1"/><path fill="currentColor" d="M3 20.5h15V22H3z"/></svg>
       </a>
     </div>
   </div>

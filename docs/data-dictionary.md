@@ -17,7 +17,7 @@
 | `position` | integer (1-based, unique) | yes | `4` — display order, used for position-bias analysis |
 | `image` | string (https URL) | no | Cover image shown on the card, hotlinked from the source page (its `og:image`). If missing or it fails to load, the card shows a gradient banner for the topic |
 | `secondary_topics` | string[] | no | `["Marketing & Growth"]` — extra topics the resource is also listed under (topic filter, category shortcuts, search). Events still report only the primary `topic` |
-| `featured` | boolean | no | `false` |
+| `featured` | boolean | no | `false`. For Zoe's paid products (provider Zoe, access Paid, type Tools & Templates), `true` shows the product in the "Tools made by Zoe" banner as well as in the library list |
 | `image` | string | no | path under `landing-page/assets/images/` |
 | `date_added`, `last_updated` | string (YYYY-MM-DD) | no | `2026-09-20` |
 

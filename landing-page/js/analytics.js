@@ -30,6 +30,15 @@ function trackResourceImpression(resource, listPosition, resultCount) {
   ));
 }
 
+/* Click on a product in the "Tools made by Zoe" section (not part of the library list, so no list_position). */
+function trackToolClick(resource) {
+  pushDataLayer(Object.assign({ event: "tool_banner_click" }, resourceParams(resource)));
+}
+
+function trackToolsShopClick() {
+  pushDataLayer({ event: "tool_banner_click", resource_id: "shop", resource_name: "Visit the shop" });
+}
+
 function trackCategoryClick(categoryName) {
   pushDataLayer({ event: "category_click", category_name: categoryName });
 }
@@ -86,6 +95,18 @@ function withBmcUtm(url, campaign, content) {
 /* Static Substack CTAs: utm_campaign = their data-cta-location. */
 document.querySelectorAll("a[data-cta-location]").forEach(function (a) {
   a.href = withSubstackUtm(a.href, a.getAttribute("data-cta-location"));
+});
+
+/* Buy Me a Coffee CTA (the donate button in the footer, a static link): UTM from its data attributes, click counted as cta_buymeacoffee_click. */
+function trackBuymeacoffeeClick(location) {
+  pushDataLayer({ event: "cta_buymeacoffee_click", cta_location: location });
+}
+
+document.querySelectorAll("a[data-bmc-campaign]").forEach(function (a) {
+  a.href = withBmcUtm(a.href, a.getAttribute("data-bmc-campaign"), a.getAttribute("data-bmc-content"));
+  var onClick = function () { trackBuymeacoffeeClick(a.getAttribute("data-bmc-campaign")); };
+  a.addEventListener("click", onClick);
+  a.addEventListener("auxclick", onClick);
 });
 
 /* Any element with data-cta-location is a Substack CTA. */
