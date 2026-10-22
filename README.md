@@ -17,6 +17,8 @@ flowchart LR
 
 **The site being measured:** <https://tuhoang3112.github.io/zoe-learning-library/> (Zoe's Learning Library, a curated library of courses, ebooks, tools and templates for data, marketing and AI).
 
+<p align="center"><img src="docs/images/site-live.webp" alt="Zoe's Learning Library, the site being measured" width="460"></p>
+
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
 > **Status: phase 1 of 2.** Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management and UTM rules. Phase 2 is the **analysis** on the data these systems collect (funnels, content and source performance, SEO and AI-search visibility, audience survey). Tracking went live on the Library on 2026-09-20 and on Substack on 2026-10-22, so phase 2 starts once enough data has accumulated.
@@ -112,6 +114,7 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 ├── scripts/              # build-seo.mjs: sitemap, canonical, structured data
 ├── .github/workflows/    # deploy.yml: GitHub Pages deploy on push to main
 └── docs/
+    ├── images/           # screenshots used in the README
     ├── baseline.md       # GA4 baseline before the Substack fix
     ├── tracking-audit.md # what the audit found and what was fixed
     ├── tracking-plan.md  # Library events: when they fire, what they measure
