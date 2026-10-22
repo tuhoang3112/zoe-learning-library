@@ -107,7 +107,7 @@ Direct and Unassigned are two opaque buckets, together over a quarter of session
 | Issue | Effect on the data | Handling |
 |---|---|---|
 | No key event marked, `sign_up` not forwarded | Conversions invisible: reports show 0 although people subscribe | `sign_up` tag added in GTM; mark `sign_up` as key event |
-| Traffic without UTM from apps and emails | Clicks from LinkedIn/Facebook apps, newsletter emails and the Substack app arrive without a referrer and land in `(direct) / (none)`, which is inflated | UTM convention for every link published (see `utm-tracking-rules.md`); compare the direct/none share before and after |
+| Traffic without UTM from apps and emails | Clicks from LinkedIn/Facebook apps, newsletter emails and the Substack app arrive without a referrer and land in `(direct) / (none)`, which is inflated | UTM convention for every link published (see [`utm-rules.md`](utm-rules.md)); compare the direct/none share before and after |
 | Sources set by Substack itself (`activity_item`, `confirmation_email`, `multiple-personal-recommendation-email`, `cover_page`) | Not standard UTM, cannot be renamed | Group them as "Substack internal" in reports instead of treating them as marketing channels |
 | `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25/50/75/90% on post pages |
 | `click` is outbound only | Internal navigation and Subscribe buttons not measured | `subscribe_click` per placement (`header`, `popup`, `inline`, `footer`, `home`) |
