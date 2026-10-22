@@ -6,7 +6,7 @@ One plan per measured property. Every event is sent to GA4 by Google Tag Manager
 |---|---|---|
 | [Substack newsletter](#substack-newsletter) | Google tags and built-in triggers only (the platform blocks custom code) | 6 event types, 12 tags |
 | [Learning Library](#learning-library) | Events pushed to the Data Layer by the site's own code | 8 |
-| [Buy Me a Coffee](#buy-me-a-coffee) | A GA4 data stream connected through the platform's Google Analytics ID field | none (page views and sources only) |
+| [Buy Me a Coffee](#buy-me-a-coffee) | A GA4 data stream connected through the platform's Google Analytics field | none (page views and sources only) |
 | [LinkedIn, YouTube, Facebook](#linkedin-youtube-and-facebook) | UTM on every link | none (no tag possible) |
 
 ## Substack newsletter
@@ -51,13 +51,15 @@ Links the site sends to Substack and Buy Me a Coffee carry UTM parameters, see [
 
 ## Buy Me a Coffee
 
-Buy Me a Coffee runs no tag manager and no custom code, and the only analytics option it offers is a Google Analytics ID field. So there is no event plan here, only a connection:
+Buy Me a Coffee runs no tag manager and no custom code, and the only analytics option it offers is a Google Analytics field. So there is no event plan here, only a connection:
 
 | Step | What was done |
 |---|---|
 | 1. Stream | A web data stream for the shop was created in the Library's GA4 property |
-| 2. Connect | The stream's Measurement ID was pasted into the shop's Google Analytics ID field |
+| 2. Connect | The stream's Measurement ID (`G-...`) was pasted into the **Google Analytics** field in the shop's **Settings** tab, then saved |
 | 3. Result | GA4 receives page views and traffic sources for the shop pages, with no tag in between |
+
+<p align="center"><img src="images/bmc-google-analytics-setting.webp" alt="Buy Me a Coffee settings: the Google Analytics field holds the GA4 Measurement ID" width="520"></p>
 
 | Measured | Not measured |
 |---|---|

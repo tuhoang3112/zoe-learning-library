@@ -30,7 +30,7 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 **Learning Library** (own code, no restriction): 8 events pushed to the Data Layer and sent by Tag Manager: resource impressions and clicks, search, filters, topic clicks, product banner clicks, and clicks toward Substack and Buy Me a Coffee. Details in [`tracking-plan.md`](tracking-plan.md).
 
-**Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field (the only option it offers).
+**Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics field (the only option it offers).
 
 Supporting setup: GA4 data export to BigQuery on both properties, custom dimensions for the event parameters, and Search Console verified on both sites.
 
