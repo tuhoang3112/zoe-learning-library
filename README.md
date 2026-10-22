@@ -6,9 +6,19 @@ A curated learning library (courses, ebooks, tools and templates for data, marke
 
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
-## The problem
+> **Status: phase 1 of 2.** Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management and UTM rules. Phase 2 is the **analysis** on the data these systems collect (funnels, content and source performance, SEO and AI-search visibility, audience survey). Tracking went live on the Library on 2026-09-20 and on Substack on 2026-10-22, so phase 2 starts once enough data has accumulated.
 
-My newsletter on Substack was already measured with Google Analytics, but GA4 showed **0 key events**: what readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Substack already pushes a `sign_up` event, but no tag sent it to GA4. Traffic from apps and emails also arrived without a source, because links carried no UTM.
+## The problem (baseline before the fix)
+
+The ZoeDataLens newsletter on Substack has real traffic (about 18K users and 35K sessions between Jan 2025 and Sep 2026) but GA4 could not say what that traffic achieved:
+
+| Baseline | Value |
+|---|---|
+| Key events in GA4 | **0** |
+| `(direct) / (none)` sessions | **~9.5K**, almost as many as LinkedIn: real sources were hidden |
+| Sources set by Substack itself (`activity_item`, `cover_page`...) | Not UTM-compliant, mixed in with marketing channels |
+
+What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Substack already pushes a `sign_up` event, but no tag sent it to GA4. Traffic from apps and emails arrived without a source because links carried no UTM.
 
 ## What I did
 
@@ -16,7 +26,7 @@ My newsletter on Substack was already measured with Google Analytics, but GA4 sh
 
 **2. A tracking system** (Google Tag Manager and GA4)
 - **Library:** 8 events pushed through the Data Layer, all defined in one file ([`analytics.js`](landing-page/js/analytics.js)): resource impressions and clicks, search, filters, topic clicks, product banner clicks, and clicks toward Substack and Buy Me a Coffee.
-- **Substack:** 12 GA4 event tags built with Google tags and built-in triggers only, because Substack blocks custom code: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth and read time. Conversion tracking went from 0 to a working `sign_up` event.
+- **Substack:** 12 GA4 event tags built with Google tags and built-in triggers only, because Substack blocks custom code: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth and read time. `sign_up` now reaches GA4; marking it as a key event is the next step (see Status below).
 - **Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field.
 - Both Tag Manager containers are exported to [`gtm/`](gtm/) so the repository matches what is live.
 
@@ -61,6 +71,17 @@ To regenerate the sitemap, canonical tags and structured data after changing the
 ## Deployment
 
 Pushing to `main` deploys the `landing-page/` folder with GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)). Changes to the Tag Manager containers are published from Tag Manager itself, not from this repository.
+
+## Status and next steps
+
+| Item | State |
+|---|---|
+| Library tracking (8 events), GTM + GA4 | Live since 2026-09-20 |
+| Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
+| UTM rules and builder | Done, applied to new links |
+| Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
+| Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, numbers will be added here |
+| Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |
 
 ## Limits to keep in mind
 
