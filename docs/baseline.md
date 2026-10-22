@@ -27,19 +27,21 @@ How the ZoeDataLens newsletter looked in GA4 **before** the tracking fix. It is 
 
 ## What GA4 recorded as events
 
-| Event | Count (rounded) | Reading |
-|---|---|---|
-| `page_view` | ~3.1K | |
-| `scroll` | ~580 | Fires only at 90% of the page, so it cannot show where readers drop off |
-| `click` | ~140 | Outbound links only, subscribe buttons are not measured |
-| `form_start` | ~30 | Counts typing in the form, not signing up |
-| `sign_up` | **not present** | Pushed by Substack into the Data Layer but never sent to GA4 |
+At that point **no custom event had been set up**: GA4 only collected its automatic events (page views, enhanced measurement). That is the starting point, not a fault.
+
+| Event | Count (rounded) | What it can tell | What it cannot tell |
+|---|---|---|---|
+| `page_view` | ~3.1K | Which pages were viewed | |
+| `scroll` | ~580 | That someone reached the bottom of a page | Fires once at 90%, so no view of where readers stop |
+| `click` | ~140 | Outbound link clicks | Subscribe buttons and other on-site clicks |
+| `form_start` | ~30 | That someone started typing in a form | Whether they actually signed up |
+| `sign_up` | none | Nothing: not configured yet | Substack pushes it into the Data Layer, but no tag sent it to GA4 |
 
 ## What this baseline shows
 
 - Conversions were invisible: 0 key events while the newsletter was gaining subscribers (Substack's own statistics, outside GA4).
 - About one session in six had no known source.
-- Behaviour events were too coarse to describe reading: one scroll depth, no subscribe-button clicks.
+- With automatic events only, reading behaviour could not be described in detail: one scroll depth, no subscribe-button clicks. Custom events were added in the fix.
 
 These are the gaps the fix in [`tracking-audit.md`](tracking-audit.md) addresses, and the UTM rules in [`utm-rules.md`](utm-rules.md) address the source gap.
 
