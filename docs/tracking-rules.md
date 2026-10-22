@@ -83,11 +83,7 @@ A key event marks an outcome that matters, not an interaction:
 | Substack | `sign_up` | `form_start` (typing an email is not signing up) |
 | Buy Me a Coffee | none until a real conversion signal exists | |
 
-## 5. UTM for Buy Me a Coffee links
-
-Links to `buymeacoffee.com/zoedatalensai` follow the same rules as every other link. The vocabulary, formats and examples live in [`utm-rules.md`](utm-rules.md) (campaign `bmc-shop` for product links placed on Substack and social media, `resource_card` for Library cards).
-
-## 6. Adding a new channel (checklist)
+## 5. Adding a new channel (checklist)
 
 - [ ] Add a row to §1 (role, measured by, source of truth).
 - [ ] Decide what the platform allows: tag manager, GA ID field, or nothing.
@@ -98,7 +94,7 @@ Links to `buymeacoffee.com/zoedatalensai` follow the same rules as every other l
 - [ ] Mark key events (§4) only after the events appear in GA4.
 - [ ] Record the date in the change log below and in the README checklist.
 
-## 7. Release rule for tag containers
+## 6. Release rule for tag containers
 
 1. Change in the workspace, never edit the live version.
 2. Preview on the real site, read **Tags Fired** and **Tags Not Fired**.
@@ -108,7 +104,7 @@ Links to `buymeacoffee.com/zoedatalensai` follow the same rules as every other l
 
 GTM does not load on `localhost`, so local testing never sends data to GA4. To test tracking from a local run on purpose, add `?gtm=on` to the local URL.
 
-## 8. Known gaps
+## 7. Known gaps
 
 - Buy Me a Coffee stream is live (data confirmed in Realtime on 2026-10-22, pages: profile, shop and product pages). It shares the Library property. Reports (and any BigQuery query on the raw export) must filter by data stream or hostname to separate the two sites. If the shop later moves onto the Library site, retire the stream and add purchase events to the tracking plan.
 - Buy Me a Coffee only exposes the GA ID field: no custom events and no purchase data. Revenue comes from the Buy Me a Coffee dashboard.
@@ -116,7 +112,7 @@ GTM does not load on `localhost`, so local testing never sends data to GA4. To t
 - Library `resource_impression` and `list_position` start on 2026-10-22; earlier rows have no position data.
 - `gtm/*.json` exports in this repository must be refreshed to match the live containers.
 
-## 9. Change log
+## 8. Change log
 
 | Date | Change |
 |---|---|
