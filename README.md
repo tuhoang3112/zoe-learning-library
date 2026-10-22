@@ -30,8 +30,6 @@ flowchart LR
 
 <p align="center"><sub>The three properties measured. Substack and Buy Me a Coffee are closed platforms; the Library, a curated collection of courses, ebooks, tools and templates for data, marketing and AI, is the site where I own the code.</sub></p>
 
-*Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
-
 ---
 
 ## The problem
@@ -115,6 +113,8 @@ Each implementation is checked in GTM Preview and the data checked in GA4 report
 ---
 
 ## Skills shown
+
+Solo project: tracking design, front end, tag management and documentation.
 
 Google Tag Manager (triggers, tags, Data Layer, container import and export) · GA4 (events, key events, custom dimensions, data streams) · UTM taxonomy and channel attribution · JavaScript · HTML and CSS · GitHub Pages and Actions · documentation.
 
