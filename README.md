@@ -32,8 +32,6 @@ flowchart LR
 
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
-> **Status: phase 1 of 2.** Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management and UTM rules. Phase 2 is the **analysis** on the data these systems collect (funnels, content and source performance, SEO and AI-search visibility, audience survey). Tracking went live on the Library on 2026-09-20 and on Substack on 2026-10-22, so phase 2 starts once enough data has accumulated.
-
 ---
 
 ## The problem
@@ -50,6 +48,8 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 
 **Goal:** measure conversions and sources on every channel, inside what each platform allows, and define every event once.
 → [Tracking audit and baseline](docs/tracking-audit.md)
+
+> **Status: phase 1 of 2.** Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management and UTM rules. Phase 2 is the **analysis** on the data these systems collect (funnels, content and source performance, SEO and AI-search visibility, audience survey). Tracking went live on the Library on 2026-09-20 and on Substack on 2026-10-22, so phase 2 starts once enough data has accumulated.
 
 ---
 
