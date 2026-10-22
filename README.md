@@ -62,15 +62,6 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 | **Buy Me a Coffee** | A GA4 data stream in the Library property, connected through the shop's Google Analytics field | It is the only analytics option the platform offers | Purchases in GA4 (they are recorded in Buy Me a Coffee's own dashboard) |
 | **LinkedIn, YouTube, Facebook** | One UTM rule set for every link I publish there: `utm_source` (the platform), `utm_medium` (`social` or `video`), `utm_campaign` (the content series) and `utm_content` (where the link sits: caption, bio, description, comment). For example `?utm_source=linkedin&utm_medium=social&utm_campaign=learn-ai-from-0&utm_content=caption-claude-cowork`. Links are built with the [UTM builder](tools/utm-builder.html) following the [rules](docs/utm-rules.md) | I do not control the pages these visitors come from, so no tag can run there and the link is the only thing I own. Without UTM, visits from apps and emails land in `(direct) / (none)`, and free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows. A fixed vocabulary makes one source one row, so GA4 shows which channel and which post brought each visitor | What happens on the platform itself (impressions, reactions, profile views) and anything after the click, which is only seen on the destination site |
 
-**Across all channels**
-- **One tag manager:** Google Tag Manager, one container per site, versioned and exported to [`gtm/`](gtm/). Substack has a GTM ID field.
-- **One file defines the Library's events** ([`analytics.js`](landing-page/js/analytics.js)), so events and parameters stay consistent and GTM needs one trigger and one tag per event rather than one per resource.
-- **UTM with a fixed vocabulary** on every link; links leaving the Library are tagged by code, and a small local tool builds compliant links for the rest.
-- **Subscriber counts come from Substack's own statistics.** The Substack and Library properties share no user id, so GA4 is used for behavior and joined to subscribers only by day.
-- **GA4 exports to BigQuery** on both properties: a free daily export of raw nested data to write SQL on. It starts from the day it is switched on and cannot be back-filled.
-
-The `sign_up` tag is live and fires in GTM Preview; confirming it on a real subscription and marking it as a key event are the next steps (see Status below).
-
 ---
 
 ## Tracking plan
