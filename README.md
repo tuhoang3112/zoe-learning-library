@@ -84,6 +84,8 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 
 ## Tracking plan
 
+<p align="center"><img src="docs/images/site-live-events.webp" alt="Learning Library with each tracked area numbered and mapped to its event" width="760"></p>
+
 The Library's 8 events, with the parameters each carries (resource type, topic, level, access, provider, position in the catalogue and in the list the visitor sees), so reports can answer which topic, level and price range get clicked, and whether a top-ranked item is clicked only because it is first.
 
 → [Tracking plan](docs/tracking-plan.md) (events) · [Data dictionary](docs/data-dictionary.md) (parameters)
