@@ -15,18 +15,18 @@ flowchart LR
     BQ -.-> LS[Looker Studio: phase 2]
 ```
 
-**The site being measured:** <https://tuhoang3112.github.io/zoe-learning-library/> (Zoe's Learning Library, a curated library of courses, ebooks, tools and templates for data, marketing and AI).
+**The three properties measured:** [Zoe's Learning Library](https://tuhoang3112.github.io/zoe-learning-library/) (a site I control: a curated library of courses, ebooks, tools and templates for data, marketing and AI), the [ZoeDataLens newsletter on Substack](https://zoedatalens.substack.com/) and the [Buy Me a Coffee shop](https://buymeacoffee.com/zoedatalensai).
 
 <table>
   <tr>
-    <th align="center">Learning Library</th>
-    <th align="center">Substack newsletter</th>
-    <th align="center">Buy Me a Coffee</th>
+    <th align="center"><a href="https://tuhoang3112.github.io/zoe-learning-library/">Learning Library</a></th>
+    <th align="center"><a href="https://zoedatalens.substack.com/">Substack newsletter</a></th>
+    <th align="center"><a href="https://buymeacoffee.com/zoedatalensai">Buy Me a Coffee</a></th>
   </tr>
   <tr>
-    <td valign="top"><img src="docs/images/site-live.webp" alt="Zoe's Learning Library, the site I control" width="300"></td>
-    <td valign="top"><img src="docs/images/substack-home.webp" alt="ZoeDataLens on Substack" width="300"></td>
-    <td valign="top"><img src="docs/images/bmc-shop.webp" alt="Zoe's Buy Me a Coffee shop" width="300"></td>
+    <td valign="top"><a href="https://tuhoang3112.github.io/zoe-learning-library/"><img src="docs/images/site-live.webp" alt="Zoe's Learning Library, the site I control" width="300"></a></td>
+    <td valign="top"><a href="https://zoedatalens.substack.com/"><img src="docs/images/substack-home.webp" alt="ZoeDataLens on Substack" width="300"></a></td>
+    <td valign="top"><a href="https://buymeacoffee.com/zoedatalensai"><img src="docs/images/bmc-shop.webp" alt="Zoe's Buy Me a Coffee shop" width="300"></a></td>
   </tr>
 </table>
 
