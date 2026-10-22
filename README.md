@@ -10,13 +10,13 @@ A curated learning library (courses, ebooks, tools and templates for data, marke
 
 ## The problem (baseline before the fix)
 
-The ZoeDataLens newsletter on Substack has real traffic (about 18K users and 35K sessions between Jan 2025 and Sep 2026) but GA4 could not say what that traffic achieved:
+The ZoeDataLens newsletter on Substack has real traffic (about 2.2K sessions and 1.2K users in the 28 days before the fix, 23 Aug to 19 Sep 2026) but GA4 could not say what that traffic achieved:
 
-| Baseline | Value |
+| Baseline (28 days before the fix) | Value |
 |---|---|
 | Key events in GA4 | **0** |
-| `(direct) / (none)` sessions | **~9.5K**, almost as many as LinkedIn: real sources were hidden |
-| Sources set by Substack itself (`activity_item`, `cover_page`...) | Not UTM-compliant, mixed in with marketing channels |
+| `(direct) / (none)` share of sessions | **about 17%**, more than LinkedIn (about 14%): real sources were hidden |
+| Sources set by Substack itself (`activity_item`, `confirmation_email`...) | Not UTM-compliant, mixed in with marketing channels |
 
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Substack already pushes a `sign_up` event, but no tag sent it to GA4. Traffic from apps and emails arrived without a source because links carried no UTM.
 
@@ -80,7 +80,7 @@ Pushing to `main` deploys the `landing-page/` folder with GitHub Actions ([`.git
 | Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
 | UTM rules and builder | Done, applied to new links |
 | Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
-| Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, numbers will be added here |
+| Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
 | Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |
 
 ## Limits to keep in mind
