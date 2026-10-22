@@ -63,7 +63,7 @@ Buy Me a Coffee runs no tag manager and no custom code, and the only analytics o
 
 | Measured | Not measured |
 |---|---|
-| Page views, traffic sources (including the UTM links that point to the shop) | Purchases and anything inside the checkout, because the platform exposes nothing beyond the ID field |
+| Page views, traffic sources (including the UTM links that point to the shop) | Purchases and the checkout steps in GA4, because the platform exposes nothing beyond the Google Analytics field. Purchases are recorded in the shop's own Buy Me a Coffee dashboard, just not in GA4 |
 
 Clicks from the Library to the shop are counted on the Library side as `cta_buymeacoffee_click` (donate button) and `tool_banner_click` (product links), and those links carry UTM (`utm_source=learning-library`, `utm_medium=referral`). See [`utm-rules.md`](utm-rules.md).
 
