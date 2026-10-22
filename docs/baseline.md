@@ -35,7 +35,7 @@ At that point Tag Manager was installed with **only the Google tag** (the one th
 | `scroll` | ~580 | That someone reached the bottom of a page | Fires once at 90%, so no view of where readers stop |
 | `click` | ~140 | Outbound link clicks | Subscribe buttons and other on-site clicks |
 | `form_start` | ~30 | That someone started typing in a form | Whether they actually signed up |
-| `sign_up` | none | Nothing: not configured yet | Substack pushes it into the Data Layer, but no tag sent it to GA4 |
+| `sign_up` | none | Nothing: not configured yet | No tag or trigger existed for it, so subscriptions were not recorded |
 
 ## What this baseline shows
 
