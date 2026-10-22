@@ -6,8 +6,8 @@ One plan per measured property. Every event is sent to GA4 by Google Tag Manager
 |---|---|---|
 | [Substack newsletter](#substack-newsletter) | Google tags and built-in triggers only (the platform blocks custom code) | 6 event types, 12 tags |
 | [Learning Library](#learning-library) | Events pushed to the Data Layer by the site's own code | 8 |
-| [Buy Me a Coffee](#buy-me-a-coffee-and-social-links) | GA4 stream through the platform's Google Analytics ID field | none (page views and sources only) |
-| [LinkedIn, YouTube, Facebook](#buy-me-a-coffee-and-social-links) | UTM on every link | none (no tag possible) |
+| [Buy Me a Coffee](#buy-me-a-coffee) | A GA4 data stream connected through the platform's Google Analytics ID field | none (page views and sources only) |
+| [LinkedIn, YouTube, Facebook](#linkedin-youtube-and-facebook) | UTM on every link | none (no tag possible) |
 
 ## Substack newsletter
 
@@ -49,7 +49,22 @@ What the Library measures, when each event fires and why it matters. Every event
 
 Links the site sends to Substack and Buy Me a Coffee carry UTM parameters, see [`utm-rules.md`](utm-rules.md).
 
-## Buy Me a Coffee and social links
+## Buy Me a Coffee
 
-- **Buy Me a Coffee** only exposes a Google Analytics ID field, so it has a GA4 stream in the Library property: page views and sources are measured, purchases are not. Links from the Library to the shop carry UTM and are counted as `cta_buymeacoffee_click`.
-- **LinkedIn, YouTube and Facebook** cannot run a tag, so the only tracking is the source on the link: see [`utm-rules.md`](utm-rules.md).
+Buy Me a Coffee runs no tag manager and no custom code, and the only analytics option it offers is a Google Analytics ID field. So there is no event plan here, only a connection:
+
+| Step | What was done |
+|---|---|
+| 1. Stream | A web data stream for the shop was created in the Library's GA4 property |
+| 2. Connect | The stream's Measurement ID was pasted into the shop's Google Analytics ID field |
+| 3. Result | GA4 receives page views and traffic sources for the shop pages, with no tag in between |
+
+| Measured | Not measured |
+|---|---|
+| Page views, traffic sources (including the UTM links that point to the shop) | Purchases and anything inside the checkout, because the platform exposes nothing beyond the ID field |
+
+Clicks from the Library to the shop are counted on the Library side as `cta_buymeacoffee_click` (donate button) and `tool_banner_click` (product links), and those links carry UTM (`utm_source=learning-library`, `utm_medium=referral`). See [`utm-rules.md`](utm-rules.md).
+
+## LinkedIn, YouTube and Facebook
+
+These channels cannot run a tag, so the only tracking is the source written on each link: see [`utm-rules.md`](utm-rules.md).

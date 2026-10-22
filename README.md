@@ -96,7 +96,9 @@ One plan per measured property, all sent to GA4 through Tag Manager.
 
 Each event carries the parameters of the resource (type, topic, level, access, provider, position in the catalogue and in the list the visitor sees), so reports can answer which topic, level and price range get clicked, and whether a top-ranked item is clicked only because it is first.
 
-**Buy Me a Coffee** has a GA4 stream (page views and sources, no purchases) and **LinkedIn, YouTube and Facebook** are tracked only through UTM, since neither can run a tag.
+**Buy Me a Coffee** (no events, a connection only): a GA4 data stream was created in the Library property and its Measurement ID pasted into the shop's Google Analytics ID field, the only option the platform offers. GA4 receives page views and sources, not purchases.
+
+**LinkedIn, YouTube and Facebook** cannot run a tag, so they are tracked only through the UTM on each link.
 
 → [Tracking plan](docs/tracking-plan.md) (events by property) · [Data dictionary](docs/data-dictionary.md) (parameters)
 
