@@ -7,7 +7,7 @@ What can and cannot be measured on the two sites, and what I did about it. Audit
 GA4 on the newsletter showed **0 key events**. The cause was **configuration, not the platform**:
 
 - Tag Manager was installed with only the default Google tag (page views and GA4's automatic events). No custom event had been designed.
-- Substack already pushes a `sign_up` event into the Data Layer, but no tag forwarded it to GA4, and no event was marked as a key event. So conversions were invisible.
+- No tag, trigger or key event existed for subscriptions, so conversions were invisible. The `sign_up` event was set up in the fix (a Custom Event trigger and a GA4 Event tag); it still has to be confirmed with a real subscription, because so far it has only been tested by pushing the event name from the browser console.
 
 ## What Substack allows
 

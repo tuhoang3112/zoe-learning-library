@@ -48,7 +48,7 @@ The ZoeDataLens newsletter on Substack has real traffic (about 2.2K sessions and
 | `(direct) / (none)` share of sessions | **about 17%**, more than LinkedIn (about 14%): real sources were hidden |
 | Sources set by Substack itself (`activity_item`, `confirmation_email`...) | Not UTM-compliant, mixed in with marketing channels |
 
-What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Substack already pushes a `sign_up` event, but no tag sent it to GA4. Traffic from apps and emails arrived without a source because links carried no UTM.
+What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
 
 **Goal:** measure conversions and sources on every channel, inside what each platform allows, and define every event once.
 → [Baseline](docs/baseline.md)
@@ -80,7 +80,7 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 
 <p align="center"><img src="docs/images/substack-post-events.webp" alt="Substack post page with the Subscribe placements mapped to their events" width="760"></p>
 
-`sign_up` now reaches GA4; marking it as a key event is the next step (see Status below). Links leaving the Library are tagged with UTM by code; a small local tool builds compliant links for everything else.
+The `sign_up` tag is live and fires in GTM Preview; confirming it on a real subscription and marking it as a key event are the next steps (see Status below). Links leaving the Library are tagged with UTM by code; a small local tool builds compliant links for everything else.
 
 ---
 
@@ -100,7 +100,7 @@ Each implementation is checked in GTM Preview and the data checked in GA4 report
 
 <p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
-<p align="center"><sub>GTM Preview (left) on a Substack post (right): the container loads and the Google tag, <code>GA4 Event | sign_up</code>, <code>read_time 120s</code> and <code>scroll_depth</code> (4 times, one per threshold) fire. <code>sign_up</code> was triggered for this test by pushing the same event Substack sends on a real subscription into the Data Layer from the browser console.</sub></p>
+<p align="center"><sub>GTM Preview (left) on a Substack post (right): the container loads and the Google tag, <code>GA4 Event | sign_up</code>, <code>read_time 120s</code> and <code>scroll_depth</code> (4 times, one per threshold) fire. <code>sign_up</code> was triggered for this test by pushing the event name to the Data Layer from the browser console, not by a real subscription.</sub></p>
 
 ---
 
@@ -111,6 +111,7 @@ Each implementation is checked in GTM Preview and the data checked in GA4 report
 | Library tracking (8 events), GTM + GA4 | Live since 2026-09-20 |
 | Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
 | UTM rules and builder | Done, applied to new links |
+| Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
 | Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
 | Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
 | Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |
