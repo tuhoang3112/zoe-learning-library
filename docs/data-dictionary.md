@@ -29,9 +29,15 @@ Sent with `resource_impression`, `resource_click` and `tool_banner_click`. Value
 | `category_name` | `category_click` | Topic card that was clicked |
 | `cta_location` | `cta_substack_click`, `cta_buymeacoffee_click` | Where the link sits (header, banner, resource card, post card, About, footer) |
 
-## Substack events
+## Substack parameters
 
-Sent by the Substack container, which can only use Google tags and built-in triggers (no custom parameters from page code). See [`tracking-audit.md`](tracking-audit.md) for the list.
+Set as fixed values or built-in variables in the GA4 Event tags of the Substack container, which can only use Google tags and built-in triggers (no parameters pushed from page code). Events are described in [`tracking-plan.md`](tracking-plan.md).
+
+| Parameter | Sent with | Values |
+|---|---|---|
+| `subscribe_location` | `subscribe_click`, `subscribe_popup_view`, `subscribe_popup_dismiss` | `header`, `inline`, `popup`, `home`, `footer` |
+| `percent_scrolled` | `scroll_depth` | `25`, `50`, `75`, `90` (built-in variable Scroll Depth Threshold) |
+| `read_seconds` | `read_time` | `30`, `60`, `120` |
 
 ## Privacy
 
