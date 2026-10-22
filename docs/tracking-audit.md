@@ -7,7 +7,7 @@ Audit of what can and cannot be measured on the two properties of the ZoeDataLen
 - **Method:** GA4 reports, Google Tag Manager Preview (Tag Assistant) on both sites, Substack settings, inspection of the public pages
 - **Numbers below** were read from GA4 screenshots taken on the audit date (window Aug 23 – Sep 19, 2026, about 28 days). They are a baseline, not final results.
 
-> Substack's own analytics (subscribers by source and post, network effect, audience) is described in [`substack-analytics.md`](substack-analytics.md). This audit is about what Google Analytics and Tag Manager can and cannot measure.
+> This audit is about what Google Analytics and Tag Manager can and cannot measure. Substack's own statistics (subscribers by source and post) are a separate source and are not covered here.
 
 ## 1. Headline finding: the gap was configuration depth, not the platform
 

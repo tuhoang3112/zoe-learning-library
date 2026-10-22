@@ -17,3 +17,6 @@ node_modules/
 # Private snapshots and raw analytics exports
 data/private/
 private-data/
+
+# Plans and analysis not yet applied (kept locally, not published)
+private-docs/

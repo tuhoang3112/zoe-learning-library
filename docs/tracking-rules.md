@@ -110,7 +110,7 @@ GTM does not load on `localhost`, so local testing never sends data to GA4. To t
 
 ## 8. Known gaps
 
-- Buy Me a Coffee stream is live (data confirmed in Realtime on 2026-10-22, pages: profile, shop and product pages). It shares the Library property. Reports and the SQL scripts in `sql/` must filter by data stream (or hostname) to separate the two sites. If the shop later moves onto the Library site, retire the stream and add purchase events to the tracking plan.
+- Buy Me a Coffee stream is live (data confirmed in Realtime on 2026-10-22, pages: profile, shop and product pages). It shares the Library property. Reports (and any BigQuery query on the raw export) must filter by data stream or hostname to separate the two sites. If the shop later moves onto the Library site, retire the stream and add purchase events to the tracking plan.
 - Buy Me a Coffee only exposes the GA ID field: no custom events and no purchase data. Revenue comes from the Buy Me a Coffee dashboard.
 - Substack tags were published on 2026-10-22; counts start from that date.
 - Library `resource_impression` and `list_position` start on 2026-10-22; earlier rows have no position data.
