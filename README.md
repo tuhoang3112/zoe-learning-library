@@ -17,7 +17,20 @@ flowchart LR
 
 **The site being measured:** <https://tuhoang3112.github.io/zoe-learning-library/> (Zoe's Learning Library, a curated library of courses, ebooks, tools and templates for data, marketing and AI).
 
-<p align="center"><img src="docs/images/site-live.webp" alt="Zoe's Learning Library, the site being measured" width="460"></p>
+<table>
+  <tr>
+    <th align="center">Learning Library</th>
+    <th align="center">Substack newsletter</th>
+    <th align="center">Buy Me a Coffee</th>
+  </tr>
+  <tr>
+    <td valign="top"><img src="docs/images/site-live.webp" alt="Zoe's Learning Library, the site I control" width="300"></td>
+    <td valign="top"><img src="docs/images/substack-home.webp" alt="ZoeDataLens on Substack" width="300"></td>
+    <td valign="top"><img src="docs/images/bmc-shop.webp" alt="Zoe's Buy Me a Coffee shop" width="300"></td>
+  </tr>
+</table>
+
+<p align="center"><sub>The three properties measured. Substack and Buy Me a Coffee are closed platforms; the Library is the site where I own the code.</sub></p>
 
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
