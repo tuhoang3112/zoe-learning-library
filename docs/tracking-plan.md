@@ -95,4 +95,15 @@ Clicks from the Library to the shop are counted on the Library side as `cta_buym
 
 ## LinkedIn, YouTube and Facebook
 
-These channels cannot run a tag, so the only tracking is the source written on each link: see [`utm-rules.md`](utm-rules.md).
+These are other people's pages, so no tag can run there and the only tracking is what is written on each link. Every link I publish carries four UTM parameters from one fixed vocabulary:
+
+| Parameter | What it says | Example |
+|---|---|---|
+| `utm_source` | The platform | `linkedin`, `facebook`, `youtube` |
+| `utm_medium` | The type of channel, limited to values GA4 recognises | `social` (LinkedIn, Facebook), `video` (YouTube) |
+| `utm_campaign` | The content series | `learn-ai-from-0` |
+| `utm_content` | Where the link sits and which piece it belongs to | `caption-claude-cowork`, `bio`, `description-doodle-explainer-kit` |
+
+A LinkedIn post leading to a Substack post therefore ends with `?utm_source=linkedin&utm_medium=social&utm_campaign=learn-ai-from-0&utm_content=caption-claude-cowork`. In GA4 the visit shows under Organic Social with the post and position it came from, instead of `(direct) / (none)`.
+
+**Not measured:** what happens on the platform itself (impressions, reactions, profile views) and anything after the click, which is only seen on the destination site. Format, vocabulary and more examples are in [`utm-rules.md`](utm-rules.md); [`tools/utm-builder.html`](../tools/utm-builder.html) builds the links.
