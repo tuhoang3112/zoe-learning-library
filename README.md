@@ -53,30 +53,23 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 
 ---
 
-## Architecture decisions
-
-| Decision | Choice | Why |
-|---|---|---|
-| **Tag management** | **Google Tag Manager** | One place for every tag on a site, versioned and exportable. Substack has a GTM ID field |
-| **Substack** | **Google tags and built-in triggers only** | Substack runs only Google tags (GTM Preview shows `allowlist: google`). Custom HTML, custom JavaScript variables and Microsoft Clarity are blocked, so tracking is built within that limit instead of assumed away |
-| **A site I control** | **Learning Library**, plain HTML and JS | Substack allows no custom tracking code, so Data Layer events with item attributes (type, topic, level, price, position) needed a site where I own the code |
-| **Event design** | **One file defines every event** ([`analytics.js`](landing-page/js/analytics.js)) | Events and parameters stay consistent, and GTM needs one trigger and one tag per event rather than one per resource |
-| **Attribution** | **UTM with a fixed vocabulary** | Free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows, and untagged app links fall into `(direct) / (none)` |
-| **Subscriber counts** | **Substack's own statistics are the source of truth** | The Substack and Library properties share no user id, so GA4 is used for behavior and joined to subscribers only by day |
-| **Raw data** | **GA4 export to BigQuery**, both properties | Free daily export, and raw nested data to write SQL on. It starts from the day it is switched on and cannot be back-filled |
-
----
-
 ## Channels and tracking
 
-| Channel | What was built | How | In the repo | Not measured |
-|---|---|---|---|---|
-| **Substack newsletter** | 12 GA4 event tags: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time | Google tags and built-in triggers | [`gtm/substack-container.json`](gtm/substack-container.json) | Email opens, reading inside the app |
-| **Learning Library** | 8 events through the Data Layer: resource impressions and clicks, search, filters, topic clicks, product banner clicks, clicks toward Substack and Buy Me a Coffee | Custom code, all in one file | [`analytics.js`](landing-page/js/analytics.js), [`gtm/library-container.json`](gtm/library-container.json) | What happens inside the embedded Substack form |
-| **Buy Me a Coffee** | A GA4 stream inside the Library property | Only the platform's Google Analytics ID field is available | Platform setting | Purchases |
-| **LinkedIn, YouTube, Facebook** | Source tracking through UTM, no tag possible | Fixed vocabulary of source, medium, campaign, content | [`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html) | Anything after the click |
+| Channel | What was built | Why this way | Not measured |
+|---|---|---|---|
+| **Substack newsletter** | 12 GA4 event tags: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time ([container](gtm/substack-container.json)) | Substack runs only Google tags and built-in triggers (GTM Preview shows `allowlist: google`). Custom HTML, custom JavaScript variables and Microsoft Clarity are blocked, so tracking is built within that limit instead of assumed away | Email opens, reading inside the app |
+| **Learning Library** | 8 events through the Data Layer: resource impressions and clicks, search, filters, topic clicks, product banner clicks, clicks toward Substack and Buy Me a Coffee ([`analytics.js`](landing-page/js/analytics.js), [container](gtm/library-container.json)) | Substack allows no custom tracking code, so Data Layer events with item attributes (type, topic, level, price, position) needed a site where I own the code | What happens inside the embedded Substack form |
+| **Buy Me a Coffee** | A GA4 data stream in the Library property, connected through the shop's Google Analytics ID field | It is the only analytics option the platform offers | Purchases |
+| **LinkedIn, YouTube, Facebook** | Source tracking through UTM ([rules](docs/utm-rules.md), [builder](tools/utm-builder.html)) | No tag can run there, and free-typed names (`LinkedIn`, `linkedin.com`) split one source into several rows while untagged app links fall into `(direct) / (none)` | Anything after the click |
 
-The `sign_up` tag is live and fires in GTM Preview; confirming it on a real subscription and marking it as a key event are the next steps (see Status below). Links leaving the Library are tagged with UTM by code; a small local tool builds compliant links for everything else.
+**Across all channels**
+- **One tag manager:** Google Tag Manager, one container per site, versioned and exported to [`gtm/`](gtm/). Substack has a GTM ID field.
+- **One file defines the Library's events** ([`analytics.js`](landing-page/js/analytics.js)), so events and parameters stay consistent and GTM needs one trigger and one tag per event rather than one per resource.
+- **UTM with a fixed vocabulary** on every link; links leaving the Library are tagged by code, and a small local tool builds compliant links for the rest.
+- **Subscriber counts come from Substack's own statistics.** The Substack and Library properties share no user id, so GA4 is used for behavior and joined to subscribers only by day.
+- **GA4 exports to BigQuery** on both properties: a free daily export of raw nested data to write SQL on. It starts from the day it is switched on and cannot be back-filled.
+
+The `sign_up` tag is live and fires in GTM Preview; confirming it on a real subscription and marking it as a key event are the next steps (see Status below).
 
 ---
 
