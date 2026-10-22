@@ -98,20 +98,6 @@ Each implementation is checked in GTM Preview and the data checked in GA4 report
 
 ---
 
-## Status and next steps
-
-| Item | State |
-|---|---|
-| Library tracking (8 events), GTM + GA4 | Live since 2026-09-20 |
-| Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
-| UTM rules and builder | Done, applied to new links |
-| Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
-| Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
-| Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
-| Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |
-
----
-
 ## Skills shown
 
 Solo project: tracking design, front end, tag management and documentation.
@@ -156,3 +142,17 @@ Run and deploy notes for the site are in [`landing-page/README.md`](landing-page
 - Email opens and reading inside the Substack app are not measured by GA4.
 - Ad blockers and the lack of a consent banner mean counts are a lower bound.
 - Buy Me a Coffee only exposes the Google Analytics field: page views and sources reach GA4, purchases do not. Purchases are still recorded in the shop's own dashboard, but they cannot be joined to GA4 sessions.
+
+---
+
+## Status and next steps
+
+| Item | State |
+|---|---|
+| Library tracking (8 events), GTM + GA4 | Live since 2026-09-20 |
+| Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
+| UTM rules and builder | Done, applied to new links |
+| Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
+| Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
+| Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
+| Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |
