@@ -68,6 +68,21 @@ function withSubstackUtm(url, campaign, content) {
   }
 }
 
+/* Add UTM parameters to links that lead to Zoe's Buy Me a Coffee shop (see docs/utm-rules.md). */
+function withBmcUtm(url, campaign, content) {
+  try {
+    var u = new URL(url);
+    if (u.hostname !== "buymeacoffee.com") return url;
+    u.searchParams.set("utm_source", "learning-library");
+    u.searchParams.set("utm_medium", "referral");
+    u.searchParams.set("utm_campaign", campaign);
+    if (content) u.searchParams.set("utm_content", content);
+    return u.toString();
+  } catch (e) {
+    return url;
+  }
+}
+
 /* Static Substack CTAs: utm_campaign = their data-cta-location. */
 document.querySelectorAll("a[data-cta-location]").forEach(function (a) {
   a.href = withSubstackUtm(a.href, a.getAttribute("data-cta-location"));

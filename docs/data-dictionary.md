@@ -7,7 +7,7 @@
 | `id` | string (slug, unique) | yes | `microsoft-learn-power-bi` |
 | `title` | string | yes | `Microsoft Learn — Power BI` |
 | `type` | string | yes | Course, Dataset, Tools & Templates, Resource (books and ebooks are Resources) |
-| `topic` | string | yes | Marketing & Growth, Data Analytics, Data Engineering, Product & Vibe Coding, AI Agents & Automation, Languages |
+| `topic` | string | yes | Marketing & Growth, Data Analytics, Data Engineering, Product & Vibe Coding, AI Agents & Automation, Personal Finance & Investing |
 | `level` | string | yes | Beginner, Intermediate, Advanced |
 | `access` | string | yes | Free, Paid |
 | `provider` | string | yes | `Microsoft` |
@@ -15,6 +15,7 @@
 | `url` | string (URL) | yes | `https://learn.microsoft.com/power-bi/` |
 | `tags` | string[] | yes | `["Power BI","Data Analytics"]` |
 | `position` | integer (1-based, unique) | yes | `4` — display order, used for position-bias analysis |
+| `image` | string (https URL) | no | Cover image shown on the card, hotlinked from the source page (its `og:image`). If missing or it fails to load, the card shows a gradient banner for the topic |
 | `secondary_topics` | string[] | no | `["Marketing & Growth"]` — extra topics the resource is also listed under (topic filter, category shortcuts, search). Events still report only the primary `topic` |
 | `featured` | boolean | no | `false` |
 | `image` | string | no | path under `landing-page/assets/images/` |

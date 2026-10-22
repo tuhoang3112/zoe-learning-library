@@ -12,7 +12,7 @@ window.ZoeConfig = {
     { name: "Data Engineering", blurb: "ETL · Data Warehouse · Cloud · Pipelines · APIs" },
     { name: "Product & Vibe Coding", blurb: "AI-assisted coding · Prototyping · Product" },
     { name: "AI Agents & Automation", blurb: "AI workflows · n8n · Agents · Automation" },
-    { name: "Languages", blurb: "English · Chinese" }
+    { name: "Personal Finance & Investing", blurb: "Budgeting · Saving · Investing · Money Management" }
   ],
   TYPES: ["Course", "Dataset", "Tools & Templates", "Resource"],
   TYPE_LABELS: { Course: "Courses", Dataset: "Datasets", "Tools & Templates": "Tools & Templates", Resource: "Resources" },

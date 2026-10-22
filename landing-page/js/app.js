@@ -40,7 +40,7 @@
   }
 
   function externalLink(a, r, listPos) {
-    a.href = withSubstackUtm(r.url, "resource_card", r.id);
+    a.href = withBmcUtm(withSubstackUtm(r.url, "resource_card", r.id), "resource_card", r.id);
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     // New tab => page is not unloaded, so the synchronous dataLayer push is never lost.
@@ -74,9 +74,44 @@
     });
   }
 
+  /* Cover: r.image if set, otherwise a gradient banner keyed to the primary topic. */
+  var COVER_GRADIENTS = {
+    "Data Analytics": ["#BAD2FF", "#5D79A8"],
+    "Data Engineering": ["#C7D7FE", "#3E4C8A"],
+    "AI Agents & Automation": ["#D9C9FF", "#6B4FB3"],
+    "Marketing & Growth": ["#FFD6C2", "#C4673F"],
+    "Product & Vibe Coding": ["#BDEBDD", "#2F8A6E"],
+    "Personal Finance & Investing": ["#CFE8C8", "#4C7F3F"]
+  };
+
+  function renderDefaultCover(r) {
+    var g = COVER_GRADIENTS[r.topic] || ["#E4E7EC", "#667085"];
+    var d = h("div", "cover cover-default", r.topic);
+    d.setAttribute("aria-hidden", "true");
+    d.style.background = "linear-gradient(135deg," + g[0] + "," + g[1] + ")";
+    return d;
+  }
+
+  function renderCover(r) {
+    if (r.image) {
+      var img = h("img", "cover");
+      img.src = r.image;
+      img.alt = r.title;
+      img.loading = "lazy";
+      img.referrerPolicy = "no-referrer";
+      // Hotlinked image may disappear or be blocked: fall back to the gradient banner.
+      img.addEventListener("error", function () {
+        if (img.parentNode) img.parentNode.replaceChild(renderDefaultCover(r), img);
+      });
+      return img;
+    }
+    return renderDefaultCover(r);
+  }
+
   function renderCard(r, listPos) {
     var card = h("article", "item");
     card.dataset.listPosition = String(listPos);
+    card.appendChild(renderCover(r));
     var top = h("div", "item-top");
     top.appendChild(h("span", "type", r.type.toUpperCase()));
     top.appendChild(h("span", "badge badge-" + r.access.toLowerCase(), r.access));
