@@ -1,36 +1,38 @@
 # Zoe's Learning Library
 
-A curated learning library (courses, ebooks, tools and templates for data, marketing and AI), plus the tracking system behind it. Built to measure what visitors do across a small content ecosystem: a static site, a Substack newsletter and a Buy Me a Coffee shop.
+A curated learning library (courses, ebooks, tools and templates for data, marketing and AI) and the measurement system behind it. I built it to see what visitors actually do across a small content ecosystem: a static site, a Substack newsletter and a Buy Me a Coffee shop.
 
-Live site: <https://tuhoang3112.github.io/zoe-learning-library/>
+**Live site:** <https://tuhoang3112.github.io/zoe-learning-library/>
 
-## What is live
+*Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
-**1. The site** (`landing-page/`, plain HTML, CSS and vanilla JS, deployed to GitHub Pages)
-- 55 resources with search and filters (topic, type, level, free or paid), grouped into six topics.
-- "Tools made by Zoe" highlight band for Zoe's own paid products, and a row of popular newsletter posts.
-- Cover image for every resource (hotlinked or illustrated) with a gradient fallback.
-- The catalogue is one JSON file: [`landing-page/data/resources.json`](landing-page/data/resources.json).
+## The problem
 
-**2. Tracking** (Google Tag Manager and GA4)
-- Library container: 8 events pushed through the Data Layer (`resource_impression`, `resource_click`, `library_search`, `filter_apply`, `category_click`, `tool_banner_click`, `cta_substack_click`, `cta_buymeacoffee_click`). Every event is defined in one file, [`landing-page/js/analytics.js`](landing-page/js/analytics.js).
-- Substack container: 12 GA4 event tags using Google tags and built-in triggers only (`sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time). Substack does not allow custom code, so this was built around its allowlist.
-- Buy Me a Coffee: a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field.
-- Both containers are exported to [`gtm/`](gtm/) so the repository matches what is live.
+My newsletter on Substack was already measured with Google Analytics, but GA4 showed **0 key events**: what readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Substack already pushes a `sign_up` event, but no tag sent it to GA4. Traffic from apps and emails also arrived without a source, because links carried no UTM.
 
-**3. UTM governance**
-- One rule set for every link published on Substack, the Library, Buy Me a Coffee, LinkedIn, YouTube and Facebook: [`docs/utm-rules.md`](docs/utm-rules.md).
-- Links from the Library are tagged automatically by code; a local builder ([`tools/utm-builder.html`](tools/utm-builder.html), open it in a browser) creates compliant links for posts.
+## What I did
+
+**1. A site I control** (`landing-page/`): a searchable library of 55 resources with filters, a highlight band for my own products and a row of popular newsletter posts. Plain HTML, CSS and vanilla JS, deployed to GitHub Pages by GitHub Actions. The catalogue is one JSON file.
+
+**2. A tracking system** (Google Tag Manager and GA4)
+- **Library:** 8 events pushed through the Data Layer, all defined in one file ([`analytics.js`](landing-page/js/analytics.js)): resource impressions and clicks, search, filters, topic clicks, product banner clicks, and clicks toward Substack and Buy Me a Coffee.
+- **Substack:** 12 GA4 event tags built with Google tags and built-in triggers only, because Substack blocks custom code: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth and read time. Conversion tracking went from 0 to a working `sign_up` event.
+- **Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field.
+- Both Tag Manager containers are exported to [`gtm/`](gtm/) so the repository matches what is live.
+
+**3. UTM governance:** one rule set for every link published on Substack, the Library, Buy Me a Coffee, LinkedIn, YouTube and Facebook, links from the Library tagged automatically by code, and a small local tool ([`tools/utm-builder.html`](tools/utm-builder.html), open it in a browser) that builds compliant links.
+
+## Skills shown
+
+Google Tag Manager (triggers, tags, Data Layer, container import and export) · GA4 (events, key events, custom dimensions, data streams) · UTM taxonomy and channel attribution · JavaScript · HTML and CSS · GitHub Pages and Actions · documentation.
 
 ## Documentation
 
 | File | What it covers |
 |---|---|
-| [`docs/tracking-rules.md`](docs/tracking-rules.md) | Channel map, event naming rules, key events, release rule for containers |
-| [`docs/tracking-plan.md`](docs/tracking-plan.md) | Library events, triggers and parameters |
-| [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the Substack and Library audit found, and what was fixed |
-| [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples |
-| [`docs/data-dictionary.md`](docs/data-dictionary.md) | Resource fields and event parameters |
+| [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the audit of Substack and the Library found, and what was fixed |
+| [`docs/tracking-plan.md`](docs/tracking-plan.md) | The Library events, when they fire and what they measure |
+| [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples (in Vietnamese) |
 
 ## Repository
 
@@ -40,7 +42,7 @@ Live site: <https://tuhoang3112.github.io/zoe-learning-library/>
 │   ├── js/            analytics.js is the single place where events are defined
 │   └── data/          resources.json (catalogue) and posts.json (popular posts)
 ├── gtm/               GTM container exports (import into Tag Manager)
-├── docs/              Tracking and UTM documentation
+├── docs/              Audit, tracking plan and UTM rules
 ├── tools/             UTM builder
 └── scripts/           build-seo.mjs: sitemap, canonical, structured data
 ```
