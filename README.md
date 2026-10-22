@@ -1,6 +1,6 @@
-# Marketing Tracking & Behavioral Analytics
+# Multi-Channel Tracking & Behavior Analytics
 
-Tag Manager, GA4 and UTM tracking built across a small content ecosystem: a Substack newsletter, a static site I control (Zoe's Learning Library) and a Buy Me a Coffee shop. The goal is to see what visitors actually do and which sources lead to subscribers.
+Tag Manager, GA4 and UTM tracking built across several channels of a small content ecosystem: a Substack newsletter, a static site I control (Zoe's Learning Library) and a Buy Me a Coffee shop. The goal is to see what visitors actually do and which sources lead to subscribers.
 
 **The site being measured:** <https://tuhoang3112.github.io/zoe-learning-library/> (a curated library of courses, ebooks, tools and templates for data, marketing and AI).
 
