@@ -49,7 +49,7 @@ The ZoeDataLens newsletter on Substack has real traffic (about 2.2K sessions and
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
 
 **Goal:** measure conversions and sources on every channel, inside what each platform allows, and define every event once.
-→ [Baseline](docs/baseline.md)
+→ [Tracking audit and baseline](docs/tracking-audit.md)
 
 ---
 
@@ -101,7 +101,7 @@ Each event carries the parameters of the resource (type, topic, level, access, p
 
 ## Validation
 
-Each implementation is checked in GTM Preview and the data checked in GA4 reports. The before state is recorded in the [baseline](docs/baseline.md); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
+Each implementation is checked in GTM Preview and the data checked in GA4 reports. The before state is recorded in the [baseline](docs/tracking-audit.md#baseline-before-the-fix); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
 
 <p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
@@ -142,9 +142,8 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 ├── .github/workflows/    # deploy.yml: GitHub Pages deploy on push to main
 └── docs/
     ├── images/           # screenshots used in the README
-    ├── baseline.md       # GA4 baseline before the Substack fix
-    ├── tracking-audit.md # what the audit found and what was fixed
-    ├── tracking-plan.md  # Library events: when they fire, what they measure
+    ├── tracking-audit.md # audit and baseline: what was found, the numbers before the fix, what was fixed
+    ├── tracking-plan.md  # events and parameters per property: when they fire, what they measure
     └── utm-rules.md      # UTM format, vocabulary, examples
 ```
 
