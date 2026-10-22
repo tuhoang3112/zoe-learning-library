@@ -26,7 +26,6 @@ Live site: <https://tuhoang3112.github.io/zoe-learning-library/>
 
 | File | What it covers |
 |---|---|
-| [`docs/tracking-howto.md`](docs/tracking-howto.md) | Step by step: set up GTM and GA4 from scratch, add an event, verify, troubleshoot |
 | [`docs/tracking-rules.md`](docs/tracking-rules.md) | Channel map, event naming rules, key events, release rule for containers |
 | [`docs/tracking-plan.md`](docs/tracking-plan.md) | Library events, triggers and parameters |
 | [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the Substack and Library audit found, and what was fixed |
