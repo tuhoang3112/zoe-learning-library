@@ -2,7 +2,7 @@
 
 > Connecting three things that lived apart for a newsletter on Substack (what readers do, whether they subscribe, what they say they want), fixing what Google Analytics could not see, and building a site I control ([Zoe's Learning Library](https://tuhoang3112.github.io/zoe-learning-library/)) to collect clean behavioral data for analysis in GA4 and BigQuery.
 
-**Status: measurement implemented on 2026-09-20; analysis in progress while data accumulates.** Numbers marked *to be measured* are filled in from real data as it arrives (see [Results](#results)).
+**Status: Library tracking live since 2026-09-20, Substack tags published on 2026-10-22; analysis in progress while data accumulates.** Numbers marked *to be measured* are filled in from real data as it arrives (see [Results](#results)).
 
 ## The 30-second version
 
@@ -11,7 +11,7 @@
 | **Problem** | The newsletter had about 18K users and 35K sessions (Jan 2025 – Sep 2026, GA4). Substack's built-in statistics already show subscribers by date, source and post, but as a closed dashboard: totals only, no raw events, nothing about what readers do on the page, and the data leaves only by manual export. Google Analytics, which records behavior and can feed BigQuery, showed **0 key events** (Tag Manager was installed with default settings only). So behavior and outcome sat in two places that could not be joined. About a quarter of sessions had no source (`direct / none`), and content choices rested on feel rather than on what the audience says versus does. |
 | **Data** | Substack GA4 property (history since 2025) and Substack's own analytics (subscribers by date, source and post) + a new GA4 property for the Learning Library (since 2026-09-20), both GA4 properties exported daily to BigQuery (raw events, from 2026-09-20). Audience survey (Google Forms, planned). Search Console on both sites. |
 | **Tools** | Google Tag Manager, Data Layer, GA4, BigQuery (SQL), Looker Studio, Google Search Console, Google Forms, vanilla JavaScript on GitHub Pages |
-| **Result** | Tracking rebuilt on both sites: a documented audit, 6 Library events and 12 Substack tags, a UTM convention. Conversion tracking on Substack goes from **0 to `sign_up`, Subscribe clicks by placement, scroll depth and read time**. Effect numbers: see [Results](#results). |
+| **Result** | Tracking rebuilt on both sites: a documented audit, 8 Library events and 12 Substack tags, a UTM convention. Conversion tracking on Substack goes from **0 to `sign_up`, Subscribe clicks by placement, scroll depth and read time**. Effect numbers: see [Results](#results). |
 | **Demo** | Live site: <https://tuhoang3112.github.io/zoe-learning-library/> · Case study: [`docs/case-study.md`](docs/case-study.md) · Dashboard: *to be published* |
 
 ## What the audit found
@@ -45,7 +45,8 @@ A static site (HTML, CSS, vanilla JS, JSON) listing 55 courses, datasets and res
 | `resource_impression` / `resource_click` | Click-through rate per resource, topic, level, price and list position |
 | `library_search` (with `result_count`) | What people look for, and what they do not find (unmet demand) |
 | `filter_apply`, `category_click` | How visitors explore |
-| `cta_substack_click` (4 placements) | The main conversion: from library to newsletter |
+| `cta_substack_click` (header, banner, resource card, blog card, about link, footer) | The main conversion: from library to newsletter |
+| `tool_banner_click` / `cta_buymeacoffee_click` | Interest in Zoe's own products (Buy Me a Coffee) from the "Tools made by Zoe" banner and the donate button |
 
 **3. UTM convention and builder.**
 A controlled vocabulary for source / medium / campaign, automatic UTM on every library → Substack link, and a small tool that builds compliant links ([`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html)).
@@ -57,7 +58,7 @@ Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe 
 
 | Measure | Before | After |
 |---|---|---|
-| Key events on Substack (GA4) | **0** | `sign_up` and Subscribe clicks tracked from 2026-09-20; counts *to be measured* |
+| Key events on Substack (GA4) | **0** | `sign_up` and Subscribe clicks tracked from 2026-10-22; counts *to be measured* |
 | Behavior linked to subscribers | Substack statistics (totals) and GA4 (behavior) not joined | Joined by day and source, with the limit stated: *to be measured* |
 | Events available on Substack | 7 automatic events (page view, scroll at 90%, outbound click…) | + custom events for Subscribe, scroll depth, read time |
 | Share of sessions with no source (`direct / none`) | ~17% (28-day window to 2026-09-19); ~27% over the whole history | *to be measured* over 4 weeks of UTM-tagged links |
@@ -88,7 +89,7 @@ Ten BigQuery scripts (funnels, CTR by position, zero-result searches, subscribe 
 | Requirement | Status |
 |---|---|
 | Tracking audit on Substack | Done — [`docs/tracking-audit.md`](docs/tracking-audit.md) |
-| Tracking fix on Substack (GTM, Google tags only) | Deployed 2026-09-20; key events to be marked once events appear in GA4; before/after counts pending |
+| Tracking fix on Substack (GTM, Google tags only) | Published 2026-10-22 (12 event tags); `sign_up`, Subscribe clicks and scroll depth reach GA4; `sign_up` to be marked as key event; before/after counts pending |
 | UTM governance | Convention and builder done; before/after `direct / none` measurement pending |
 | Conversion before key events (aggregate by day) | Substack analytics reviewed ([`docs/substack-analytics.md`](docs/substack-analytics.md)); snapshots of subscribers by source and post to be saved on a schedule, then joined with GA4 by day and source |
 | Tracking plan and Data Layer on the Learning Library | Done — [`docs/tracking-plan.md`](docs/tracking-plan.md) |

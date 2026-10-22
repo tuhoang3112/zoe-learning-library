@@ -1,1155 +1,1352 @@
 {
-  "exportFormatVersion": 2,
-  "exportTime": "2026-09-20 12:00:00",
-  "containerVersion": {
-    "path": "accounts/0/containers/0/versions/0",
-    "accountId": "0",
-    "containerId": "0",
-    "containerVersionId": "0",
-    "container": {
-      "path": "accounts/0/containers/0",
-      "accountId": "0",
-      "containerId": "0",
-      "name": "zoedatalens.substack.com",
-      "publicId": "GTM-WNCRKDD8",
-      "usageContext": [
-        "WEB"
-      ],
-      "fingerprint": "0"
-    },
-    "tag": [
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/401",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "401",
-        "name": "GA4 Event | subscribe_click header",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
+    "exportFormatVersion": 2,
+    "exportTime": "2026-10-22 13:26:52",
+    "containerVersion": {
+        "path": "accounts/6275538184/containers/209887635/versions/3",
+        "accountId": "6275538184",
+        "containerId": "209887635",
+        "containerVersionId": "3",
+        "name": "Add GA4 event tags, triggers, and variables for engagement and subscription tracking",
+        "description": "Tags:\n* Added \"GA4 Event | sign_up\" tag triggered by \"CE - sign_up\".\n* Added \"GA4 Event | subscribe_click header\" tag triggered by \"CLK - subscribe header\".\n* Added \"GA4 Event | subscribe_click popup\" tag triggered by \"CLK - subscribe popup\".\n* Added \"GA4 Event | subscribe_click inline\" tag triggered by \"CLK - subscribe inline\".\n* Added \"GA4 Event | subscribe_click home\" tag triggered by \"CLK - subscribe home\".\n* Added \"GA4 Event | subscribe_click footer\" tag triggered by \"CLK - subscribe footer\".\n* Added \"GA4 Event | subscribe_popup_view\" tag triggered by \"EV - subscribe popup view\".\n* Added \"GA4 Event | subscribe_popup_dismiss\" tag triggered by \"CLK - popup dismiss\".\n* Added \"GA4 Event | read_time 30s\" tag triggered by \"TM - read 30s\".\n* Added \"GA4 Event | read_time 60s\" tag triggered by \"TM - read 60s\".\n* Added \"GA4 Event | read_time 120s\" tag triggered by \"TM - read 120s\".\n* Added \"GA4 Event | scroll_depth\" tag triggered by \"SD - post scroll depth\".\n\nTriggers:\n* Added custom event trigger \"CE - sign_up\".\n* Added click triggers \"CLK - subscribe header\", \"CLK - subscribe popup\", \"CLK - subscribe inline\", \"CLK - subscribe home\", \"CLK - subscribe footer\", and \"CLK - popup dismiss\".\n* Added timer triggers \"TM - read 30s\", \"TM - read 60s\", and \"TM - read 120s\".\n* Added scroll depth trigger \"SD - post scroll depth\".\n* Added element visibility trigger \"EV - subscribe popup view\".\n\nVariables:\n* Added constant variable \"GA4 Measurement ID\" set to \"G-LW4GGGM6PK\".\n* Enabled built-in variables \"Click Element\", \"Click Text\", and \"Scroll Depth Threshold\".",
+        "container": {
+            "path": "accounts/6275538184/containers/209887635",
+            "accountId": "6275538184",
+            "containerId": "209887635",
+            "name": "zoedatalens.substack.com",
+            "publicId": "GTM-WNCRKDD8",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1743273852322",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6275538184/containers/209887635/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": false
+            },
+            "tagIds": [
+                "GTM-WNCRKDD8"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "3",
+                "name": "Zoe's DataLens Substack",
+                "type": "googtag",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "tagId",
+                        "value": "G-LW4GGGM6PK"
+                    }
+                ],
+                "fingerprint": "1743274069601",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "7",
+                "name": "GA4 Event | sign_up",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "sign_up"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789919168065",
+                "firingTriggerId": [
+                    "5"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "9",
+                "name": "GA4 Event | subscribe_click header",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "header"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_click"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122479",
+                "firingTriggerId": [
+                    "8"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "11",
+                "name": "GA4 Event | subscribe_click popup",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "popup"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_click"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122480",
+                "firingTriggerId": [
+                    "10"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "13",
+                "name": "GA4 Event | subscribe_click inline",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "inline"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_click"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122480",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "15",
+                "name": "GA4 Event | read_time 30s",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "read_seconds"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "30"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "read_time"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122480",
+                "firingTriggerId": [
+                    "14"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "18",
+                "name": "GA4 Event | subscribe_popup_dismiss",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "popup"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_popup_dismiss"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122481",
+                "firingTriggerId": [
+                    "17"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "19",
+                "name": "GA4 Event | read_time 120s",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "read_seconds"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "120"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "read_time"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122481",
+                "firingTriggerId": [
+                    "16"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "21",
+                "name": "GA4 Event | subscribe_click home",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "home"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_click"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122481",
+                "firingTriggerId": [
+                    "20"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "23",
+                "name": "GA4 Event | scroll_depth",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "percent_scrolled"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "{{Scroll Depth Threshold}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "scroll_depth"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122482",
+                "firingTriggerId": [
+                    "22"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "25",
+                "name": "GA4 Event | read_time 60s",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "read_seconds"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "60"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "read_time"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122482",
+                "firingTriggerId": [
+                    "24"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "27",
+                "name": "GA4 Event | subscribe_popup_view",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "popup"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_popup_view"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122482",
+                "firingTriggerId": [
+                    "26"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "tagId": "29",
+                "name": "GA4 Event | subscribe_click footer",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendEcommerceData",
+                        "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventSettingsTable",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameter",
+                                        "value": "subscribe_location"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "parameterValue",
+                                        "value": "footer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "subscribe_click"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementIdOverride",
+                        "value": "{{GA4 Measurement ID}}"
+                    }
+                ],
+                "fingerprint": "1789920122482",
+                "firingTriggerId": [
+                    "28"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "5",
+                "name": "CE - sign_up",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "sign_up"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789918905696"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "8",
+                "name": "CLK - subscribe header",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".main-menu button, .main-menu button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122479"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "10",
+                "name": "CLK - subscribe popup",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "[role=\"dialog\"] button, [role=\"dialog\"] button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122480"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "12",
+                "name": "CLK - subscribe inline",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "div.subscription-widget-wrap button, div.subscription-widget-wrap button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122480"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "14",
+                "name": "TM - read 30s",
+                "type": "TIMER",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "autoEventFilter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "eventName": {
                     "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
+                    "value": "gtm.timer30"
+                },
+                "interval": {
                     "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "header"
-                  }
+                    "value": "30000"
+                },
+                "limit": {
+                    "type": "TEMPLATE",
+                    "value": "1"
+                },
+                "fingerprint": "1792659687784"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "16",
+                "name": "TM - read 120s",
+                "type": "TIMER",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "autoEventFilter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "eventName": {
+                    "type": "TEMPLATE",
+                    "value": "gtm.timer120"
+                },
+                "interval": {
+                    "type": "TEMPLATE",
+                    "value": "120000"
+                },
+                "limit": {
+                    "type": "TEMPLATE",
+                    "value": "1"
+                },
+                "fingerprint": "1792659730647"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "17",
+                "name": "CLK - popup dismiss",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "[role=\"dialog\"] button, [role=\"dialog\"] button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122481"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "20",
+                "name": "CLK - subscribe home",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "button, button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": ".main-menu *, [role=\"dialog\"] *"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122481"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "22",
+                "name": "SD - post scroll depth",
+                "type": "SCROLL_DEPTH",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122482",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "verticalThresholdUnits",
+                        "value": "PERCENT"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "verticalThresholdsPercent",
+                        "value": "25,50,75,90"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "verticalThresholdOn",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "triggerStartOption",
+                        "value": "WINDOW_LOAD"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "horizontalThresholdOn",
+                        "value": "false"
+                    }
                 ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "301"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/402",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "402",
-        "name": "GA4 Event | subscribe_click popup",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "24",
+                "name": "TM - read 60s",
+                "type": "TIMER",
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "autoEventFilter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Page Path}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "/p/"
+                            }
+                        ]
+                    }
+                ],
+                "eventName": {
                     "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
+                    "value": "gtm.timer60"
+                },
+                "interval": {
                     "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "popup"
-                  }
+                    "value": "60000"
+                },
+                "limit": {
+                    "type": "TEMPLATE",
+                    "value": "1"
+                },
+                "fingerprint": "1792659763426"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "26",
+                "name": "EV - subscribe popup view",
+                "type": "ELEMENT_VISIBILITY",
+                "fingerprint": "1789920122482",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useOnScreenDuration",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDomChangeListener",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "firingFrequency",
+                        "value": "ONCE"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "selectorType",
+                        "value": "CSS"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "onScreenRatio",
+                        "value": "50"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "elementSelector",
+                        "value": "[role=\"dialog\"]"
+                    }
                 ]
-              }
-            ]
-          }
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "triggerId": "28",
+                "name": "CLK - subscribe footer",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "CSS_SELECTOR",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Element}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "[class*=\"pubInvertedTheme\"] button, [class*=\"pubInvertedTheme\"] button *"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click Text}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "Subscribe"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1789920122482"
+            }
         ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "302"
+        "variable": [
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "variableId": "6",
+                "name": "GA4 Measurement ID",
+                "type": "c",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "value",
+                        "value": "G-LW4GGGM6PK"
+                    }
+                ],
+                "fingerprint": "1789919115230",
+                "formatValue": {}
+            }
         ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/403",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "403",
-        "name": "GA4 Event | subscribe_click inline",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "inline"
-                  }
-                ]
-              }
-            ]
-          }
+        "builtInVariable": [
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "EVENT",
+                "name": "Event"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "CLICK_ELEMENT",
+                "name": "Click Element"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "CLICK_TEXT",
+                "name": "Click Text"
+            },
+            {
+                "accountId": "6275538184",
+                "containerId": "209887635",
+                "type": "SCROLL_DEPTH_THRESHOLD",
+                "name": "Scroll Depth Threshold"
+            }
         ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "303"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/404",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "404",
-        "name": "GA4 Event | subscribe_click footer",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "footer"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "304"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/405",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "405",
-        "name": "GA4 Event | subscribe_popup_view",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_popup_view"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "popup"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "305"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/406",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "406",
-        "name": "GA4 Event | scroll_depth",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "scroll_depth"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "percent_scrolled"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{Scroll Depth Threshold}}"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "306"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/407",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "407",
-        "name": "GA4 Event | read_time 30s",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "read_time"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "read_seconds"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "30"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "307"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/408",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "408",
-        "name": "GA4 Event | read_time 60s",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "read_time"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "read_seconds"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "60"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "308"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/409",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "409",
-        "name": "GA4 Event | read_time 120s",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "read_time"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "read_seconds"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "120"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "309"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/410",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "410",
-        "name": "GA4 Event | subscribe_click home",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "home"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "310"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/tags/411",
-        "accountId": "0",
-        "containerId": "0",
-        "tagId": "411",
-        "name": "GA4 Event | subscribe_popup_dismiss",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "subscribe_popup_dismiss"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{GA4 Measurement ID}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "subscribe_location"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "popup"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "fingerprint": "0",
-        "firingTriggerId": [
-          "311"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "monitoringMetadata": {
-          "type": "MAP"
-        }
-      }
-    ],
-    "trigger": [
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/301",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "301",
-        "name": "CLK - subscribe header",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": ".main-menu button, .main-menu button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/302",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "302",
-        "name": "CLK - subscribe popup",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "[role=\"dialog\"] button, [role=\"dialog\"] button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/303",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "303",
-        "name": "CLK - subscribe inline",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "div.subscription-widget-wrap button, div.subscription-widget-wrap button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/304",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "304",
-        "name": "CLK - subscribe footer",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "[class*=\"pubInvertedTheme\"] button, [class*=\"pubInvertedTheme\"] button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/305",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "305",
-        "name": "EV - subscribe popup view",
-        "type": "ELEMENT_VISIBILITY",
-        "fingerprint": "0",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "useOnScreenDuration",
-            "value": "false"
-          },
-          {
-            "type": "BOOLEAN",
-            "key": "useDomChangeListener",
-            "value": "true"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "firingFrequency",
-            "value": "ONCE"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "selectorType",
-            "value": "CSS"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "onScreenRatio",
-            "value": "50"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "elementSelector",
-            "value": "[role=\"dialog\"]"
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/306",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "306",
-        "name": "SD - post scroll depth",
-        "type": "SCROLL_DEPTH",
-        "fingerprint": "0",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "verticalThresholdOn",
-            "value": "true"
-          },
-          {
-            "type": "BOOLEAN",
-            "key": "horizontalThresholdOn",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "triggerStartOption",
-            "value": "WINDOW_LOAD"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "verticalThresholdUnits",
-            "value": "PERCENT"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "verticalThresholdsPercent",
-            "value": "25,50,75,90"
-          }
-        ],
-        "filter": [
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Page Path}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "/p/"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/307",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "307",
-        "name": "TM - read 30s",
-        "type": "TIMER",
-        "fingerprint": "0",
-        "parameter": [
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "gtm.timer30"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "interval",
-            "value": "30000"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "limit",
-            "value": "1"
-          }
-        ],
-        "filter": [
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Page Path}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "/p/"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/308",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "308",
-        "name": "TM - read 60s",
-        "type": "TIMER",
-        "fingerprint": "0",
-        "parameter": [
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "gtm.timer60"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "interval",
-            "value": "60000"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "limit",
-            "value": "1"
-          }
-        ],
-        "filter": [
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Page Path}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "/p/"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/309",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "309",
-        "name": "TM - read 120s",
-        "type": "TIMER",
-        "fingerprint": "0",
-        "parameter": [
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "gtm.timer120"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "interval",
-            "value": "120000"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "limit",
-            "value": "1"
-          }
-        ],
-        "filter": [
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Page Path}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "/p/"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/310",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "310",
-        "name": "CLK - subscribe home",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "EQUALS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Page Path}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "/"
-              }
-            ]
-          },
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "button, button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          },
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "BOOLEAN",
-                "key": "negate",
-                "value": "true"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": ".main-menu *, [role=\"dialog\"] *"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "path": "accounts/0/containers/0/workspaces/0/triggers/311",
-        "accountId": "0",
-        "containerId": "0",
-        "triggerId": "311",
-        "name": "CLK - popup dismiss",
-        "type": "CLICK",
-        "fingerprint": "0",
-        "filter": [
-          {
-            "type": "CSS_SELECTOR",
-            "parameter": [
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Element}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "[role=\"dialog\"] button, [role=\"dialog\"] button *"
-              }
-            ]
-          },
-          {
-            "type": "CONTAINS",
-            "parameter": [
-              {
-                "type": "BOOLEAN",
-                "key": "negate",
-                "value": "true"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg0",
-                "value": "{{Click Text}}"
-              },
-              {
-                "type": "TEMPLATE",
-                "key": "arg1",
-                "value": "Subscribe"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "builtInVariable": [
-      {
-        "accountId": "0",
-        "containerId": "0",
-        "type": "CLICK_ELEMENT",
-        "name": "Click Element"
-      },
-      {
-        "accountId": "0",
-        "containerId": "0",
-        "type": "CLICK_TEXT",
-        "name": "Click Text"
-      },
-      {
-        "accountId": "0",
-        "containerId": "0",
-        "type": "SCROLL_DEPTH_THRESHOLD",
-        "name": "Scroll Depth Threshold"
-      },
-      {
-        "accountId": "0",
-        "containerId": "0",
-        "type": "PAGE_PATH",
-        "name": "Page Path"
-      }
-    ],
-    "fingerprint": "0"
-  }
+        "fingerprint": "1792660017387",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6275538184/containers/209887635/versions/3?apiLink=version"
+    }
 }
