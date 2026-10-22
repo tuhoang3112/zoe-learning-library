@@ -17,7 +17,7 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 | Problem | Effect | Fix |
 |---|---|---|
-| `sign_up` not forwarded, no key event | Subscriptions invisible in GA4 | `sign_up` tag added; marked as key event |
+| No event for subscriptions, no key event | Subscriptions invisible in GA4 | `sign_up` tag added (to be confirmed on a real subscription); key event pending |
 | `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25, 50, 75, 90% |
 | `click` only covers outbound links | Subscribe buttons not measured | `subscribe_click` per placement (header, popup, inline, footer, home) |
 | `form_start` is typing, not signing up | Counts intent, not conversion | `sign_up` is the conversion |
@@ -36,7 +36,7 @@ Supporting setup: GA4 data export to BigQuery on both properties, custom dimensi
 
 ## Status
 
-All of the above is live (Library since 2026-09-20, Substack since 2026-10-22). Still to do: mark `sign_up` as a key event once it appears in GA4.
+All of the above is live (Library since 2026-09-20, Substack since 2026-10-22). Still to do: confirm that `sign_up` fires on a real subscription, then mark it as a key event once it appears in GA4.
 
 ## Limits
 
