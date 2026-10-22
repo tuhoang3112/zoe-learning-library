@@ -31,8 +31,6 @@ Live site: <https://tuhoang3112.github.io/zoe-learning-library/>
 | [`docs/tracking-audit.md`](docs/tracking-audit.md) | What the Substack and Library audit found, and what was fixed |
 | [`docs/utm-rules.md`](docs/utm-rules.md) | UTM format, vocabulary, automatic links and examples |
 | [`docs/data-dictionary.md`](docs/data-dictionary.md) | Resource fields and event parameters |
-| [`docs/seo.md`](docs/seo.md) | Sitemap, canonical tags and structured data |
-| [`docs/tech-stack.md`](docs/tech-stack.md) | Stack and design decisions |
 
 ## Repository
 
