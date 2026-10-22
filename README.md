@@ -98,9 +98,9 @@ The Library's 8 events, with the parameters each carries (resource type, topic, 
 
 Each implementation is checked in GTM Preview and the data checked in GA4 reports. The before state is recorded in the [baseline](docs/baseline.md); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
 
-<p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag fired once and GA4 Event scroll_depth fired 4 times" width="820"></p>
+<p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
-<p align="center"><sub>GTM Preview on a Substack post: the container loads, the Google tag fires once and <code>GA4 Event | scroll_depth</code> fires 4 times (one per threshold).</sub></p>
+<p align="center"><sub>GTM Preview (left) on a Substack post (right): the container loads and the Google tag, <code>GA4 Event | sign_up</code>, <code>read_time 120s</code> and <code>scroll_depth</code> (4 times, one per threshold) fire. <code>sign_up</code> was triggered for this test by pushing the same event Substack sends on a real subscription into the Data Layer from the browser console.</sub></p>
 
 ---
 
