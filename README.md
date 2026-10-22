@@ -15,8 +15,6 @@ flowchart LR
     BQ -.-> LS[Looker Studio: phase 2]
 ```
 
-**The three properties measured:** [Zoe's Learning Library](https://tuhoang3112.github.io/zoe-learning-library/) (a site I control: a curated library of courses, ebooks, tools and templates for data, marketing and AI), the [ZoeDataLens newsletter on Substack](https://zoedatalens.substack.com/) and the [Buy Me a Coffee shop](https://buymeacoffee.com/zoedatalensai/extras).
-
 <table>
   <tr>
     <th align="center"><a href="https://tuhoang3112.github.io/zoe-learning-library/">Learning Library</a></th>
@@ -30,7 +28,7 @@ flowchart LR
   </tr>
 </table>
 
-<p align="center"><sub>The three properties measured. Substack and Buy Me a Coffee are closed platforms; the Library is the site where I own the code.</sub></p>
+<p align="center"><sub>The three properties measured. Substack and Buy Me a Coffee are closed platforms; the Library, a curated collection of courses, ebooks, tools and templates for data, marketing and AI, is the site where I own the code.</sub></p>
 
 *Solo project: analyst and builder (tracking design, front end, tag management, documentation).*
 
