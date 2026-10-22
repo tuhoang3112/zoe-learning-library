@@ -88,6 +88,11 @@ Các link đi ra từ website Learning Library **không cần bạn tự gắn U
 | Icon ở chân trang | Substack | `learning-library` | `referral` | `footer` | (trống) | Đã chạy |
 | Thẻ resource trỏ tới Substack | Substack | `learning-library` | `referral` | `resource_card` | mã resource | Đã chạy |
 | Thẻ resource trỏ tới Buy Me a Coffee | Buy Me a Coffee | `learning-library` | `referral` | `resource_card` | mã resource | Đã chạy |
+| Thẻ sản phẩm trong banner "Tools made by Zoe" | Buy Me a Coffee | `learning-library` | `referral` | `tools-banner` | mã resource | Đã chạy |
+| Thẻ bài viết trong "Popular posts from my blog" | Substack | `learning-library` | `referral` | `blog_card` | mã bài (`claude-features`, `input-black-box-output`, `google-analytics-dashboard`) | Đã chạy |
+| Link "About Zoe" trên menu đầu trang | Substack (trang giới thiệu) | `learning-library` | `referral` | `about_link` | (trống) | Đã chạy |
+| Icon cốc cà phê ở chân trang (ủng hộ) | Buy Me a Coffee | `learning-library` | `referral` | `footer` | `donate-button` | Đã chạy |
+| Nút "Visit the shop" trong banner | Buy Me a Coffee | `learning-library` | `referral` | `tools-banner` | `shop-button` | Đã chạy |
 
 Với 4 link đi Substack, `utm_campaign` cho biết khách bấm ở đâu trên Library, và giá trị này trùng với `cta_location` của event `cta_substack_click`. Nhờ đó cùng một vị trí hiện cùng tên ở cả hai property GA4.
 

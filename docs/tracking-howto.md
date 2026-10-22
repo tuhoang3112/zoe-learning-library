@@ -80,7 +80,8 @@ Làm theo mục 4 (Bước A đến G). Nếu site mới là site tĩnh như Lib
 Ví dụ: bạn muốn đo lượt bấm nút "Chia sẻ", đặt tên `share_click`.
 
 ### Bước A. Đặt tên (5 phút)
-- Tên viết thường, nối bằng `_`, ví dụ `share_click`. Không dùng tên GA4 đã có sẵn (`click`, `scroll`, `page_view`).
+- Đặt tên theo **`<đối tượng>_<hành động>`**, viết thường, nối bằng `_`, ví dụ `share_click`. Hành động chọn từ danh sách có sẵn (`click`, `impression`, `search`, `apply`, `view`, `dismiss`). Link dẫn ra ngoài site thì dùng **`cta_<đích đến>_click`**, vị trí đặt ở tham số `cta_location`. Đầy đủ ở [`tracking-rules.md`](tracking-rules.md) mục 3.
+- Không dùng tên GA4 đã có sẵn (`click`, `scroll`, `page_view`).
 - Quyết định tham số kèm theo (ví dụ `resource_id`). Không đưa thông tin cá nhân vào tham số.
 - Ghi vào bảng ở [`tracking-plan.md`](tracking-plan.md) trước khi code.
 

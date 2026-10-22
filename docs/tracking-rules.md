@@ -24,13 +24,52 @@ Rule: **each platform's own dashboard is the source of truth for what happens in
 
 ## 3. Event naming
 
-| Rule | Example |
-|---|---|
-| `snake_case`, lowercase, verb or noun first | `resource_click`, `subscribe_click` |
-| One event per user action, parameters carry the detail | `resource_click` with `resource_id`, `topic` |
-| Same parameter name means the same thing everywhere | `cta_location` (Library) equals `utm_campaign` (links into Substack) |
-| Do not reuse GA4 reserved or automatic names | not `click`, `scroll`, `page_view` |
-| `sign_up` is the Substack conversion; `form_start` is intent, not conversion | |
+### 3.1 Format
+
+An event name is **`<object>_<action>`**, lowercase `snake_case`, in English.
+
+| Part | Meaning | Allowed values |
+|---|---|---|
+| `<object>` | What the visitor interacts with: a content type or a named part of the page | `resource`, `category`, `library`, `filter`, `tool_banner`, `subscribe`, `scroll`, `read` ... |
+| `<action>` | What happens. Pick one from the list, do not invent new verbs | `click`, `impression`, `search`, `apply`, `view`, `dismiss`, `depth`, `time` |
+
+### 3.2 Link out of the site: `cta_<destination>_click`
+
+A call-to-action that leads to another place uses **`cta_<destination>_click`**. The destination is in the name, the placement is in the parameter `cta_location`.
+
+| Event | Destination | Placement in `cta_location` |
+|---|---|---|
+| `cta_substack_click` | Zoe's Substack | `header`, `banner`, `resource_card`, `blog_card`, `about_link`, `footer` |
+| `cta_buymeacoffee_click` | Buy Me a Coffee (the donate button) | `footer` |
+
+### 3.3 Rules
+
+1. **One action, one event.** Details go in parameters, not in the name (`resource_click` with `resource_id`, never `resource_zoe_click`).
+2. **Placement goes in a parameter** (`cta_location`), not in the name. The one exception is a **named component** that has its own behaviour and shows content that also appears elsewhere: it may be the `<object>` (`tool_banner_click`, to tell it from `resource_click` on the same product in the library).
+3. **Reuse before you create.** Check [`tracking-plan.md`](tracking-plan.md) first. A new link to Substack is a new `cta_location` value, not a new event.
+4. **Never reuse names GA4 already owns:** `click`, `scroll`, `page_view`, `session_start`, `first_visit`, `form_start`, `user_engagement`, `purchase`...
+5. **Conversion names follow GA4 where one exists** (`sign_up`). `form_start` is intent, not conversion.
+6. **Parameters** are `snake_case` and mean the same everywhere (`resource_id`, `topic`, `cta_location`). A parameter you want in reports is registered as a custom dimension (Event scope).
+7. **No personal data** in any name or parameter.
+8. **Tag Manager names mirror the event:** trigger `CE - <event>`, tag `GA4 Event | <event>`, variable `dlv - <parameter>`. When several tags send the same event (one per placement), a suffix is allowed (`GA4 Event | subscribe_click header`).
+9. **Write it down before you code it:** add the event to [`tracking-plan.md`](tracking-plan.md) (and to the table below when it belongs to a new pattern).
+
+### 3.4 Current events
+
+| Event | Object and action | Property |
+|---|---|---|
+| `resource_impression`, `resource_click` | resource: impression, click | Library |
+| `category_click` | category: click | Library |
+| `library_search` | library: search | Library |
+| `filter_apply` | filter: apply | Library |
+| `tool_banner_click` | tool banner: click | Library |
+| `cta_substack_click`, `cta_buymeacoffee_click` | CTA out of the site (3.2) | Library |
+| `sign_up` | GA4 conversion name | Substack |
+| `subscribe_click`, `subscribe_popup_view`, `subscribe_popup_dismiss` | subscribe button / popup: click, view, dismiss | Substack |
+| `scroll_depth`, `read_time` | scroll: depth, read: time | Substack |
+
+Known deviations (kept on purpose, they already hold data):
+- Substack uses `subscribe_location` for the placement of `subscribe_click`; the Library uses `cta_location`.
 
 Events per property: Library in [`tracking-plan.md`](tracking-plan.md); Substack in [`tracking-audit.md`](tracking-audit.md) (§ tag plan).
 
