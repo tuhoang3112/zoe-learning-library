@@ -21,7 +21,7 @@ Exports of the two Google Tag Manager containers. The repository matches what is
 
 ## Why the two containers differ
 
-- **Library:** the site pushes events and parameters to the Data Layer itself, so each event is one Custom Event trigger, one GA4 Event tag and Data Layer Variables for the parameters. See [`../docs/data-dictionary.md`](../docs/data-dictionary.md).
+- **Library:** the site pushes events and parameters to the Data Layer itself, so each event is one Custom Event trigger, one GA4 Event tag and Data Layer Variables for the parameters. See [`../docs/tracking-plan.md`](../docs/tracking-plan.md).
 - **Substack:** the platform only runs Google tags and built-in triggers (click, scroll depth, timer, element visibility, custom event). Custom HTML, custom JavaScript variables and non-Google pixels are blocked, so every event here is built from those triggers. See [`../docs/tracking-audit.md`](../docs/tracking-audit.md).
 
 ## Import
