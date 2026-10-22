@@ -22,15 +22,20 @@ What readers do (GA4) and what they achieve (new subscribers, in Substack's own 
 
 ## What I did
 
-**1. A site I control** (`landing-page/`): a searchable library of 55 resources with filters, a highlight band for my own products and a row of popular newsletter posts. Plain HTML, CSS and vanilla JS, deployed to GitHub Pages by GitHub Actions. The catalogue is one JSON file.
+Tracking built per channel, all managed through Google Tag Manager and GA4, with one UTM rule set across every channel:
 
-**2. A tracking system** (Google Tag Manager and GA4)
-- **Library:** 8 events pushed through the Data Layer, all defined in one file ([`analytics.js`](landing-page/js/analytics.js)): resource impressions and clicks, search, filters, topic clicks, product banner clicks, and clicks toward Substack and Buy Me a Coffee.
-- **Substack:** 12 GA4 event tags built with Google tags and built-in triggers only, because Substack blocks custom code: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth and read time. `sign_up` now reaches GA4; marking it as a key event is the next step (see Status below).
-- **Buy Me a Coffee:** a GA4 stream inside the Library property, connected through the platform's Google Analytics ID field.
-- Both Tag Manager containers are exported to [`gtm/`](gtm/) so the repository matches what is live.
+| Channel | What was built | How | In the repo |
+|---|---|---|---|
+| **Substack newsletter** | 12 GA4 event tags: `sign_up`, Subscribe clicks by placement, popup views and dismissals, scroll depth, read time | Google tags and built-in triggers only, because Substack blocks custom code | [`gtm/substack-container.json`](gtm/substack-container.json) |
+| **Learning Library** (own site) | 8 events pushed through the Data Layer: resource impressions and clicks, search, filters, topic clicks, product banner clicks, clicks toward Substack and Buy Me a Coffee | Custom code, no platform limits; all events defined in one file | [`analytics.js`](landing-page/js/analytics.js), [`gtm/library-container.json`](gtm/library-container.json) |
+| **Buy Me a Coffee** | A GA4 stream inside the Library property | Only the platform's Google Analytics ID field is available: page views and sources are measured, purchases are not | Platform setting |
+| **LinkedIn, YouTube, Facebook** | No tag possible, so source tracking through UTM | Fixed vocabulary of source, medium, campaign and content | [`docs/utm-rules.md`](docs/utm-rules.md), [`tools/utm-builder.html`](tools/utm-builder.html) |
 
-**3. UTM governance:** one rule set for every link published on Substack, the Library, Buy Me a Coffee, LinkedIn, YouTube and Facebook, links from the Library tagged automatically by code, and a small local tool ([`tools/utm-builder.html`](tools/utm-builder.html), open it in a browser) that builds compliant links.
+`sign_up` now reaches GA4; marking it as a key event is the next step (see Status below). Both Tag Manager containers are exported to [`gtm/`](gtm/) so the repository matches what is live.
+
+**UTM governance across channels:** one rule set for every link published on Substack, the Library, Buy Me a Coffee, LinkedIn, YouTube and Facebook. Links leaving the Library are tagged automatically by code, and a small local tool builds compliant links for everything else.
+
+**The site I built to measure** (`landing-page/`): a searchable library of 55 resources with filters, a highlight band for my own products and a row of popular newsletter posts. I built it because Substack allows no custom tracking code, so the Data Layer and custom events needed a site I control. Plain HTML, CSS and vanilla JS, deployed to GitHub Pages by GitHub Actions; the catalogue is one JSON file.
 
 ## Skills shown
 
