@@ -6,7 +6,7 @@
 flowchart LR
     SUB[Substack newsletter] -->|Google tags only| GTM1[GTM: Substack container]
     LIB[Learning Library site] -->|Data Layer events| GTM2[GTM: Library container]
-    BMC[Buy Me a Coffee] -->|GA4 ID field| GA4
+    BMC[Buy Me a Coffee] -->|Google Analytics field| GA4
     SOC[LinkedIn, YouTube, Facebook] -.->|UTM links| SUB
     SOC -.->|UTM links| LIB
     GTM1 --> GA4[GA4]
@@ -96,7 +96,7 @@ Each event carries the parameters of the resource (type, topic, level, access, p
 
 ## Validation
 
-Each implementation is checked in GTM Preview and the data checked in GA4 reports. The before state is recorded in the [baseline](docs/tracking-audit.md#baseline-before-the-fix); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
+Checked so far in GTM Preview on Substack: the container loads, and `scroll_depth`, `read_time` and `sign_up` (by a manual push) fire. Still to document: `subscribe_click` on a real click, the Library events (Data Layer in Preview) and the events arriving in GA4 (DebugView). The before state is recorded in the [baseline](docs/tracking-audit.md#baseline-before-the-fix); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
 
 <p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
