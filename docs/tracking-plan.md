@@ -26,6 +26,8 @@ Container: [`gtm/substack-container.json`](../gtm/substack-container.json). Clic
 
 **Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (the last one by a manual push). Still to confirm: `subscribe_click` on a real click (Preview shows errors for the `Click Text` variable these triggers use) and `sign_up` on a real subscription. See [`tracking-audit.md`](tracking-audit.md).
 
+**Existing content to retag.** UTM was only applied to new links, so links to the Library, Buy Me a Coffee and Tomorrow Marketers inside content that was already published still arrive untagged. They are retagged in this order: the navigation menu and the sidebar (positions `menu` and `sidebar`), the About page, the links in the newsletter emails, then the old posts (position `caption`, with a short title of each post). Links that stay inside Substack, and links to LinkedIn, YouTube and TikTok, get no UTM. Emails that were already sent cannot be changed, so only the web copy of old posts improves. The date each part is done is recorded in [`tracking-audit.md`](tracking-audit.md), because retagging changes the share of `(direct) / (none)` independently of the event tracking.
+
 ## Learning Library
 
 What the Library measures, when each event fires and why it matters. Every event is pushed to the Data Layer by [`landing-page/js/analytics.js`](../landing-page/js/analytics.js) and sent to GA4 by Tag Manager. GA4's automatic `page_view` stays on.

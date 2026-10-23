@@ -92,6 +92,16 @@ Same property, a **28-day window that starts after the fix** (Substack tracking 
 2. Share of `(direct) / (none)`: ~17% in the initial state (23 Aug to 19 Sep) and ~12% just before the fix (25 Sep to 22 Oct); after = to be measured over 23 Oct to 19 Nov.
 3. Behaviour: scroll depth at 25/50/75/90% and read time instead of a single 90% scroll.
 
+**Retagging the existing Substack content.** Retagging old links lowers the `(direct) / (none)` share on its own, so the "after" figure has to be read together with these dates:
+
+| Part | Retagged on |
+|---|---|
+| Navigation menu | not yet |
+| Sidebar | not yet |
+| About page | not yet |
+| Newsletter emails | not yet |
+| Old posts | not yet |
+
 ## Limits
 
 - Different 28-day windows differ in posting schedule and seasonality, so the comparison shows direction, not exact causal effect.
