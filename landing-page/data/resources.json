@@ -591,6 +591,7 @@
   },
   {
     "id": "data-analyst-mindmap",
+    "home_rank": 1,
     "title": "Mindmap tổng hợp kiến thức cho Data Analyst",
     "type": "Resource",
     "topic": "Data Analytics",
@@ -853,7 +854,6 @@
   },
   {
     "id": "excel-dashboard-templates",
-    "home_rank": 1,
     "title": "TỔNG HỢP 100+ MẪU DASHBOARDS EXCEL",
     "type": "Resource",
     "topic": "Data Analytics",
