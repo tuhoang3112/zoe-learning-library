@@ -631,6 +631,7 @@
     color:#fff;
     font-size:13px;
     line-height:1.35;
+    white-space:pre-line;
     box-shadow:0 6px 18px rgba(17,24,39,.22);
     cursor:pointer;
   }
