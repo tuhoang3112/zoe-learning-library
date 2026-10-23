@@ -84,7 +84,7 @@ One plan per measured property, all sent to GA4 through Tag Manager.
 
 <p align="center"><img src="docs/images/substack-post-events.webp" alt="Substack post page with the Subscribe placements mapped to their events" width="760"></p>
 
-`subscribe_click` by placement (header, inline, popup, home, footer), `subscribe_popup_view` and `subscribe_popup_dismiss`, `scroll_depth` at 25/50/75/90% and `read_time` at 30/60/120 seconds on posts, plus `sign_up`. Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push); `subscribe_click` and `sign_up` on a real subscription are still to confirm.
+`subscribe_click` by placement (header, inline, popup, home, footer), `subscribe_popup_view` and `subscribe_popup_dismiss`, `scroll_depth` at 25/50/75/90% and `read_time` at 30/60/120 seconds on posts, plus `sign_up`. Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push). Seen in GA4 Realtime with real clicks and subscriptions on 2026-10-23: `subscribe_click`, and `sign_up`, which is counted twice per subscription and is being corrected.
 
 **Learning Library** (8 events through the Data Layer):
 
@@ -104,7 +104,7 @@ Each event carries the parameters of the resource (type, topic, level, access, p
 
 ## Validation
 
-Checked so far in GTM Preview on Substack: the container loads, and `scroll_depth`, `read_time` and `sign_up` (by a manual push) fire. Still to document: `subscribe_click` on a real click, the Library events (Data Layer in Preview) and the events arriving in GA4 (DebugView). The before state is recorded in the [baseline](docs/tracking-audit.md#baseline-before-the-fix); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
+Checked so far on Substack: in GTM Preview the container loads and `scroll_depth`, `read_time` and `sign_up` (by a manual push) fire; in GA4 Realtime, real clicks and real subscriptions on 2026-10-23 produced `subscribe_click` and `sign_up`, and showed that `sign_up` is counted twice per subscription (being corrected). Still to document: the Library events (Data Layer in Preview) and DebugView. The before state is recorded in the [baseline](docs/tracking-audit.md#baseline-before-the-fix); the same 28-day window after the fix will be compared against it. Findings and fixes are in the [tracking audit](docs/tracking-audit.md).
 
 <p align="center"><img src="docs/images/gtm-preview-substack.webp" alt="GTM Preview connected to a Substack post: the Google tag, sign_up, read_time and scroll_depth tags fired" width="860"></p>
 
@@ -160,7 +160,7 @@ Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management
 | Library tracking (8 events), GTM + GA4 | Live since 2026-09-20 |
 | Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
 | UTM rules and builder | Done, applied to new links |
-| Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
+| Confirm `sign_up` on a real subscription | Seen 2026-10-23 with two real subscriptions, but counted twice per subscription; fix in progress, then re-test |
 | Key events marked in GA4 | Done 2026-10-23. Substack: `sign_up`. Library: `cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click` |
 | Retag existing content with UTM | Substack menu, sidebar and About page done 2026-10-23; the rest of Substack (old posts, newsletter emails) this week; LinkedIn next week, starting with pinned posts and profile descriptions; old Facebook links are left as they are (too many). Dates are recorded in the audit because retagging affects the "after" window |
 | Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |

@@ -7,7 +7,7 @@ What could and could not be measured on the two sites, how the newsletter looked
 GA4 on the newsletter showed **0 key events**. The cause was **configuration, not the platform**:
 
 - Tag Manager was installed with **only the Google tag** (the one that connects the site to GA4). No trigger, no event tag and no other configuration existed, so GA4 collected only its automatic events (page views, enhanced measurement). That is the starting point, not a fault: everything beyond it was built in the fix.
-- No tag, trigger or key event existed for subscriptions, so conversions were invisible. The `sign_up` event was set up in the fix (a Custom Event trigger and a GA4 Event tag); it still has to be confirmed with a real subscription, because so far it has only been tested by pushing the event name from the browser console.
+- No tag, trigger or key event existed for subscriptions, so conversions were invisible. The `sign_up` event was set up in the fix (a Custom Event trigger and a GA4 Event tag); it was first tested by pushing the event name from the browser console, then seen in GA4 Realtime with two real subscriptions on 2026-10-23, which showed that it is counted twice per subscription (fix in progress).
 - About one session in six had no known source: `(direct) / (none)` was ~17% of sessions in the initial window, and `(direct) / (none)` with `(not set)` ~16% in the next one.
 
 ## What Substack allows
@@ -75,7 +75,7 @@ The Learning Library property has nothing to compare against: GA4 shows no data 
 
 | Problem | Effect | Fix |
 |---|---|---|
-| No event for subscriptions, no key event | Subscriptions invisible in GA4 | `sign_up` tag added and marked as a key event on 2026-10-23 (still to be confirmed on a real subscription) |
+| No event for subscriptions, no key event | Subscriptions invisible in GA4 | `sign_up` tag added and marked as a key event on 2026-10-23 (seen with real subscriptions on 2026-10-23, counted twice per subscription: fix in progress) |
 | `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25, 50, 75, 90% |
 | `click` only covers outbound links | Subscribe buttons not measured | `subscribe_click` per placement (header, popup, inline, footer, home) |
 | `form_start` is typing, not signing up | Counts intent, not conversion | `sign_up` is the conversion |

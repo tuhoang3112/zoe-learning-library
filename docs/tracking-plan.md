@@ -24,7 +24,9 @@ Container: [`gtm/substack-container.json`](../gtm/substack-container.json). Clic
 
 `percent_scrolled` comes from the built-in variable Scroll Depth Threshold; the other parameters are fixed values set in each tag, since the container can only use Google tags and built-in triggers.
 
-**Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (the last one by a manual push). Still to confirm: `subscribe_click` on a real click (Preview shows errors for the `Click Text` variable these triggers use) and `sign_up` on a real subscription. See [`tracking-audit.md`](tracking-audit.md).
+**Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push). Seen arriving in GA4 Realtime on 2026-10-23 with real clicks and real subscriptions: `subscribe_click` and `sign_up`. Found there: `sign_up` is counted **twice** per real subscription (two real subscriptions added two events each), so the tag is being corrected before its numbers are used. See [`tracking-audit.md`](tracking-audit.md).
+
+**Reading `subscribe_click`.** It counts clicks, not people. A reader who is asked to log in clicks Subscribe twice, so read it as users or sessions with the event rather than as the event count.
 
 **Existing content to retag.** UTM was only applied to new links, so links to the Library, Buy Me a Coffee and Tomorrow Marketers inside content that was already published still arrive untagged, and links I posted on LinkedIn reach Substack as `linkedin.com / referral`. They are retagged on this timeline:
 
