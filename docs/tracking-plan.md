@@ -26,7 +26,15 @@ Container: [`gtm/substack-container.json`](../gtm/substack-container.json). Clic
 
 **Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (the last one by a manual push). Still to confirm: `subscribe_click` on a real click (Preview shows errors for the `Click Text` variable these triggers use) and `sign_up` on a real subscription. See [`tracking-audit.md`](tracking-audit.md).
 
-**Existing content to retag.** UTM was only applied to new links, so links to the Library, Buy Me a Coffee and Tomorrow Marketers inside content that was already published still arrive untagged. They are retagged in this order: the navigation menu and the sidebar (positions `menu` and `sidebar`), the About page, the links in the newsletter emails, the old posts (position `caption`, with a short title of each post) and the links I left in LinkedIn comments (position `cmt`). Old Facebook posts and comments are not retagged: there are too many, so their old links stay untagged and keep showing as `l.facebook.com / referral`; only new Facebook links carry UTM. Links that stay inside Substack, and links to LinkedIn, YouTube and TikTok, get no UTM. Emails that were already sent cannot be changed, so only the web copy of old posts improves. The date each part is done is recorded in [`tracking-audit.md`](tracking-audit.md), because retagging changes the share of `(direct) / (none)` independently of the event tracking.
+**Existing content to retag.** UTM was only applied to new links, so links to the Library, Buy Me a Coffee and Tomorrow Marketers inside content that was already published still arrive untagged, and links I posted on LinkedIn reach Substack as `linkedin.com / referral`. They are retagged on this timeline:
+
+| When | What |
+|---|---|
+| This week (19 to 25 Oct 2026) | Substack: navigation menu, sidebar and About page (done 2026-10-23), newsletter emails, then the old posts (position `caption`, with a short title of each post) |
+| Next week (26 Oct to 1 Nov 2026) | LinkedIn, in this order: pinned posts, profile descriptions, then the other posts and the links I left in comments (positions `caption` and `cmt`) |
+| Not planned | Old Facebook posts and comments: there are too many, so their old links stay untagged and keep showing as `l.facebook.com / referral`; only new Facebook links carry UTM |
+
+Links that stay inside Substack, and links to LinkedIn, YouTube and TikTok, get no UTM. Emails that were already sent cannot be changed, so only the web copy of old posts improves.
 
 ## Learning Library
 

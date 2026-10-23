@@ -92,17 +92,19 @@ Same property, a **28-day window that starts after the fix** (Substack tracking 
 2. Share of `(direct) / (none)`: ~17% in the initial state (23 Aug to 19 Sep) and ~12% just before the fix (25 Sep to 22 Oct); after = to be measured over 23 Oct to 19 Nov.
 3. Behaviour: scroll depth at 25/50/75/90% and read time instead of a single 90% scroll.
 
-**Retagging the existing Substack content.** Retagging old links lowers the `(direct) / (none)` share on its own, so the "after" figure has to be read together with these dates:
+**Retagging existing content (Substack and LinkedIn).** Retagging old links lowers the `(direct) / (none)` share on its own, so the "after" figure has to be read together with these dates:
 
-| Part | Retagged on |
-|---|---|
-| Navigation menu | 2026-10-23 |
-| Sidebar | 2026-10-23 |
-| About page | 2026-10-23 |
-| Newsletter emails | not yet |
-| Old posts | in progress, to be finished this week (there are many, so they are done gradually) |
-| LinkedIn comments | not yet |
-| Facebook posts and comments | not retagged: too many, old links stay untagged |
+| Part | Planned | Retagged on |
+|---|---|---|
+| Navigation menu | this week | 2026-10-23 |
+| Sidebar | this week | 2026-10-23 |
+| About page | this week | 2026-10-23 |
+| Newsletter emails | this week | not yet |
+| Old Substack posts | this week | in progress (there are many, so they are done gradually) |
+| LinkedIn pinned posts | next week (26 Oct to 1 Nov), first | not yet |
+| LinkedIn profile descriptions | next week, second | not yet |
+| LinkedIn other posts and comments | next week, after the first two | not yet |
+| Facebook posts and comments | not planned: too many, old links stay untagged | not applicable |
 
 ## Limits
 
