@@ -42,13 +42,21 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 
 ## The problem
 
-The ZoeDataLens newsletter on Substack has real traffic (about 2.4K sessions in the 28 days before the fix, 25 Sep to 22 Oct 2026) but GA4 could not say what that traffic achieved:
+The ZoeDataLens newsletter on Substack has real traffic, but GA4 could not say what that traffic achieved. **Starting point**, in the 28 days before anything was changed (23 Aug to 19 Sep 2026):
 
-| Baseline (28 days before the fix) | Value |
-|---|---|
-| Key events in GA4 | **0** |
-| `(direct) / (none)` share of sessions | **about 12%**, twice as much as LinkedIn referrals (about 6%): real sources were hidden |
-| Sources set by Substack itself (`activity_item`, `confirmation_email`...) | Not UTM-compliant, mixed in with marketing channels |
+- Tag Manager on Substack held **only the Google tag**: no event tag, no trigger.
+- GA4 saw **automatic events only**: page views, one scroll event at 90%, outbound link clicks and typing in forms. Nothing on Subscribe buttons or on signing up.
+- **No key event** was set, so conversions were invisible.
+- Links I posted on LinkedIn and Facebook carried **no UTM**: the visits show as `linkedin.com / referral` and `l.facebook.com / referral`, and untagged app links fall into `(direct) / (none)`.
+
+| Before and after | Initial state (23 Aug to 19 Sep) | Just before the Substack fix (25 Sep to 22 Oct) | After (23 Oct to 19 Nov) |
+|---|---|---|---|
+| Sessions | ~2.2K | ~2.4K | to be measured |
+| Key events in GA4 | **0** | **0** | to be measured |
+| `(direct) / (none)` share of sessions | ~17% | ~12% | to be measured |
+| `linkedin.com / referral` share of sessions | ~14% | ~6% | to be measured |
+
+The Library and its standardised UTM links went live on 20 Sep, between the first two columns. See the [audit and baseline](docs/tracking-audit.md) for the full tables.
 
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
 
