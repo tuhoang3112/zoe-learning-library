@@ -1,6 +1,7 @@
 [
   {
     "id": "futurepedia-n8n",
+    "home_rank": 5,
     "title": "Agents & Automation with No Code",
     "type": "Resource",
     "topic": "AI Agents & Automation",
@@ -204,6 +205,7 @@
   },
   {
     "id": "kj-rainey-claude-cowork",
+    "home_rank": 4,
     "title": "Claude COWORK Full Course: Zero To Working AI Employee (2026)",
     "type": "Resource",
     "topic": "AI Agents & Automation",

@@ -66,13 +66,25 @@ function interleaveByProvider(list) {
   return out;
 }
 
-/* Cards with a "home_rank" in resources.json are pinned to the top of the default view, in rank order. */
+/* Default view order:
+   1. cards with a "home_rank" in resources.json, in rank order;
+   2. then "Resource" cards (providers dealt out in turns) with one "Tools & Templates" card (Zoe's tools,
+      featured first) after every 3 of them;
+   3. then whatever is left (Course, Dataset, ...), providers dealt out in turns. */
+var TOOLS_EVERY = 3;
+
 function defaultViewOrder(list) {
   var pinned = list.filter(function (r) { return r.home_rank; })
     .sort(function (a, b) { return a.home_rank - b.home_rank; });
   var rest = list.filter(function (r) { return !r.home_rank; });
-  var isResource = function (r) { return r.type === "Resource"; };
-  return pinned
-    .concat(interleaveByProvider(rest.filter(isResource)))
-    .concat(interleaveByProvider(rest.filter(function (r) { return !isResource(r); })));
+  var resources = interleaveByProvider(rest.filter(function (r) { return r.type === "Resource"; }));
+  var tools = rest.filter(function (r) { return r.type === "Tools & Templates"; })
+    .sort(function (a, b) { return (b.featured === true) - (a.featured === true) || a.position - b.position; });
+  var others = interleaveByProvider(rest.filter(function (r) { return r.type !== "Resource" && r.type !== "Tools & Templates"; }));
+  var mixed = [];
+  while (resources.length || tools.length) {
+    for (var n = 0; n < TOOLS_EVERY && resources.length; n++) mixed.push(resources.shift());
+    if (tools.length) mixed.push(tools.shift());
+  }
+  return pinned.concat(mixed, others);
 }
