@@ -42,12 +42,12 @@ Google Tag Manager (triggers, tags, Data Layer, container import and export) · 
 
 ## The problem
 
-The ZoeDataLens newsletter on Substack has real traffic (about 2.2K sessions and 1.2K users in the 28 days before the fix, 23 Aug to 19 Sep 2026) but GA4 could not say what that traffic achieved:
+The ZoeDataLens newsletter on Substack has real traffic (about 2.4K sessions in the 28 days before the fix, 25 Sep to 22 Oct 2026) but GA4 could not say what that traffic achieved:
 
 | Baseline (28 days before the fix) | Value |
 |---|---|
 | Key events in GA4 | **0** |
-| `(direct) / (none)` share of sessions | **about 17%**, more than LinkedIn (about 14%): real sources were hidden |
+| `(direct) / (none)` share of sessions | **about 12%**, twice as much as LinkedIn referrals (about 6%): real sources were hidden |
 | Sources set by Substack itself (`activity_item`, `confirmation_email`...) | Not UTM-compliant, mixed in with marketing channels |
 
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
