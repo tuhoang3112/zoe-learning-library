@@ -615,7 +615,7 @@
     z-index:20;
     transition:transform .15s ease, box-shadow .15s ease;
   }
-  .bmc-float svg{width:28px;height:34px}
+  .bmc-float img{display:block;width:24px;height:35px}
   .bmc-float:hover,.bmc-float:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,24,39,.28)}
   .bmc-float::after{
     content:attr(data-tip);
