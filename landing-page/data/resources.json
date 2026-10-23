@@ -443,6 +443,7 @@
   },
   {
     "id": "ebook-ecommerce-kpis",
+    "home_rank": 6,
     "title": "Ebook E-Commerce KPIs",
     "type": "Resource",
     "topic": "Data Analytics",
@@ -464,6 +465,7 @@
   },
   {
     "id": "ebook-inbound-marketing-metrics",
+    "home_rank": 7,
     "title": "Ebook Introduction to Inbound Marketing Metrics",
     "type": "Resource",
     "topic": "Marketing & Growth",
