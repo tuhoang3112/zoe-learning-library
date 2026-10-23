@@ -68,19 +68,25 @@ function interleaveByProvider(list) {
 
 /* Default view order:
    1. cards with a "home_rank" in resources.json, in rank order;
-   2. then "Resource" cards (providers dealt out in turns) with one "Tools & Templates" card (Zoe's tools,
-      featured first) after every 3 of them;
-   3. then whatever is left (Course, Dataset, ...), providers dealt out in turns. */
+   2. then "Resource" cards with one of Zoe's other "Tools & Templates" cards
+      after every 3 of them. Resources go in three groups: data non-blog (topic Data Analytics or "dashboard" in the title), other non-blog, then blog series;
+   providers are dealt out in turns inside each group (tools already shown in the banner, passed in as isBannerTool, are left out here);
+   3. then whatever is left (Course, Dataset, banner tools, ...), providers dealt out in turns. */
 var TOOLS_EVERY = 3;
 
-function defaultViewOrder(list) {
+function defaultViewOrder(list, isBannerTool) {
   var pinned = list.filter(function (r) { return r.home_rank; })
     .sort(function (a, b) { return a.home_rank - b.home_rank; });
   var rest = list.filter(function (r) { return !r.home_rank; });
-  var resources = interleaveByProvider(rest.filter(function (r) { return r.type === "Resource"; }));
-  var tools = rest.filter(function (r) { return r.type === "Tools & Templates"; })
-    .sort(function (a, b) { return (b.featured === true) - (a.featured === true) || a.position - b.position; });
-  var others = interleaveByProvider(rest.filter(function (r) { return r.type !== "Resource" && r.type !== "Tools & Templates"; }));
+  var isSprinkled = function (r) { return r.type === "Tools & Templates" && !isBannerTool(r); };
+  var isBlog = function (r) { return /^Blog Series/i.test(r.title); };
+  var onlyResources = rest.filter(function (r) { return r.type === "Resource"; });
+  var isData = function (r) { return r.topic === "Data Analytics" || /dashboard/i.test(r.title); };
+  var resources = interleaveByProvider(onlyResources.filter(function (r) { return !isBlog(r) && isData(r); }))
+    .concat(interleaveByProvider(onlyResources.filter(function (r) { return !isBlog(r) && !isData(r); })))
+    .concat(interleaveByProvider(onlyResources.filter(isBlog)));
+  var tools = rest.filter(isSprinkled).sort(function (a, b) { return a.position - b.position; });
+  var others = interleaveByProvider(rest.filter(function (r) { return r.type !== "Resource" && !isSprinkled(r); }));
   var mixed = [];
   while (resources.length || tools.length) {
     for (var n = 0; n < TOOLS_EVERY && resources.length; n++) mixed.push(resources.shift());
