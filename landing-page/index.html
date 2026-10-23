@@ -402,7 +402,7 @@
 </script>
 <!-- ItemList:end -->
 <link rel="icon" href="assets/images/logo.jpg">
-<link rel="stylesheet" href="css/styles.css?v=20261023h">
+<link rel="stylesheet" href="css/styles.css?v=20261023i">
 
 <!-- Google Tag Manager -->
 <!-- GTM is skipped on localhost so local testing never reaches GA4. Add ?gtm=on to the local URL to test tracking on purpose. -->
@@ -422,7 +422,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header>
   <div class="wrap nav">
     <a class="brand" href="https://zoedatalens.substack.com/" target="_blank" rel="noopener noreferrer" data-cta-location="header"><img class="brand-logo-full" src="assets/images/logo.jpg" alt="Zoe’s Data &amp; AI Lens" width="207" height="207"></a>
-    <nav class="navlinks" aria-label="Main">
+    <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainNav">
+      <svg class="i-open" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg class="i-close" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="navlinks" id="mainNav" aria-label="Main">
       <a href="#learning">What I’ve been learning</a>
       <a href="#tools">Tools by Zoe</a>
       <a href="#library">Resources</a>
@@ -549,6 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="js/analytics.js"></script>
 <script src="js/search.js"></script>
 <script src="js/filters.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=20261023i"></script>
+<script src="js/menu.js?v=20261023i"></script>
 </body>
 </html>
