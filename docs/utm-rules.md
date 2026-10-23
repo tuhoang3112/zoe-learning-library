@@ -10,7 +10,7 @@ How every link I publish (Substack, Learning Library, Buy Me a Coffee, LinkedIn,
 2. Only use values from the tables below. A new value is added to the table first.
 3. Never rename a value that is already in use: it breaks the history.
 4. No UTM on links inside the same site.
-5. Build links with [`tools/utm-builder.html`](../tools/utm-builder.html), not by hand.
+5. Build links with the [UTM builder](https://tuhoang3112.github.io/zoe-learning-library/tools/utm-builder.html) ([source](../landing-page/tools/utm-builder.html)), a web tool that standardises the values (lowercase, no accents, hyphens) and assembles the link, not by hand.
 
 ## The four parameters
 
