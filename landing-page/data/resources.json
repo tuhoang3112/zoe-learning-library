@@ -1199,5 +1199,28 @@
     "featured": false,
     "date_added": "2026-10-22",
     "image": "assets/images/covers/happy-live-invest-lo-trinh-sach-dau-tu.jpg"
+  },
+  {
+    "id": "nate-herk-self-host-n8n",
+    "title": "The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)",
+    "type": "Resource",
+    "topic": "AI Agents & Automation",
+    "level": "Beginner",
+    "access": "Free",
+    "provider": "Nate Herk | AI Automation",
+    "description": "Video hướng dẫn tự cài n8n (self-host) trên VPS Hostinger cho người mới: cài một chạm, bật backup tự động, cập nhật n8n và so sánh n8n Cloud với self-host.",
+    "url": "https://www.youtube.com/watch?v=6ZB0zADNaqk",
+    "tags": [
+      "n8n",
+      "Self-host",
+      "Hostinger",
+      "VPS",
+      "Automation",
+      "YouTube"
+    ],
+    "position": 57,
+    "featured": false,
+    "date_added": "2026-10-23",
+    "image": "https://i.ytimg.com/vi/6ZB0zADNaqk/hqdefault.jpg"
   }
 ]
