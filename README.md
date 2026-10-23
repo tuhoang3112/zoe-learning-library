@@ -162,6 +162,6 @@ Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management
 | UTM rules and builder | Done, applied to new links |
 | Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
 | Key events marked in GA4 | Done 2026-10-23. Substack: `sign_up`. Library: `cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click` |
-| Retag the existing Substack content with UTM (menu, sidebar, About page, emails, old posts) | Pending: links to the Library, Buy Me a Coffee and Tomorrow Marketers are untagged until this is done; the date is recorded because it affects the "after" window |
+| Retag the existing Substack content with UTM | Menu, sidebar and About page done 2026-10-23; old posts in progress, to be finished this week; newsletter emails not yet. Dates are recorded in the audit because retagging affects the "after" window |
 | Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
 | Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |

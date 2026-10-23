@@ -96,11 +96,11 @@ Same property, a **28-day window that starts after the fix** (Substack tracking 
 
 | Part | Retagged on |
 |---|---|
-| Navigation menu | not yet |
-| Sidebar | not yet |
-| About page | not yet |
+| Navigation menu | 2026-10-23 |
+| Sidebar | 2026-10-23 |
+| About page | 2026-10-23 |
 | Newsletter emails | not yet |
-| Old posts | not yet |
+| Old posts | in progress, to be finished this week (there are many, so they are done gradually) |
 
 ## Limits
 
