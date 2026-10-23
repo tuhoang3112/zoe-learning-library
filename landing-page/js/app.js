@@ -276,8 +276,9 @@
     els.grid.querySelectorAll(".item").forEach(function (card) { impressionObserver.observe(card); });
   }
 
-  var ROWS_PER_PAGE = 2;
-  var visibleRows = ROWS_PER_PAGE;
+  /* Rows shown per page: 2 rows on wider screens; on phones (one column) 6 cards so the list is not just 2 cards long. */
+  function rowsPerPage() { return gridColumns() === 1 ? 6 : 2; }
+  var visibleRows = rowsPerPage();
 
   function gridColumns() {
     return getComputedStyle(els.grid).gridTemplateColumns.split(" ").length || 1;
@@ -329,7 +330,7 @@
   /* ---------- events ---------- */
 
   function onFilterChange(key) {
-    visibleRows = ROWS_PER_PAGE;
+    visibleRows = rowsPerPage();
     state[key] = els.selects[key].value;
     var count = render();
     writeStateToUrl(state);
@@ -337,7 +338,7 @@
   }
 
   function onSearchInput() {
-    visibleRows = ROWS_PER_PAGE;
+    visibleRows = rowsPerPage();
     state.q = els.search.value.trim();
     var count = render();
     writeStateToUrl(state);
@@ -347,7 +348,7 @@
 
   function onCategoryClick(name) {
     // Category shortcut = topic filter only; other filters and search are reset.
-    visibleRows = ROWS_PER_PAGE;
+    visibleRows = rowsPerPage();
     state = emptyFilters();
     state.topic = name;
     syncControls();
@@ -373,12 +374,12 @@
     });
     els.search.addEventListener("input", onSearchInput);
     els.more.addEventListener("click", function () {
-      visibleRows += ROWS_PER_PAGE;
+      visibleRows += rowsPerPage();
       render();
     });
     window.addEventListener("resize", function () { if (resources.length) render(); });
     function submitSearch() {
-      visibleRows = ROWS_PER_PAGE;
+      visibleRows = rowsPerPage();
       state.q = els.search.value.trim();
       var count = render();
       writeStateToUrl(state);
