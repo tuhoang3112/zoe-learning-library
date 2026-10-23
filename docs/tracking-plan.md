@@ -51,7 +51,7 @@ What the Library measures, when each event fires and why it matters. Every event
 | `category_click` | A topic card is clicked | Which topics attract interest |
 | `tool_banner_click` | A product or "Visit the shop" is clicked in the "Tools made by Zoe" banner | Interest in my own products, apart from the library list |
 | `cta_substack_click` | Any link toward Substack is clicked (header, banner, resource card, post card, About, footer) | The main goal: visitors moving to the newsletter |
-| `cta_buymeacoffee_click` | The coffee-cup donate button is clicked | Interest in supporting the project |
+| `cta_buymeacoffee_click` | The coffee-cup donate button in the footer, or the floating coffee-cup button in the corner, is clicked | Interest in supporting the project |
 
 **Resource parameters**, sent with `resource_impression`, `resource_click` and `tool_banner_click`. Values come from the catalogue ([`resources.json`](../landing-page/data/resources.json)) and the allowed values from [`config.js`](../landing-page/js/config.js).
 
@@ -76,7 +76,7 @@ What the Library measures, when each event fires and why it matters. Every event
 | `result_count` | `library_search`, `filter_apply` | Number of results. `0` means the visitor found nothing |
 | `filter_topic`, `filter_type`, `filter_level`, `filter_access` | `filter_apply` | The filter values active after the change |
 | `category_name` | `category_click` | Topic card that was clicked |
-| `cta_location` | `cta_substack_click`, `cta_buymeacoffee_click` | Where the link sits (header, banner, resource card, post card, About, footer) |
+| `cta_location` | `cta_substack_click`, `cta_buymeacoffee_click` | Where the link sits (header, banner, resource card, post card, About, footer, floating button) |
 
 
 **Two position fields.** `position` is a resource's fixed place in the catalogue. `list_position` is its place in the list the visitor is actually looking at (after search and filters). Click-through rate by position = `resource_click` ÷ `resource_impression`, grouped by `list_position`. The catalogue order is fixed, so position and resource are partly mixed up; search and filters add some natural variation, and a clean test would need shuffled order.
