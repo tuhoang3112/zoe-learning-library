@@ -37,6 +37,10 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 | `activity_item` and `confirmation_email` (`(not set)`) | ~3% together | Set by Substack, cannot be renamed |
 | Other sources | ~15% | |
 
+<p align="center"><img src="images/ga4-traffic-acquisition-before-utm.webp" alt="GA4 Top traffic acquisition for the Substack property before UTM was applied" width="560"></p>
+
+<p align="center"><sub>GA4 Top traffic acquisition, Substack property, saved as the state before UTM was applied to the links I post. LinkedIn and Facebook arrive as <code>referral</code> and unlabelled app clicks as <code>(direct) / (none)</code>; Cốc Cốc, a Vietnamese search engine, is also counted as <code>referral</code>.</sub></p>
+
 **What GA4 recorded as events** (automatic events only)
 
 | Event | Count (rounded) | What it can tell | What it cannot tell |
