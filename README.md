@@ -153,6 +153,6 @@ Phase 1 (this repository) is the **tracking set-up**: audit, fix, tag management
 | Substack tracking (12 event tags), GTM + GA4 | Live since 2026-10-22 |
 | UTM rules and builder | Done, applied to new links |
 | Confirm `sign_up` fires on a real subscription | Pending: so far only tested by a manual push |
-| Mark `sign_up` as a GA4 key event | Pending: it must appear in GA4 first |
+| Key events marked in GA4 | Done 2026-10-23. Substack: `sign_up`. Library: `cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click` |
 | Results: key events and `(direct) / (none)` share, before vs after | Pending: data is accumulating, the same 28-day comparison will be added here |
 | Phase 2: analysis, dashboard, SEO / AI-search check, audience survey | Not started |

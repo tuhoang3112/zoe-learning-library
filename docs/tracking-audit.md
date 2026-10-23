@@ -51,7 +51,7 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 | Problem | Effect | Fix |
 |---|---|---|
-| No event for subscriptions, no key event | Subscriptions invisible in GA4 | `sign_up` tag added (to be confirmed on a real subscription); key event pending |
+| No event for subscriptions, no key event | Subscriptions invisible in GA4 | `sign_up` tag added and marked as a key event on 2026-10-23 (still to be confirmed on a real subscription) |
 | `scroll` fires only at 90% | Cannot see where readers drop off | Custom `scroll_depth` at 25, 50, 75, 90% |
 | `click` only covers outbound links | Subscribe buttons not measured | `subscribe_click` per placement (header, popup, inline, footer, home) |
 | `form_start` is typing, not signing up | Counts intent, not conversion | `sign_up` is the conversion |
@@ -64,7 +64,7 @@ Supporting setup: GA4 data export to BigQuery on both properties, custom dimensi
 
 Same property, a **28-day window that starts after the fix** (Substack tracking live since 2026-10-22; the window starts the day after, 23 Oct to 19 Nov), same metrics:
 
-1. Key events: from 0 to the count of `sign_up` and `subscribe_click`, once marked as key events.
+1. Key events: from 0 to the count of `sign_up`, marked as a key event on 2026-10-23 (`subscribe_click` is not a key event yet). The Library property has no "before": its key events (`cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click`) count from the same day.
 2. Share of `(direct) / (none)`: before ~17%, after = to be measured.
 3. Behaviour: scroll depth at 25/50/75/90% and read time instead of a single 90% scroll.
 
