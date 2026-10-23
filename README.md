@@ -56,7 +56,7 @@ The ZoeDataLens newsletter on Substack has real traffic, but GA4 could not say w
 | `(direct) / (none)` share of sessions | ~17% | ~12% | to be measured |
 | `linkedin.com / referral` share of sessions | ~14% | ~6% | to be measured |
 
-This is the Substack property only: the Library did not exist in the initial window, so it has no "before" and is measured from its launch on 20 Sep, when its standardised UTM links also went live. See the [audit and baseline](docs/tracking-audit.md) for the full tables.
+This is the Substack property only: the Library did not exist in the initial window, so it has no "before" (GA4 shows no data for it in that window) and is measured from its launch on 20 Sep, when its standardised UTM links also went live. See the [audit and baseline](docs/tracking-audit.md) for the full tables.
 
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
 

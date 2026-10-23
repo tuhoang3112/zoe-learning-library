@@ -21,6 +21,12 @@ Two windows of 28 days, both from the GA4 reports of the Substack property. Figu
 - **Initial state: 23 Aug to 19 Sep 2026.** Before anything was changed: Substack had only the Google tag, and the Library did not exist yet (it went live on 20 Sep with its standardised UTM links), so this baseline is Substack only.
 - **Just before the Substack fix: 25 Sep to 22 Oct 2026.** The Library's UTM links were already running; Substack event tracking went live on 22 Oct. This window is the fair "before" for the Substack fix alone, because the Library's UTM links are present in it and in the "after" window.
 
+The Learning Library property has nothing to compare against: GA4 shows no data for it in the initial window.
+
+<p align="center"><img src="images/ga4-library-initial-no-data.webp" alt="GA4 Traffic acquisition for the Learning Library property, 23 Aug to 19 Sep 2026: no data" width="640"></p>
+
+<p align="center"><sub>GA4 Traffic acquisition by channel group, Learning Library property, 23 Aug to 19 Sep 2026: 0 sessions, 0 events and "No data available".</sub></p>
+
 | Metric | Initial state (23 Aug to 19 Sep) | Just before the fix (25 Sep to 22 Oct) |
 |---|---|---|
 | Active users | ~1.2K | not captured |
