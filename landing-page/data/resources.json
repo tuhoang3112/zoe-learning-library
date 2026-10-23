@@ -849,6 +849,7 @@
   },
   {
     "id": "excel-dashboard-templates",
+    "home_rank": 1,
     "title": "TỔNG HỢP 100+ MẪU DASHBOARDS EXCEL",
     "type": "Resource",
     "topic": "Data Analytics",
@@ -868,6 +869,7 @@
   },
   {
     "id": "powerbi-dashboard-templates",
+    "home_rank": 2,
     "title": "TỔNG HỢP 100+ MẪU DASHBOARDS/REPORTS POWER BI",
     "type": "Resource",
     "topic": "Data Analytics",
@@ -887,6 +889,7 @@
   },
   {
     "id": "data-ebooks",
+    "home_rank": 3,
     "title": "Tổng hợp Ebook Statistics, Visualization & Storytelling, Soft Skills, Domain Knowledge",
     "type": "Resource",
     "topic": "Data Analytics",

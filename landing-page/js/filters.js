@@ -66,8 +66,13 @@ function interleaveByProvider(list) {
   return out;
 }
 
+/* Cards with a "home_rank" in resources.json are pinned to the top of the default view, in rank order. */
 function defaultViewOrder(list) {
+  var pinned = list.filter(function (r) { return r.home_rank; })
+    .sort(function (a, b) { return a.home_rank - b.home_rank; });
+  var rest = list.filter(function (r) { return !r.home_rank; });
   var isResource = function (r) { return r.type === "Resource"; };
-  return interleaveByProvider(list.filter(isResource))
-    .concat(interleaveByProvider(list.filter(function (r) { return !isResource(r); })));
+  return pinned
+    .concat(interleaveByProvider(rest.filter(isResource)))
+    .concat(interleaveByProvider(rest.filter(function (r) { return !isResource(r); })));
 }
