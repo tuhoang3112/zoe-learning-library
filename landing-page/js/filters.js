@@ -69,7 +69,7 @@ function interleaveByProvider(list) {
 /* Default view order:
    1. cards with a "home_rank" in resources.json, in rank order;
    2. then "Resource" cards with one of Zoe's other "Tools & Templates" cards
-      after every 3 of them. Resources go in three groups: data non-blog (topic Data Analytics or "dashboard" in the title), other non-blog, then blog series;
+      after every 3 of them. Resources go in three groups: data non-blog (topic Data Analytics or "dashboard" in the title), other non-blog, then blog series (tag "Series");
    providers are dealt out in turns inside each group (tools already shown in the banner, passed in as isBannerTool, are left out here);
    3. then whatever is left (Course, Dataset, banner tools, ...), providers dealt out in turns. */
 var TOOLS_EVERY = 3;
@@ -79,7 +79,7 @@ function defaultViewOrder(list, isBannerTool) {
     .sort(function (a, b) { return a.home_rank - b.home_rank; });
   var rest = list.filter(function (r) { return !r.home_rank; });
   var isSprinkled = function (r) { return r.type === "Tools & Templates" && !isBannerTool(r); };
-  var isBlog = function (r) { return /^Blog Series/i.test(r.title); };
+  var isBlog = function (r) { return (r.tags || []).indexOf("Series") !== -1; };
   var onlyResources = rest.filter(function (r) { return r.type === "Resource"; });
   var isData = function (r) { return r.topic === "Data Analytics" || /dashboard/i.test(r.title); };
   var resources = interleaveByProvider(onlyResources.filter(function (r) { return !isBlog(r) && isData(r); }))
