@@ -101,10 +101,13 @@ Same property, a **28-day window that starts after the fix** (Substack tracking 
 | About page | 2026-10-23 |
 | Newsletter emails | not yet |
 | Old posts | in progress, to be finished this week (there are many, so they are done gradually) |
+| LinkedIn comments | not yet |
+| Facebook posts and comments | not retagged: too many, old links stay untagged |
 
 ## Limits
 
 - Different 28-day windows differ in posting schedule and seasonality, so the comparison shows direction, not exact causal effect.
 - The two properties share no user id, so the sites are linked by campaign name and by day, never by person.
 - Substack's own statistics (subscribers by source and post) stay the source of truth for subscriber counts; GA4 is used for behaviour. Email opens and reading inside the Substack app are not measured by GA4.
+- Old Facebook links are not retagged, so `l.facebook.com / referral` keeps receiving visits from them and will not fall to zero.
 - Ad blockers and the lack of a consent banner mean GA4 counts are a lower bound.
