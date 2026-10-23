@@ -624,7 +624,7 @@
     top:50%;
     transform:translateY(-50%);
     width:max-content;
-    max-width:min(420px, calc(100vw - 120px));
+    max-width:min(230px, calc(100vw - 120px));
     padding:8px 12px;
     border-radius:10px;
     background:var(--ink);
