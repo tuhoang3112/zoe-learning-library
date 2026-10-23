@@ -24,9 +24,9 @@ Container: [`gtm/substack-container.json`](../gtm/substack-container.json). Clic
 
 `percent_scrolled` comes from the built-in variable Scroll Depth Threshold; the other parameters are fixed values set in each tag, since the container can only use Google tags and built-in triggers.
 
-**Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push). Seen arriving in GA4 Realtime on 2026-10-23 with real clicks and real subscriptions: `subscribe_click` and `sign_up`. Found there: `sign_up` is counted **twice** per real subscription (two real subscriptions added two events each), so the tag is being corrected before its numbers are used. See [`tracking-audit.md`](tracking-audit.md).
+**Status.** Seen firing in GTM Preview: `scroll_depth`, `read_time` and `sign_up` (by a manual push). Seen in GA4 on 2026-10-23 with real clicks and real subscriptions: `subscribe_click` and `sign_up`.
 
-**Reading `subscribe_click`.** It counts clicks, not people. A reader who is asked to log in clicks Subscribe twice, so read it as users or sessions with the event rather than as the event count.
+**Reading `sign_up` and `subscribe_click`.** Both are read per session, not per event count. Substack pushes `sign_up` twice for one subscription (on the page where the form is submitted and again on the page that loads a few seconds later), and the two events carry the same `ga_session_id`, so a signup is counted once per session. `subscribe_click` counts clicks, not people: a reader who is asked to log in clicks Subscribe twice. Use the session key event rate in GA4, or in BigQuery count distinct `user_pseudo_id` and `ga_session_id`. The tag cannot filter the duplicate when it fires, because Substack blocks custom code. Details in [`tracking-audit.md`](tracking-audit.md).
 
 **Existing content to retag.** UTM was only applied to new links, so links to the Library, Buy Me a Coffee and Tomorrow Marketers inside content that was already published still arrive untagged, and links I posted on LinkedIn reach Substack as `linkedin.com / referral`. They are retagged on this timeline:
 

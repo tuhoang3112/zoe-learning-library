@@ -92,7 +92,7 @@
                 "firingTriggerId": [
                     "5"
                 ],
-                "tagFiringOption": "ONCE_PER_EVENT",
+                "tagFiringOption": "ONCE_PER_LOAD",
                 "monitoringMetadata": {
                     "type": "MAP"
                 },
