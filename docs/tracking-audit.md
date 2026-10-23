@@ -18,7 +18,7 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 Two windows of 28 days, both from the GA4 reports of the Substack property. Figures are rounded; shares are of total sessions.
 
-- **Initial state: 23 Aug to 19 Sep 2026.** Before anything was changed: the Library and its standardised UTM links went live on 20 Sep, and Substack had only the Google tag.
+- **Initial state: 23 Aug to 19 Sep 2026.** Before anything was changed: Substack had only the Google tag, and the Library did not exist yet (it went live on 20 Sep with its standardised UTM links), so this baseline is Substack only.
 - **Just before the Substack fix: 25 Sep to 22 Oct 2026.** The Library's UTM links were already running; Substack event tracking went live on 22 Oct. This window is the fair "before" for the Substack fix alone, because the Library's UTM links are present in it and in the "after" window.
 
 | Metric | Initial state (23 Aug to 19 Sep) | Just before the fix (25 Sep to 22 Oct) |

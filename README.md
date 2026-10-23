@@ -49,14 +49,14 @@ The ZoeDataLens newsletter on Substack has real traffic, but GA4 could not say w
 - **No key event** was set, so conversions were invisible.
 - Links I posted on LinkedIn and Facebook carried **no UTM**: the visits show as `linkedin.com / referral` and `l.facebook.com / referral`, and untagged app links fall into `(direct) / (none)`.
 
-| Before and after | Initial state (23 Aug to 19 Sep) | Just before the Substack fix (25 Sep to 22 Oct) | After (23 Oct to 19 Nov) |
+| Substack property | Initial state (23 Aug to 19 Sep) | Just before the Substack fix (25 Sep to 22 Oct) | After (23 Oct to 19 Nov) |
 |---|---|---|---|
 | Sessions | ~2.2K | ~2.4K | to be measured |
 | Key events in GA4 | **0** | **0** | to be measured |
 | `(direct) / (none)` share of sessions | ~17% | ~12% | to be measured |
 | `linkedin.com / referral` share of sessions | ~14% | ~6% | to be measured |
 
-The Library and its standardised UTM links went live on 20 Sep, between the first two columns. See the [audit and baseline](docs/tracking-audit.md) for the full tables.
+This is the Substack property only: the Library did not exist in the initial window, so it has no "before" and is measured from its launch on 20 Sep, when its standardised UTM links also went live. See the [audit and baseline](docs/tracking-audit.md) for the full tables.
 
 What readers do (GA4) and what they achieve (new subscribers, in Substack's own statistics) lived in two places and could not be joined. A closer look showed this was a configuration gap, not a platform limit: Tag Manager was installed with only the Google tag, so no event tag and no key event existed for subscriptions. Traffic from apps and emails arrived without a source because links carried no UTM.
 
