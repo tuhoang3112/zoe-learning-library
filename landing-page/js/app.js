@@ -276,8 +276,8 @@
     els.grid.querySelectorAll(".item").forEach(function (card) { impressionObserver.observe(card); });
   }
 
-  /* Rows shown per page: 2 rows on wider screens; on phones (one column) 6 cards so the list is not just 2 cards long. */
-  function rowsPerPage() { return gridColumns() === 1 ? 6 : 2; }
+  /* Rows shown per page: 3 rows on wider screens; on phones (one column) 6 cards so the list is not just 2 cards long. */
+  function rowsPerPage() { return gridColumns() === 1 ? 6 : 3; }
   var visibleRows = rowsPerPage();
 
   function gridColumns() {
