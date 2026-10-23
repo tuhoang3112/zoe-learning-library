@@ -51,7 +51,7 @@ What the Library measures, when each event fires and why it matters. Every event
 | `category_click` | A topic card is clicked | Which topics attract interest |
 | `tool_banner_click` | A product or "Visit the shop" is clicked in the "Tools made by Zoe" banner | Interest in my own products, apart from the library list |
 | `cta_substack_click` | Any link toward Substack is clicked (header, banner, resource card, post card, About, footer) | The main goal: visitors moving to the newsletter |
-| `cta_buymeacoffee_click` | The coffee-cup donate button in the footer, or the floating coffee-cup button in the corner, is clicked | Interest in supporting the project |
+| `cta_buymeacoffee_click` | The floating coffee-cup button in the corner is clicked (the footer coffee icon was removed on 2026-10-23) | Interest in supporting the project |
 
 **Resource parameters**, sent with `resource_impression`, `resource_click` and `tool_banner_click`. Values come from the catalogue ([`resources.json`](../landing-page/data/resources.json)) and the allowed values from [`config.js`](../landing-page/js/config.js).
 
