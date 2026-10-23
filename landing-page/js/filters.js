@@ -45,21 +45,22 @@ function applyFilters(resources, state) {
   });
 }
 
-/* Default view (no search, no filter): deal the types out in turns (Course, Resource, Tools, ...)
-   so one type or author can't fill the first page. Each type keeps its position order. */
+/* Default view (no search, no filter): deal the providers out in turns (Zoe, Tomorrow Marketers, Thầy Long, ...)
+   so one author or type can't fill the first page. Each provider keeps its position order. */
 function isDefaultView(state) {
   return !state.q && FILTER_KEYS.every(function (k) { return state[k] === "All"; });
 }
 
-function interleaveByType(list) {
+function interleaveByProvider(list) {
   var queues = {}, order = [];
   list.forEach(function (r) {
-    if (!queues[r.type]) { queues[r.type] = []; order.push(r.type); }
-    queues[r.type].push(r);
+    var key = r.provider || "(none)";
+    if (!queues[key]) { queues[key] = []; order.push(key); }
+    queues[key].push(r);
   });
   var out = [];
   while (out.length < list.length) {
-    order.forEach(function (t) { if (queues[t].length) out.push(queues[t].shift()); });
+    order.forEach(function (k) { if (queues[k].length) out.push(queues[k].shift()); });
   }
   return out;
 }
