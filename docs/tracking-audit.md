@@ -8,7 +8,7 @@ GA4 on the newsletter showed **0 key events**. The cause was **configuration, no
 
 - Tag Manager was installed with **only the Google tag** (the one that connects the site to GA4). No trigger, no event tag and no other configuration existed, so GA4 collected only its automatic events (page views, enhanced measurement). That is the starting point, not a fault: everything beyond it was built in the fix.
 - No tag, trigger or key event existed for subscriptions, so conversions were invisible. The `sign_up` event was set up in the fix (a Custom Event trigger and a GA4 Event tag); it still has to be confirmed with a real subscription, because so far it has only been tested by pushing the event name from the browser console.
-- About one session in six had no known source (`(direct) / (none)`).
+- About one session in six had no known source: `(direct) / (none)` and `(not set)` together are about 16%.
 
 ## What Substack allows
 
@@ -16,32 +16,32 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 ## Baseline before the fix
 
-**Window:** 28 days, 23 Aug to 19 Sep 2026. **Source:** GA4 reports of the Substack property. Figures are rounded; shares are of total sessions.
+**Window:** 28 days, 25 Sep to 22 Oct 2026, the 28 days right before Substack tracking went live on 22 Oct. **Source:** GA4 reports of the Substack property. Figures are rounded; shares are of total sessions.
 
 | Metric | Value |
 |---|---|
-| Active users | ~1.2K |
-| Sessions | ~2.2K |
-| Average engagement time | ~1 min 50 s |
+| Sessions | ~2.4K |
+| Engagement rate | ~45% |
+| Average engagement time per session | ~1 min |
 | Key events | **0** |
 
 **Where sessions came from**
 
 | Source / medium | Share of sessions | Note |
 |---|---|---|
-| `google / organic` | ~46% | The main channel, larger than every other source |
-| `(direct) / (none)` | ~17% | Hidden sources: untagged links from apps and emails land here |
-| `linkedin.com / referral` | ~14% | |
-| `l.facebook.com / referral` | ~3% | |
-| `multiple-personal-recommendation-email / email` | ~2% | Set by Substack |
-| `activity_item` and `confirmation_email` (`(not set)`) | ~3% together | Set by Substack, cannot be renamed |
-| Other sources | ~15% | |
+| `google / organic` | ~51% | The main channel, larger than every other source together |
+| `(direct) / (none)` | ~12% | Hidden sources: untagged links from apps and emails land here |
+| `linkedin.com / referral` | ~6% | Link without UTM |
+| `ActiveCampaign / email` | ~6% | Email tool, tagged by the tool itself |
+| `(not set)` | ~5% | No source recorded (GA4 flags it with a warning) |
+| `l.facebook.com / referral` | ~5% | Link without UTM |
+| `coccoc.com / referral` | ~2% | Cốc Cốc, a Vietnamese search engine that GA4 counts as referral |
+| `learning-library / referral` | ~2% | UTM added by the Library's own code |
+| `facebook.com / referral` | ~2% | Link without UTM |
+| `substack / email` | ~1% | |
+| Other sources (46 more) | ~9% | |
 
-<p align="center"><img src="images/ga4-traffic-acquisition-before-utm.webp" alt="GA4 Top traffic acquisition for the Substack property before UTM was applied" width="560"></p>
-
-<p align="center"><sub>GA4 Top traffic acquisition, Substack property, saved as the state before UTM was applied to the links I post. LinkedIn and Facebook arrive as <code>referral</code> and unlabelled app clicks as <code>(direct) / (none)</code>; Cốc Cốc, a Vietnamese search engine, is also counted as <code>referral</code>.</sub></p>
-
-**What GA4 recorded as events** (automatic events only)
+**What GA4 recorded as events** (automatic events only; counts from the earlier window 23 Aug to 19 Sep 2026, to be refreshed for 25 Sep to 22 Oct)
 
 | Event | Count (rounded) | What it can tell | What it cannot tell |
 |---|---|---|---|
@@ -69,7 +69,7 @@ Supporting setup: GA4 data export to BigQuery on both properties, custom dimensi
 Same property, a **28-day window that starts after the fix** (Substack tracking live since 2026-10-22; the window starts the day after, 23 Oct to 19 Nov), same metrics:
 
 1. Key events: from 0 to the count of `sign_up`, marked as a key event on 2026-10-23 (`subscribe_click` is not a key event yet). The Library property has no "before": its key events (`cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click`) count from the same day.
-2. Share of `(direct) / (none)`: before ~17%, after = to be measured.
+2. Share of `(direct) / (none)`: before ~12% (25 Sep to 22 Oct), after = to be measured over 23 Oct to 19 Nov.
 3. Behaviour: scroll depth at 25/50/75/90% and read time instead of a single 90% scroll.
 
 ## Limits
