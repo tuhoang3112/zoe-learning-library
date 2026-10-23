@@ -597,3 +597,43 @@
   }
   .post-link{margin-top:auto;padding-top:4px;font-weight:800;font-size:13px;color:var(--blue-dark)}
   @media(max-width:900px){.posts-grid{grid-template-columns:1fr}}
+
+  /* Floating Buy Me a Coffee button: opens the shop page, UTM and event added by js/analytics.js */
+  .bmc-float{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#5F7FFF;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 18px rgba(17,24,39,.22);
+    z-index:20;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .bmc-float svg{width:28px;height:28px}
+  .bmc-float:hover,.bmc-float:focus-visible{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,24,39,.28)}
+  .bmc-float::after{
+    content:attr(data-tip);
+    position:absolute;
+    right:68px;
+    top:50%;
+    transform:translateY(-50%);
+    padding:8px 12px;
+    border-radius:10px;
+    background:var(--ink);
+    color:#fff;
+    font-size:13px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .15s ease;
+  }
+  .bmc-float:hover::after,.bmc-float:focus-visible::after{opacity:1}
+  @media (max-width:560px){.bmc-float::after{display:none}}
+  @media (prefers-reduced-motion:reduce){.bmc-float,.bmc-float::after{transition:none}}
+  @media print{.bmc-float{display:none}}

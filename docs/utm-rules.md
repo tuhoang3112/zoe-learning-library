@@ -44,7 +44,8 @@ Links that leave the Learning Library get their UTM from code, so nothing is add
 | Resource card | Substack or Buy Me a Coffee | `resource_card` |
 | Popular post card | Substack | `blog_card` |
 | Product card or "Visit the shop" in the Tools banner | Buy Me a Coffee | `tools-banner` |
-| Coffee-cup donate icon | Buy Me a Coffee | `footer` |
+| Coffee-cup donate icon in the footer | Buy Me a Coffee | `footer` |
+| Floating coffee-cup button in the bottom right corner | Buy Me a Coffee | `floating-button` |
 
 For the links to Substack the campaign equals `cta_location` of the `cta_substack_click` event, so the same placement has the same name in both GA4 properties.
 
