@@ -8,7 +8,7 @@ GA4 on the newsletter showed **0 key events**. The cause was **configuration, no
 
 - Tag Manager was installed with **only the Google tag** (the one that connects the site to GA4). No trigger, no event tag and no other configuration existed, so GA4 collected only its automatic events (page views, enhanced measurement). That is the starting point, not a fault: everything beyond it was built in the fix.
 - No tag, trigger or key event existed for subscriptions, so conversions were invisible. The `sign_up` event was set up in the fix (a Custom Event trigger and a GA4 Event tag); it still has to be confirmed with a real subscription, because so far it has only been tested by pushing the event name from the browser console.
-- About one session in six had no known source: `(direct) / (none)` and `(not set)` together are about 16%.
+- About one session in six had no known source: `(direct) / (none)` was ~17% of sessions in the initial window, and `(direct) / (none)` with `(not set)` ~16% in the next one.
 
 ## What Substack allows
 
@@ -16,32 +16,39 @@ Tag Manager on Substack only runs **Google tags and built-in triggers** (click, 
 
 ## Baseline before the fix
 
-**Window:** 28 days, 25 Sep to 22 Oct 2026, the 28 days right before Substack tracking went live on 22 Oct. **Source:** GA4 reports of the Substack property. Figures are rounded; shares are of total sessions.
+Two windows of 28 days, both from the GA4 reports of the Substack property. Figures are rounded; shares are of total sessions.
 
-| Metric | Value |
-|---|---|
-| Sessions | ~2.4K |
-| Engagement rate | ~45% |
-| Average engagement time per session | ~1 min |
-| Key events | **0** |
+- **Initial state: 23 Aug to 19 Sep 2026.** Before anything was changed: the Library and its standardised UTM links went live on 20 Sep, and Substack had only the Google tag.
+- **Just before the Substack fix: 25 Sep to 22 Oct 2026.** The Library's UTM links were already running; Substack event tracking went live on 22 Oct. This window is the fair "before" for the Substack fix alone, because the Library's UTM links are present in it and in the "after" window.
+
+| Metric | Initial state (23 Aug to 19 Sep) | Just before the fix (25 Sep to 22 Oct) |
+|---|---|---|
+| Active users | ~1.2K | not captured |
+| Sessions | ~2.2K | ~2.4K |
+| Engagement rate | not captured | ~45% |
+| Average engagement time | ~1 min 50 s | ~1 min |
+| Key events | **0** | **0** |
 
 **Where sessions came from**
 
-| Source / medium | Share of sessions | Note |
-|---|---|---|
-| `google / organic` | ~51% | The main channel, larger than every other source together |
-| `(direct) / (none)` | ~12% | Hidden sources: untagged links from apps and emails land here |
-| `linkedin.com / referral` | ~6% | Link without UTM |
-| `ActiveCampaign / email` | ~6% | Email tool, tagged by the tool itself |
-| `(not set)` | ~5% | No source recorded (GA4 flags it with a warning) |
-| `l.facebook.com / referral` | ~5% | Link without UTM |
-| `coccoc.com / referral` | ~2% | Cốc Cốc, a Vietnamese search engine that GA4 counts as referral |
-| `learning-library / referral` | ~2% | UTM added by the Library's own code |
-| `facebook.com / referral` | ~2% | Link without UTM |
-| `substack / email` | ~1% | |
-| Other sources (46 more) | ~9% | |
+| Source / medium | Initial state | Just before the fix | Note |
+|---|---|---|---|
+| `google / organic` | ~46% | ~51% | The main channel, larger than every other source |
+| `(direct) / (none)` | ~17% | ~12% | Hidden sources: untagged links from apps and emails land here |
+| `linkedin.com / referral` | ~14% | ~6% | Link without UTM |
+| `ActiveCampaign / email` | not listed | ~6% | Email tool, tagged by the tool itself |
+| `(not set)` | ~3% together with `activity_item` and `confirmation_email` | ~5% | No source recorded; Substack sets some of these and they cannot be renamed |
+| `l.facebook.com / referral` | ~3% | ~5% | Link without UTM |
+| `multiple-personal-recommendation-email / email` | ~2% | not listed | Set by Substack |
+| `coccoc.com / referral` | not listed | ~2% | Cốc Cốc, a Vietnamese search engine that GA4 counts as referral |
+| `learning-library / referral` | none (the Library was not live) | ~2% | UTM added by the Library's own code |
+| `facebook.com / referral` | not listed | ~2% | Link without UTM |
+| `substack / email` | not listed | ~1% | |
+| Other sources | ~15% | ~9% | |
 
-**What GA4 recorded as events** (automatic events only; counts from the earlier window 23 Aug to 19 Sep 2026, to be refreshed for 25 Sep to 22 Oct)
+"Not listed" means the source was not among the rows read for that window, not that it had no sessions.
+
+**What GA4 recorded as events** (automatic events only, initial state: 23 Aug to 19 Sep, to be refreshed for 25 Sep to 22 Oct)
 
 | Event | Count (rounded) | What it can tell | What it cannot tell |
 |---|---|---|---|
@@ -69,7 +76,7 @@ Supporting setup: GA4 data export to BigQuery on both properties, custom dimensi
 Same property, a **28-day window that starts after the fix** (Substack tracking live since 2026-10-22; the window starts the day after, 23 Oct to 19 Nov), same metrics:
 
 1. Key events: from 0 to the count of `sign_up`, marked as a key event on 2026-10-23 (`subscribe_click` is not a key event yet). The Library property has no "before": its key events (`cta_substack_click`, `cta_buymeacoffee_click`, `tool_banner_click`, `resource_click`) count from the same day.
-2. Share of `(direct) / (none)`: before ~12% (25 Sep to 22 Oct), after = to be measured over 23 Oct to 19 Nov.
+2. Share of `(direct) / (none)`: ~17% in the initial state (23 Aug to 19 Sep) and ~12% just before the fix (25 Sep to 22 Oct); after = to be measured over 23 Oct to 19 Nov.
 3. Behaviour: scroll depth at 25/50/75/90% and read time instead of a single 90% scroll.
 
 ## Limits
