@@ -45,8 +45,9 @@ function applyFilters(resources, state) {
   });
 }
 
-/* Default view (no search, no filter): deal the providers out in turns (Zoe, Tomorrow Marketers, Thầy Long, ...)
-   so one author or type can't fill the first page. Each provider keeps its position order. */
+/* Default view (no search, no filter): type "Resource" cards come first, then the rest; inside each group the
+   providers are dealt out in turns (Zoe, Tomorrow Marketers, Thầy Long, ...) so one author can't fill a page.
+   Each provider keeps its position order. */
 function isDefaultView(state) {
   return !state.q && FILTER_KEYS.every(function (k) { return state[k] === "All"; });
 }
@@ -63,4 +64,10 @@ function interleaveByProvider(list) {
     order.forEach(function (k) { if (queues[k].length) out.push(queues[k].shift()); });
   }
   return out;
+}
+
+function defaultViewOrder(list) {
+  var isResource = function (r) { return r.type === "Resource"; };
+  return interleaveByProvider(list.filter(isResource))
+    .concat(interleaveByProvider(list.filter(function (r) { return !isResource(r); })));
 }
