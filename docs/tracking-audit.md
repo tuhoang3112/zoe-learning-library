@@ -25,8 +25,8 @@ Two windows of 28 days, both from the GA4 reports of the Substack property. Figu
 |---|---|---|
 | Active users | ~1.2K | not captured |
 | Sessions | ~2.2K | ~2.4K |
-| Engagement rate | not captured | ~45% |
-| Average engagement time | ~1 min 50 s | ~1 min |
+| Engagement rate | ~43% | ~45% |
+| Average engagement time per session | ~1 min | ~1 min |
 | Key events | **0** | **0** |
 
 **Where sessions came from**
@@ -37,14 +37,21 @@ Two windows of 28 days, both from the GA4 reports of the Substack property. Figu
 | `(direct) / (none)` | ~17% | ~12% | Hidden sources: untagged links from apps and emails land here |
 | `linkedin.com / referral` | ~14% | ~6% | Link without UTM |
 | `ActiveCampaign / email` | not listed | ~6% | Email tool, tagged by the tool itself |
-| `(not set)` | ~3% together with `activity_item` and `confirmation_email` | ~5% | No source recorded; Substack sets some of these and they cannot be renamed |
+| `(not set)` | ~3% | ~5% | No source recorded |
 | `l.facebook.com / referral` | ~3% | ~5% | Link without UTM |
-| `multiple-personal-recommendation-email / email` | ~2% | not listed | Set by Substack |
+| `multiple-personal-recommendations-email / email` | ~2% | not listed | Set by Substack |
+| `activity_item / (not set)` | ~2% | not listed | Set by Substack, cannot be renamed |
+| `confirmation_email / (not set)` | ~2% | not listed | Set by Substack, cannot be renamed |
 | `coccoc.com / referral` | not listed | ~2% | Cốc Cốc, a Vietnamese search engine that GA4 counts as referral |
 | `learning-library / referral` | none (the Library was not live) | ~2% | UTM added by the Library's own code |
 | `facebook.com / referral` | not listed | ~2% | Link without UTM |
-| `substack / email` | not listed | ~1% | |
-| Other sources | ~15% | ~9% | |
+| `substack / email` | ~1% | ~1% | |
+| `post / web` | ~1% | not listed | |
+| Other sources | ~10% | ~9% | |
+
+<p align="center"><img src="images/ga4-source-medium-initial-state.webp" alt="GA4 Traffic acquisition by session source / medium for the Substack property, 23 Aug to 19 Sep 2026" width="760"></p>
+
+<p align="center"><sub>GA4 Traffic acquisition by session source / medium, Substack property, 23 Aug to 19 Sep 2026: the initial state, before anything was changed. The Key events column is 0 for every source.</sub></p>
 
 "Not listed" means the source was not among the rows read for that window, not that it had no sessions.
 
