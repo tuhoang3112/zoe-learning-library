@@ -106,4 +106,4 @@ These are other people's pages, so no tag can run there and the only tracking is
 
 A LinkedIn post leading to a Substack post therefore ends with `?utm_source=linkedin&utm_medium=social&utm_campaign=learn-ai-from-0&utm_content=caption-claude-cowork`. In GA4 the visit shows under Organic Social with the post and position it came from, instead of `(direct) / (none)`.
 
-**Not measured:** what happens on the platform itself (impressions, reactions, profile views) and anything after the click, which is only seen on the destination site. Format, vocabulary and more examples are in [`utm-rules.md`](utm-rules.md); [`tools/utm-builder.html`](https://tuhoang3112.github.io/zoe-learning-library/tools/utm-builder.html) builds the links.
+**Not measured:** what happens on the platform itself (impressions, reactions, profile views) and anything after the click, which is only seen on the destination site. Format, vocabulary and more examples are in [`utm-rules.md`](utm-rules.md); the [UTM builder](https://tuhoang3112.github.io/zoe-learning-library/tools/utm-builder.html) is a web tool that standardises the values and builds the links.
