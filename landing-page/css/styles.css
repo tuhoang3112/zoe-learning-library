@@ -681,7 +681,8 @@
 .strip-count{font-size:13px;color:var(--muted)}
 .strip-more{font:inherit;font-size:13px;font-weight:700;color:var(--blue-dark);background:none;border:0;padding:0;cursor:pointer;white-space:nowrap}
 .strip-more:hover{text-decoration:underline}
-.strip-track{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;padding-bottom:8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.strip-track{display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;padding-bottom:2px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip-track::-webkit-scrollbar{display:none}
 .strip-item{flex:0 0 250px;display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);scroll-snap-align:start;overflow:hidden}
 .strip-item .cover{width:100%;margin:0;border-radius:0}
 .strip-body{display:flex;flex-direction:column;gap:3px;padding:10px 12px 12px}
