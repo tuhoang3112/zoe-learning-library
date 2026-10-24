@@ -12,6 +12,7 @@
     strip: document.getElementById("searchStrip"),
     stripCount: document.getElementById("stripCount"),
     stripTrack: document.getElementById("stripTrack"),
+    stripMore: document.getElementById("stripMore"),
     search: document.getElementById("search"),
     searchForm: document.getElementById("searchForm"),
     categories: document.getElementById("categoryGrid"),
@@ -289,7 +290,7 @@
 
   /* Search results live in the strip under the search box (searchMatchCount = all matches, the strip shows
      the first STRIP_MAX). The grid below is only filtered by the dropdown filters, never by the search text. */
-  var STRIP_MAX = 10;
+  var STRIP_MAX = 5;
   var searchMatchCount = 0;
 
   function renderStrip() {
@@ -305,9 +306,12 @@
     els.stripTrack.replaceChildren.apply(els.stripTrack, shown.map(function (r) {
       var a = h("a", "strip-item");
       externalLink(a, r, 0); // list_position 0 = opened from the search strip (grid positions start at 1)
-      a.appendChild(h("span", "strip-type", r.type));
-      a.appendChild(h("span", "strip-title", r.title));
-      if (r.provider) a.appendChild(h("span", "strip-source", r.provider));
+      a.appendChild(renderCover(r));
+      var body = h("span", "strip-body");
+      body.appendChild(h("span", "strip-type", r.type));
+      body.appendChild(h("span", "strip-title", r.title));
+      if (r.provider) body.appendChild(h("span", "strip-source", r.provider));
+      a.appendChild(body);
       return a;
     }));
     els.stripTrack.scrollLeft = 0;
@@ -406,6 +410,9 @@
       els.selects[k].addEventListener("change", function () { onFilterChange(k); });
     });
     els.search.addEventListener("input", onSearchInput);
+    els.stripMore.addEventListener("click", function () {
+      document.getElementById("library").scrollIntoView({ behavior: "smooth" });
+    });
     els.more.addEventListener("click", function () {
       visibleRows += rowsPerPage();
       render();
