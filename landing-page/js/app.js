@@ -287,6 +287,7 @@
   function render() {
     var results = applyFilters(resources, state);
     if (isDefaultView(state)) results = defaultViewOrder(results, isTool);
+    else if (state.q.trim()) results = rankBySearch(results, state.q);
     var limit = visibleRows * gridColumns();
     var shown = results.slice(0, limit);
     els.grid.replaceChildren.apply(els.grid, shown.map(function (r, i) { return renderCard(r, i + 1); }));
