@@ -9,6 +9,9 @@
     count: document.getElementById("count"),
     empty: document.getElementById("empty"),
     more: document.getElementById("seeMore"),
+    strip: document.getElementById("searchStrip"),
+    stripCount: document.getElementById("stripCount"),
+    stripTrack: document.getElementById("stripTrack"),
     search: document.getElementById("search"),
     searchForm: document.getElementById("searchForm"),
     categories: document.getElementById("categoryGrid"),
@@ -284,10 +287,37 @@
     return getComputedStyle(els.grid).gridTemplateColumns.split(" ").length || 1;
   }
 
+  /* Search results live in the strip under the search box (searchMatchCount = all matches, the strip shows
+     the first STRIP_MAX). The grid below is only filtered by the dropdown filters, never by the search text. */
+  var STRIP_MAX = 10;
+  var searchMatchCount = 0;
+
+  function renderStrip() {
+    var q = state.q.trim();
+    var matches = q ? rankBySearch(resources.filter(function (r) { return matchesQuery(r, q); }), q) : [];
+    searchMatchCount = matches.length;
+    els.strip.hidden = !q;
+    if (!q) return;
+    var shown = matches.slice(0, STRIP_MAX);
+    els.stripCount.textContent = matches.length
+      ? (matches.length > shown.length ? "Top " + shown.length + " best matches" : matches.length + (matches.length === 1 ? " match" : " matches"))
+      : "No results for “" + q + "”. Try fewer words.";
+    els.stripTrack.replaceChildren.apply(els.stripTrack, shown.map(function (r) {
+      var a = h("a", "strip-item");
+      externalLink(a, r, 0); // list_position 0 = opened from the search strip (grid positions start at 1)
+      a.appendChild(h("span", "strip-type", r.type));
+      a.appendChild(h("span", "strip-title", r.title));
+      if (r.provider) a.appendChild(h("span", "strip-source", r.provider));
+      return a;
+    }));
+    els.stripTrack.scrollLeft = 0;
+  }
+
   function render() {
-    var results = applyFilters(resources, state);
-    if (isDefaultView(state)) results = defaultViewOrder(results, isTool);
-    else if (state.q.trim()) results = rankBySearch(results, state.q);
+    renderStrip();
+    var gridState = Object.assign({}, state, { q: "" });
+    var results = applyFilters(resources, gridState);
+    if (isDefaultView(gridState)) results = defaultViewOrder(results, isTool);
     var limit = visibleRows * gridColumns();
     var shown = results.slice(0, limit);
     els.grid.replaceChildren.apply(els.grid, shown.map(function (r, i) { return renderCard(r, i + 1); }));
@@ -342,7 +372,8 @@
   function onSearchInput() {
     visibleRows = rowsPerPage();
     state.q = els.search.value.trim();
-    var count = render();
+    render();
+    var count = searchMatchCount;
     writeStateToUrl(state);
     clearTimeout(searchTimer);
     searchTimer = setTimeout(function () { fireSearchEvent(count); }, cfg.SEARCH_DEBOUNCE_MS);
@@ -383,10 +414,9 @@
     function submitSearch() {
       visibleRows = rowsPerPage();
       state.q = els.search.value.trim();
-      var count = render();
+      render();
       writeStateToUrl(state);
-      fireSearchEvent(count);
-      document.getElementById("library").scrollIntoView({ behavior: "smooth" });
+      fireSearchEvent(searchMatchCount);
     }
     els.searchForm.addEventListener("submit", function (e) {
       e.preventDefault();
