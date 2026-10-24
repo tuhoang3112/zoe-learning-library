@@ -303,9 +303,9 @@
     els.stripCount.textContent = matches.length
       ? (matches.length > shown.length ? "Top " + shown.length + " best matches" : matches.length + (matches.length === 1 ? " match" : " matches"))
       : "No results for “" + q + "”. Try fewer words.";
-    els.stripTrack.replaceChildren.apply(els.stripTrack, shown.map(function (r) {
+    els.stripTrack.replaceChildren.apply(els.stripTrack, shown.map(function (r, i) {
       var a = h("a", "strip-item");
-      externalLink(a, r, 0); // list_position 0 = opened from the search strip (grid positions start at 1)
+      externalLink(a, r, -(i + 1)); // negative list_position = opened from the search strip (-1 = first card); grid positions start at 1
       a.appendChild(renderCover(r));
       var body = h("span", "strip-body");
       body.appendChild(h("span", "strip-type", r.type));
