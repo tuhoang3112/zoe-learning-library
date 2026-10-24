@@ -305,9 +305,12 @@
     els.stripTrack.replaceChildren.apply(els.stripTrack, shown.map(function (r) {
       var a = h("a", "strip-item");
       externalLink(a, r, 0); // list_position 0 = opened from the search strip (grid positions start at 1)
-      a.appendChild(h("span", "strip-type", r.type));
-      a.appendChild(h("span", "strip-title", r.title));
-      if (r.provider) a.appendChild(h("span", "strip-source", r.provider));
+      a.appendChild(renderCover(r));
+      var body = h("span", "strip-body");
+      body.appendChild(h("span", "strip-type", r.type));
+      body.appendChild(h("span", "strip-title", r.title));
+      if (r.provider) body.appendChild(h("span", "strip-source", r.provider));
+      a.appendChild(body);
       return a;
     }));
     els.stripTrack.scrollLeft = 0;
