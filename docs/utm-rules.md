@@ -32,6 +32,8 @@ How every link I publish (Substack, Learning Library, Buy Me a Coffee, LinkedIn,
 
 **Positions** for `utm_content`: `caption` (in the body of a post), `bio` (profile link), `description` (video description), `cmt` (comment), `menu` and `sidebar` (Substack navigation), `group-<name>` (a Facebook group).
 
+On YouTube only three are used: `description` (video description, including live), `cmt` (comment, pinned comment included) and `bio` (channel About text and banner links). Links in Shorts descriptions and comments are no longer clickable on YouTube, so for Shorts the `bio` link is the one that can bring visits.
+
 **Campaigns:** `learn-ai-from-0` (the "Learn AI from 0" series), `bmc-shop` (links that sell a Buy Me a Coffee product).
 
 ## Links the website tags by itself
