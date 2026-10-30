@@ -160,7 +160,7 @@
 
   var CHANNELS={
     "linkedin":{label:"LinkedIn",source:"linkedin",medium:"social",slug:"linkedin",positions:["caption","bio","cmt"]},
-    "youtube":{label:"YouTube",source:"youtube",medium:"video",slug:"youtube",positions:["description","pinned-cmt","cmt","bio","banner","card","community","playlist","live-chat"]},
+    "youtube":{label:"YouTube",source:"youtube",medium:"video",slug:"youtube",positions:["description","cmt","bio"]},
     "facebook-group":{label:"Facebook group",source:"facebook",medium:"social",slug:"facebook-group",positions:["group"],needsGroup:true},
     "substack":{label:"Substack",source:"substack",medium:"email",slug:"substack",positions:["caption","menu","sidebar"]},
     "bmc":{label:"Buy Me a Coffee",source:"buymeacoffee",medium:"referral",slug:"buymeacoffee",positions:["caption"]},
@@ -174,15 +174,9 @@
   ];
   var POSITIONS={
     caption:{label:"Thân bài / caption",hint:"Link nằm trong thân bài hoặc caption.",title:true},
-    bio:{label:"Bio / profile",hint:"Link cố định ở profile hoặc phần Giới thiệu của kênh, không cần tiêu đề.",title:false},
+    bio:{label:"Bio / profile",hint:"Link cố định ở profile, hoặc ở phần Giới thiệu và banner của kênh YouTube. Không cần tiêu đề.",title:false},
     description:{label:"Mô tả video",hint:"Link trong mô tả video.",title:true},
-    cmt:{label:"Comment",hint:"Link trong comment.",title:true},
-    "pinned-cmt":{label:"Comment ghim",hint:"Link trong comment ghim của video. Tiêu đề là tên video.",title:true},
-    banner:{label:"Link trên banner kênh",hint:"Link hiện thành icon ở banner kênh (phần Liên kết của kênh). Không cần tiêu đề.",title:false},
-    card:{label:"Card / màn hình kết",hint:"Link trong card hoặc end screen của video. Tiêu đề là tên video.",title:true},
-    community:{label:"Bài đăng cộng đồng",hint:"Link trong bài đăng ở tab Cộng đồng (Community) của kênh.",title:true},
-    playlist:{label:"Mô tả playlist",hint:"Link trong mô tả của playlist. Tiêu đề là tên playlist.",title:true},
-    "live-chat":{label:"Chat livestream",hint:"Link bạn gửi hoặc ghim trong chat của livestream. Tiêu đề là tên buổi live.",title:true},
+    cmt:{label:"Comment",hint:"Link trong comment, kể cả comment ghim.",title:true},
     menu:{label:"Menu",hint:"Link ở menu điều hướng của Substack. Tiêu đề là tên mục menu. Chỉ gắn khi link dẫn ra ngoài Substack.",title:true},
     sidebar:{label:"Sidebar",hint:"Link ở thanh category dọc của Substack. Chỉ gắn khi link dẫn ra ngoài Substack.",title:true},
     group:{label:"Bài đăng trong group",hint:"Bài đăng trong Facebook group. Nhập tên group ở trên.",title:true}
@@ -316,7 +310,7 @@
     }else{
       var pos=state.position,tok=pos==="group"?(group?"group-"+group:""):pos;
       if(pos==="group"&&!group)missing.push("tên group");
-      if(pos==="bio"||pos==="banner")content=pos;
+      if(pos==="bio")content="bio";
       else{content=[tok,title].filter(Boolean).join("-");if(!title)missing.push("tiêu đề")}
     }
     if(ch.other&&!tm){if(!source)missing.push("utm_source");if(!medium)missing.push("utm_medium")}
