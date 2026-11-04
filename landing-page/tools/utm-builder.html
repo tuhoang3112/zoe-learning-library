@@ -103,9 +103,12 @@
     </div>
 
     <div class="field" id="groupField" hidden>
-      <label for="group">Tên group Facebook <span class="hint">gõ tự do, ví dụ Data Vietnam</span></label>
-      <input id="group" placeholder="Data Vietnam">
-      <div class="norm" id="norm-group"></div>
+      <label for="groupSel">Group Facebook <span class="hint">chọn group có sẵn hoặc tự nhập</span></label>
+      <select id="groupSel"></select>
+      <div id="groupOtherWrap" hidden>
+        <input id="group" placeholder="Data Vietnam">
+        <div class="norm" id="norm-group"></div>
+      </div>
     </div>
 
     <div class="field" id="positionField">
@@ -193,6 +196,13 @@
     {v:"vibe-code-101",label:"vibe-code-101 (tuyến bài Vibe Code 101)"},
     {v:"__other",label:"Khác, tự nhập"}
   ];
+  var GROUPS=[
+    {v:"",label:"Chọn group"},
+    {v:"tm-inhouse",label:"tm-inhouse (TM Inhouse)"},
+    {v:"tm-connect",label:"tm-connect (TM Alumni)"},
+    {v:"tm-strategy",label:"tm-strategy (TM Brand Strategy)"},
+    {v:"__other",label:"Khác, tự nhập"}
+  ];
 
   var TYPES={
     tm:{
@@ -225,7 +235,7 @@
     }
   };
 
-  var state={type:"library",channel:"linkedin",position:"caption",group:"",title:"",campaign:"",campaignOther:"",srcOther:"",medOther:"",urls:{}};
+  var state={type:"library",channel:"linkedin",position:"caption",group:"",groupSel:"",title:"",campaign:"",campaignOther:"",srcOther:"",medOther:"",urls:{}};
 
   function clean(v){
     return String(v||"").trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
@@ -256,6 +266,19 @@
     }
     $("campaignOtherField").hidden=tm||state.campaign!=="__other";
   }
+  function renderGroups(){
+    var sel=$("groupSel");
+    /* Dữ liệu cũ (chỉ có chữ gõ tay): nếu trùng group có sẵn thì chọn nó, không thì coi là "Khác". */
+    if(!state.groupSel&&state.group){
+      var known=GROUPS.some(function(g){return g.v&&g.v!=="__other"&&g.v===clean(state.group)});
+      state.groupSel=known?clean(state.group):"__other";
+      if(known)state.group=state.groupSel;
+    }
+    fillSelect(sel,GROUPS.map(function(g){return '<option value="'+g.v+'">'+g.label+'</option>'}).join(""));
+    sel.value=state.groupSel;
+    if(sel.value!==state.groupSel){state.groupSel="";sel.value=""}
+    $("groupOtherWrap").hidden=state.groupSel!=="__other";
+  }
   function renderPositions(){
     var ch=chan(),tm=state.type==="tm";
     $("positionField").hidden=tm;
@@ -274,6 +297,7 @@
     var ch=chan();
     $("otherRow").hidden=!ch.other;
     $("groupField").hidden=!ch.needsGroup;
+    renderGroups();
     $("channelMeta").textContent=ch.other?"Nhập source và medium theo bảng trong docs/utm-rules.md.":"utm_source = "+ch.source+", utm_medium = "+(state.type==="tm"?"service (cố định cho TM)":ch.medium);
     renderPositions();
   }
@@ -396,6 +420,14 @@
   });
   $("channel").onchange=function(){state.channel=this.value;applyChannel();build();save()};
   $("campaign").onchange=function(){state.campaign=this.value;$("campaignOtherField").hidden=state.campaign!=="__other";build();save()};
+  /* Chọn group có sẵn: ghi thẳng slug vào state.group. Chọn "Khác": để ô nhập tay quyết định. */
+  $("groupSel").onchange=function(){
+    state.groupSel=this.value;
+    state.group=(this.value&&this.value!=="__other")?this.value:"";
+    $("group").value=state.group;
+    $("groupOtherWrap").hidden=state.groupSel!=="__other";
+    build();save();
+  };
   ["group","title","campaignOther","srcOther","medOther"].forEach(function(f){
     $(f).addEventListener("input",function(){state[f]=this.value;build();save()});
   });
@@ -406,10 +438,10 @@
     var h=getHist().filter(function(x){return x!==url});h.unshift(url);setHist(h);renderHist();
   };
   $("reset").onclick=function(){
-    state.group=state.title=state.campaignOther=state.srcOther=state.medOther="";
+    state.group=state.groupSel=state.title=state.campaignOther=state.srcOther=state.medOther="";
     state.campaign=cfg().defCampaign;state.position=chan().positions[0];
     setInputs();urlEl.value=cfg().defUrl;
-    renderCampaigns();renderPositions();save();build();
+    renderCampaigns();renderGroups();renderPositions();save();build();
   };
   /* Source / medium tự nhập: bấm vào ô thì xóa tạm để danh sách gợi ý hiện đủ; không chọn gì thì giá trị cũ quay lại. */
   ["srcOther","medOther"].forEach(function(f){

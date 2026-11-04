@@ -30,7 +30,7 @@ How every link I publish (Substack, Learning Library, Buy Me a Coffee, LinkedIn,
 | Learning Library | `learning-library` | `referral` |
 | Buy Me a Coffee | `buymeacoffee` | `referral` |
 
-**Positions** for `utm_content`: `caption` (in the body of a post), `bio` (profile link), `description` (video description), `cmt` (comment), `menu` and `sidebar` (Substack navigation), `group-<name>` (a Facebook group).
+**Positions** for `utm_content`: `caption` (in the body of a post), `bio` (profile link), `description` (video description), `cmt` (comment), `menu` and `sidebar` (Substack navigation), `group-<name>` (a Facebook group). Preset groups in the builder: `tm-inhouse` (TM Inhouse), `tm-connect` (TM Alumni), `tm-strategy` (TM Brand Strategy); any other group is typed in by hand.
 
 On YouTube only three are used: `description` (video description, including live), `cmt` (comment, pinned comment included) and `bio` (channel About text and banner links). Links in Shorts descriptions and comments are no longer clickable on YouTube, so for Shorts the `bio` link is the one that can bring visits.
 
